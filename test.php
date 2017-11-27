@@ -1,14 +1,5 @@
 <?php
-echo ''Heli";
+echo "Deuxième test Hugo";
 ?>
-
-<?php
-echo "Test" ;
-?>
-
-
-<h2> Limb </h2>
-
-
 
 
