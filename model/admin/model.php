@@ -15,14 +15,14 @@ function dbConnect()
     }
 }
 
-function getProfile()
+function getProfile($id)
 //Récupère nom, prénom, adresse, mail et pseudo de l'utilisateur qui a l'id donné
 {
     $db = dbConnect();
     $req = $db -> prepare("SELECT nom, prenom, adresse, mail, pseudo
                             FROM utilisateurs
                             WHERE id = ?");
-    $req -> execute(array($_SESSION["id"]));
+    $req -> execute(array($id));
     $profile = $req -> fetch();
     $req -> closeCursor();
     
@@ -74,5 +74,21 @@ function passwordUpdate($new_password_1)
     $req -> execute(array(
         "mot_de_passe" => $new_password_1,
         "id" => $_SESSION["id"]));
+    $req -> closeCursor();
+}
+
+function profileCreation($nom, $prenom, $adresse, $mail, $pseudo, $mot_de_passe)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("INSERT INTO utilisateurs(nom, prenom, adresse, mail, pseudo, mot_de_passe, categorie_utilisateur)
+                            VALUES (:nom, :prenom, :adresse, :mail, :pseudo, :mot_de_passe, 'client_principal')");
+    $req -> execute(array(
+        "nom" => $nom,
+        "prenom" => $prenom,
+        "adresse" => $adresse,
+        "mail" => $mail,
+        "pseudo" => $pseudo,
+        "mot_de_passe" => $mot_de_passe));
+    
     $req -> closeCursor();
 }

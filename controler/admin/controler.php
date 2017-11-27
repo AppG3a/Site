@@ -6,8 +6,13 @@ require("model/admin/model.php");
 function seeProfile()
 //Affiche la page de profil de l'utilisateur qui a l'id donné
 {
-    $profile = getProfile();
+    $profile = getProfile($_SESSION["id"]);
     require("view/admin/profile_view.php");
+}
+
+function seeHomePage()
+{
+    require("view/admin/home_view.php");
 }
 
 function seeProfileModification()
@@ -94,5 +99,29 @@ function seeCustomerProfile()
 
 function seeCustomerProfileCreation()
 {
-    echo "Page de création de fiche client";
+    require("view/admin/customer_profile_creation_view.php");
 }
+
+function customerProfileCreation()
+{
+    $nom = htmlspecialchars($_POST["nom"]);
+    $prenom = htmlspecialchars($_POST["prenom"]);
+    $adresse = htmlspecialchars($_POST["adresse"]);
+    $mail = htmlspecialchars($_POST["mail"]);
+    $pseudo = htmlspecialchars($_POST["pseudo"]);
+    $mot_de_passe = htmlspecialchars($_POST["mot_de_passe"]);
+    
+    if (!empty($nom) && !empty($prenom) && !empty($adresse) && !empty($mail) && !empty($pseudo) && !empty($mot_de_passe))
+    {
+        profileCreation($nom, $prenom, $adresse, $mail, $pseudo, $mot_de_passe);
+        echo "Le compte a bien été créé<br/>";
+    }
+    
+    else 
+    {
+        echo "Un des champs est vide<br/>";
+    }
+
+    echo "<a href='index.php?action=see_customer_profile_creation'>Retour</a>";
+}
+

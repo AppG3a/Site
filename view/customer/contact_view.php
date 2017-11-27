@@ -33,6 +33,9 @@ while ($message = $messages -> fetch())
 $messages -> closeCursor();
 ?>
 
+<br/>
+<a href="index.php">Revenir à la page d'accueil</a>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require("view/customer/template.php"); ?>

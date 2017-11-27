@@ -12,10 +12,7 @@
 </p>
 
 <a href="index.php?action=see_profile_modification">Modifier mon profil</a><br/>
-
-<a href="index.php?action=see_customer_profile_selection">Voir une fiche client</a><br/>
-
-<a href="index.php?action=see_customer_profile_creation">Créer une fiche client</a><br/>
+<a href="index.php">Revenir à la page d'accueil</a>
 
 <?php $content = ob_get_clean(); ?>
 

@@ -104,6 +104,11 @@ elseif ($_SESSION["user_type"] == "admin")
             seeCustomerProfileCreation();
         }
         
+        elseif ($_GET["action"] == "customer_profile_creation")
+        {
+            customerProfileCreation();
+        }
+        
         else
         {
             echo "En travaux";
@@ -113,7 +118,7 @@ elseif ($_SESSION["user_type"] == "admin")
     else
     {
         //Ca c'est temporaire, pour le moment je ne m'occupe que du profil donc je peux laisser ça par défaut, après faudra changer ce else
-        seeProfile();
+        seeHomePage();
     }
 }
 
