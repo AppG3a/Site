@@ -7,7 +7,7 @@
 session_start();
 
 $_SESSION["id"] = 1;
-$_SESSION["user_type"] = "admin";
+$_SESSION["user_type"] = "customer";
 
 
 if ($_SESSION["user_type"] == "customer")
@@ -107,6 +107,21 @@ elseif ($_SESSION["user_type"] == "admin")
         elseif ($_GET["action"] == "customer_profile_creation")
         {
             customerProfileCreation();
+        }
+        
+        elseif ($_GET["action"] == "see_breakdown_history")
+        {
+            seeBreakdownHistory();
+        }
+        
+        elseif ($_GET["action"] == "see_contact")
+        {
+            seeContact();
+        }
+        
+        elseif ($_GET["action"] == "see_phone_number_modification")
+        {
+            seePhoneNumberModification();
         }
         
         else

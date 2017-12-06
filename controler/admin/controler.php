@@ -18,7 +18,7 @@ function seeHomePage()
 function seeProfileModification()
 //Affiche la page de modification de profil de l'utilisateur qui a l'id donné
 {
-    $profile = getProfile();
+    $profile = getProfile($_SESSION["id"]);
     require("view/admin/profile_modification_view.php");
 }
 
@@ -123,5 +123,22 @@ function customerProfileCreation()
     }
 
     echo "<a href='index.php?action=see_customer_profile_creation'>Retour</a>";
+}
+
+function seeBreakdownHistory()
+{
+    $breakdowns = getBreakdowns();
+    require("view/admin/breakdown_history_view.php");
+}
+
+function seeContact()
+{
+    $phone_number = getPhoneNumber();
+    require("view/admin/contact_view.php");
+}
+
+function seePhoneNumberModification()
+{
+    require("view/admin/phone_number_modification_view.php");
 }
 

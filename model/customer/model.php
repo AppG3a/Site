@@ -104,3 +104,15 @@ function getMessages()
     
     return $req;
 }
+
+function getPhoneNumber()
+{
+    $db = dbConnect();
+    $req = $db -> query("SELECT numero
+                        FROM numeros_domisep");
+    $phone_number = $req -> fetch();
+    
+    return $phone_number["numero"];
+}
+
+

@@ -82,6 +82,7 @@ function seeHomePage()
 function seeContact()
 {
     $messages = getMessages();
+    $phone_number = getPhoneNumber();
     require("view/customer/contact_view.php");
 }
 
