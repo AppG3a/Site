@@ -15,7 +15,7 @@
         while ($breakdown = $breakdowns -> fetch())
         {
         ?>
-        	<p>
+        	<p class="left_justify_2">
         		<strong>Problème :</strong> <?= htmlspecialchars($breakdown["description"]) ?> (problème relevé le : <?= htmlspecialchars($breakdown["date_panne"]) ?>)<br/>
         		Solution : <?= htmlspecialchars($breakdown["solution"]) ?> (problème résolu le : <?= htmlspecialchars($breakdown["date_solution"]) ?>)<br/>
         		Client concerné : <?= htmlspecialchars($breakdown["id_client"]) ?><br/>

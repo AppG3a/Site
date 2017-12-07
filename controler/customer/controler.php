@@ -25,9 +25,20 @@ function seeProfileModification()
 
 function profileModification()
 //Fais les modifications du profil demandées puis affiche la page de profil de l'utilisateur qui a l'id donné
+//A REFAIRE : cette fonction est à refaire, elle est trop longue et peut facilement être améliorée
 {
-    profileUpdate();
-    seeProfile();
+    $test = profileUpdate();
+    if ($test == 1)
+    {
+        echo "Je suis toujours là";
+        seeProfile();
+    }
+    
+    else
+    {
+        $profile = getProfile();
+        require("view/customer/profile_modification_error_pseudo_view.php");
+    }
 }
 
 function passwordChange()
@@ -50,27 +61,35 @@ function passwordChange()
             {
                 passwordUpdate($new_password_1);
                 echo "Votre mot de passe a été changé";
+                $profile = getProfile();
+                require("view/customer/success_password_change_view.php");
             }
             
             else
             {
-                echo "L'ancien mot de passe n'est pas correct<br/>";
-                echo "<a href='index.php?action=see_profile_modification'>Retour</a>";
+                //echo "L'ancien mot de passe n'est pas correct<br/>";
+                //echo "<a href='index.php?action=see_profile_modification'>Retour</a>";
+                $profile = getProfile();
+                require("view/customer/profile_modification_error_password1_view.php");
             }
         }
         
         else
         {
-            echo "La confirmation du nouveau mot de passe n'est pas correcte<br/>";
-            echo "<a href='index.php?action=see_profile_modification'>Retour</a>";
+            //echo "La confirmation du nouveau mot de passe n'est pas correcte<br/>";
+            //echo "<a href='index.php?action=see_profile_modification'>Retour</a>";
+            $profile = getProfile();
+            require("view/customer/profile_modification_error_password2_view.php");
         }
         
     }
     
     else 
     {
-        echo "Un des champs de modification du mot de passe n'a pas été rempli<br/>";
-        echo "<a href='index.php?action=see_profile_modification'>Retour</a>";
+        //echo "Un des champs de modification du mot de passe n'a pas été rempli<br/>";
+        //echo "<a href='index.php?action=see_profile_modification'>Retour</a>";
+        $profile = getProfile();
+        require("view/customer/profile_modification_error_password3_view.php");
     }
 }
 
@@ -97,3 +116,7 @@ function sendMessage()
     echo "<a href='index.php?action=see_contact'>Retour</a>";
 }
 
+function seeHelp()
+{
+    require("view/customer/help_view.php");
+}

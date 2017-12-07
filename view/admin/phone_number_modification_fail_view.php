@@ -20,6 +20,7 @@
         		<input type="submit" value="Changer le numéro">
         	</p>
         </form>
+        <p>LE NUMERO RENSEIGNE N'EST PAS VALIDE</p>
         
         <div class="back_button">
         	<a href="index.php?action=see_contact">Retour</a>

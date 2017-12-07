@@ -11,18 +11,12 @@
     <div class="content">
 
         <h1>Numéro Domisep</h1>
-        
-        <form method="post" action="index.php?action=phone_number_modification">
-        	<p>
-        	<label for="phone_number">Numéro</label> : <input type="text" name="phone_number" id="phone_number">
-        	</p>
-    		<p>
-        		<input type="submit" value="Changer le numéro">
-        	</p>
-        </form>
+        <p>LE NUMERO A BIEN ETE CHANGE</p>
+        <p><?= $phone_number ?></p>
         
         <div class="back_button">
-        	<a href="index.php?action=see_contact">Retour</a>
+        	<a href="index.php?action=see_phone_number_modification">Modifier le numéro de contact Domisep</a>
+            <a href="index.php">Revenir à la page d'accueil</a>
         </div>
 
     </div>    

@@ -24,7 +24,7 @@
         	</p>
         </form>
         
-        <p>
+        <p class="left_justify">
         	Nom : <?= $profile["nom"] ?><br/>
         	Prénom : <?= $profile["prenom"] ?><br/>
         	Adresse : <?= $profile["adresse"] ?><br/>

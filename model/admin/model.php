@@ -111,3 +111,12 @@ function getPhoneNumber()
     
     return $phone_number["numero"];
 }
+
+function updatePhoneNumber($phone_number)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("UPDATE numeros_domisep
+                            SET numero = ?");
+    $req -> execute(array($phone_number));
+    $req -> closeCursor();
+}

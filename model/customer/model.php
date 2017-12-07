@@ -44,15 +44,59 @@ function profileUpdate()
     {
         if (!empty($value))
         {
-            $req = $db -> prepare("UPDATE utilisateurs
+            //Concerne uniquement le pseudo : on vérifie qu'un autre utilisateur n'ait pas le même pseudo avant de changer
+            if ($key == "pseudo")
+            {
+                //On récupère le pseudo actuel de l'utilisateur
+                $req = $db -> prepare("SELECT pseudo
+                                        FROM utilisateurs
+                                        WHERE id = ?");
+                $req -> execute(array($_SESSION["id"]));
+                $db_pseudo = $req -> fetch();
+                $req -> closeCursor();
+                
+                //On regarde si le nouveau pseudo est différent de l'ancien
+                if ($db_pseudo["pseudo"] != $value)
+                {
+                    //Si le nouveau pseudo est différent de l'ancien, on vérifie qu'un autre utilisateur n'a pas le même
+                    $req = $db -> prepare("SELECT COUNT(pseudo) AS nb_pseudo
+                                        FROM utilisateurs
+                                        WHERE pseudo = ?");
+                    $req -> execute(array(htmlspecialchars($value)));
+                    $nb_pseudo = $req -> fetch();
+                    $req -> closeCursor();
+
+                    if ($nb_pseudo["nb_pseudo"] == 0)
+                    {
+                        $req = $db -> prepare("UPDATE utilisateurs
+                                                SET $key = :value
+                                                WHERE id = :id");
+                        $req -> execute(array(
+                            "value" => htmlspecialchars($value),
+                            "id" => $_SESSION["id"]));
+                        $req -> closeCursor();
+                    }
+                    
+                    else
+                    {
+                        return 0;
+                    }
+                }      
+            }
+            
+            else 
+            {
+                $req = $db -> prepare("UPDATE utilisateurs
                                 SET $key = :value
                                 WHERE id = :id");
-            $req -> execute(array(
-                "value" => htmlspecialchars($value),
-                "id" => $_SESSION["id"]));
-            $req -> closeCursor();
+                $req -> execute(array(
+                    "value" => htmlspecialchars($value),
+                    "id" => $_SESSION["id"]));
+                $req -> closeCursor();
+            }
         }
     }
+    return 1;
 }
 
 function getPassword()

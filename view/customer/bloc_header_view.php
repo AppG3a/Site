@@ -19,10 +19,11 @@
     
     
     <div class="bouton">
-        <a href="index.php?action=see_contact" title="Contacter Domisep"><img src="design/customer/picture/contact_2.png" alt="Enveloppe"></a>		
-        <a href="#" title="Traduire en français"><img src="design/customer/picture/francais_2.png" alt="Drapeau français"></a>
-        <a href="#" title="Traduire en anglais"><img src="design/customer/picture/anglais_2.png" alt="Drapeau anglais"></a>
-        <a href="#" title="Se déconnecter"><img src="design/customer/picture/deco_2.png" alt="Bouton déconnexion"></a>
+    	<a href="index.php?action=see_help" title="Aide"><img src="design/customer/picture/aide_2.png" alt="Aide"></a>
+        <a href="index.php?action=see_contact" title="Contacter Domisep"><img src="design/customer/picture/contact_2.png" alt="Contact"></a>		
+        <a href="#" title="Traduire en français"><img src="design/customer/picture/francais_2.png" alt="Français"></a>
+        <a href="#" title="Traduire en anglais"><img src="design/customer/picture/anglais_2.png" alt="Anglais"></a>
+        <a href="#" title="Se déconnecter"><img src="design/customer/picture/deco_2.png" alt="Déconnexion"></a>
     </div>
 
 </header>

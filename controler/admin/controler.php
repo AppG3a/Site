@@ -142,3 +142,18 @@ function seePhoneNumberModification()
     require("view/admin/phone_number_modification_view.php");
 }
 
+function phoneNumberModification()
+{
+    $new_phone_number = htmlspecialchars($_POST["phone_number"]);
+    if (!empty($new_phone_number))
+    {
+        updatePhoneNumber($new_phone_number);
+        $phone_number = getPhoneNumber();
+        require("view/admin/phone_number_modification_success_view.php");
+    }
+    
+    else
+    {
+        require("view/admin/phone_number_modification_fail_view.php");
+    }
+}

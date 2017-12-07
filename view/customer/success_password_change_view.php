@@ -11,7 +11,7 @@
 	<div class="content">
 
         <h1>Mon profil</h1>
-        <p class="left_justify">
+        <p>
         	Nom : <?= $profile["nom"] ?><br/>
         	Prénom : <?= $profile["prenom"] ?><br/>
         	Adresse : <?= $profile["adresse"] ?><br/>
@@ -23,6 +23,8 @@
             <a href="index.php?action=see_profile_modification">Modifier mon profil</a>
             <a href="index.php">Revenir à la page d'accueil</a>
         </div>
+        
+        <p>VOTRE MOT DE PASSE A ETE CHANGE AVEC SUCCES</p>
 
     </div>    
     <?php $content = ob_get_clean(); ?>
