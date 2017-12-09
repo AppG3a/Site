@@ -7,7 +7,7 @@
 session_start();
 
 $_SESSION["id"] = 1;
-$_SESSION["user_type"] = "admin";
+$_SESSION["user_type"] = "customer";
 
 
 if ($_SESSION["user_type"] == "customer")
@@ -51,6 +51,11 @@ if ($_SESSION["user_type"] == "customer")
         elseif ($_GET["action"] == "see_help")
         {
             seeHelp();
+        }
+        
+        elseif ($_GET["action"] == "see_cgu")
+        {
+            seeCgu();
         }
         
         else
@@ -132,6 +137,21 @@ elseif ($_SESSION["user_type"] == "admin")
         elseif ($_GET["action"] == "phone_number_modification")
         {
             phoneNumberModification();
+        }
+        
+        elseif ($_GET["action"] == "see_cgu")
+        {
+            seeCgu();
+        }
+        
+        elseif ($_GET["action"] == "see_cgu_modification")
+        {
+            seeCguModification();
+        }
+        
+        elseif($_GET["action"] == "cgu_modification")
+        {
+            cguModification();
         }
         
         else

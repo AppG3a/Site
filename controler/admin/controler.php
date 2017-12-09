@@ -157,3 +157,24 @@ function phoneNumberModification()
         require("view/admin/phone_number_modification_fail_view.php");
     }
 }
+
+function seeCgu()
+{
+    $cgu = getCgu();
+    require("view/admin/cgu_view.php");
+}
+
+function seeCguModification()
+{
+    $cgu = getCgu();
+    require("view/admin/cgu_modification_view.php");
+}
+
+function cguModification()
+{
+    //$cgu = htmlspecialchars($_POST["cgu"]); //Si on fait un htmlspecialchars ça annule les retours à la ligne.
+    $cgu = $_POST["cgu"];
+    cguUpdate($cgu);
+    $cgu = getCgu();
+    require("view/admin/cgu_modification_success_view.php");
+}

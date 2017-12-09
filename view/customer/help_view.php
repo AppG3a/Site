@@ -34,6 +34,7 @@
         <img src="design/customer/picture/deco_2.png" alt="Déconnexion">
         <p>      
             Vous pouvez vous déconnecter en cliquant sur l'icône ci-dessus (situé en haut de la page). <br/>
+            *Cette fonctionnalité n'est pas encore disponible*
         </p>
         
         <h3>Menu de navigation</h3>
@@ -81,7 +82,6 @@
         <h3>Conditions générales d'utilisation</h3>
         <p>      
             Vous pouvez lire les conditions générales d'utilisation en cliquant sur le lien disponible en bas de la page.<br/>
-            *Cette fonctionnalité n'est pas encore disponible*
         </p>
         
         

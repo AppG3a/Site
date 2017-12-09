@@ -120,3 +120,23 @@ function updatePhoneNumber($phone_number)
     $req -> execute(array($phone_number));
     $req -> closeCursor();
 }
+
+function getCgu()
+{
+    $db = dbConnect();
+    $req = $db -> query("SELECT texte
+                        FROM cgu");
+    $cgu = $req -> fetch();
+    $req -> closeCursor();
+    
+    return $cgu;
+}
+
+function cguUpdate($cgu)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("UPDATE cgu
+                            SET texte = ?");
+    $req -> execute(array($cgu));
+    $req -> closeCursor();    
+}

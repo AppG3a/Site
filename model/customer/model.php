@@ -159,4 +159,14 @@ function getPhoneNumber()
     return $phone_number["numero"];
 }
 
+function getCgu()
+{
+    $db = dbConnect();
+    $req = $db -> query("SELECT texte
+                        FROM cgu");
+    $cgu = $req -> fetch();
+    $req -> closeCursor();
+    
+    return $cgu;
+}
 

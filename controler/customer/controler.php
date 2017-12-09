@@ -120,3 +120,9 @@ function seeHelp()
 {
     require("view/customer/help_view.php");
 }
+
+function seeCgu()
+{
+    $cgu = getCgu();
+    require("view/customer/cgu_view.php");
+}
