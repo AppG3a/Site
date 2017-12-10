@@ -58,6 +58,16 @@ if ($_SESSION["user_type"] == "customer")
             seeCgu();
         }
         
+        elseif ($_GET["action"] == "see_sensors")
+        {
+            seeSensors();
+        }
+        
+        elseif ($_GET["action"] == "switch_sensor_status")
+        {
+            switchSensorStatus();
+        }
+        
         else
         {
             echo "En travaux";

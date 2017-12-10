@@ -170,3 +170,39 @@ function getCgu()
     return $cgu;
 }
 
+function getSensors()
+{
+    $db = dbConnect();
+    $req = $db -> prepare("SELECT *
+                            FROM capteurs
+                            WHERE id_utilisateur = ?");
+    $req -> execute(array($_SESSION["id"]));
+    
+    return $req;
+}
+
+function sensorStatusUpdate($id_sensor, $new_sensor_status)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("UPDATE capteurs
+                            SET on_off = :new_sensor_status
+                            WHERE id = :id_sensor");
+    $req -> execute(array(
+        "new_sensor_status" => $new_sensor_status,
+        "id_sensor" => $id_sensor));
+    $req -> closeCursor();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

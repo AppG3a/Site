@@ -126,3 +126,49 @@ function seeCgu()
     $cgu = getCgu();
     require("view/customer/cgu_view.php");
 }
+
+function seeSensors()
+{
+    $sensors = getSensors();
+    require("view/customer/sensors_view.php");
+}
+
+function switchSensorStatus()
+{
+    if ($_GET["sensor_status"] == "OFF")
+    {
+        sensorStatusUpdate($_GET["id_sensor"], "ON");
+    }
+    
+    else
+    {
+        sensorStatusUpdate($_GET["id_sensor"], "OFF");
+    }
+    
+    seeSensors();   
+}
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
