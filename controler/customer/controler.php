@@ -147,6 +147,17 @@ function switchSensorStatus()
     
     seeSensors();   
 }
+
+function deconnexion()
+{
+    session_destroy();
+    require("view/authentication_view.php");
+}
+
+function openCustomer()
+{
+    require("view/customer/account_access_view.php");
+}
     
 
 

@@ -15,7 +15,7 @@
         <p>Vous trouverez ci-dessous toutes les explications nécessaires concernant les fonctionnalités d'Harvey.</p>
         
         <h3>Contacter le support</h3>
-        <img src="design/customer/picture/contact_2.png" alt="Contact">
+        <img src="design/picture/contact_2.png" alt="Contact">
         <p>      
             Vous pouvez contacter le support en cliquant l'icône ci-dessus (situé en haut de la page). <br/>
             Vous pourrez envoyer un message au support et y voir tous les messages que vous avez déjà envoyés. <br/>
@@ -23,18 +23,17 @@
         </p>
         
         <h3>Choisir la langue</h3>
-        <img src="design/customer/picture/francais_2.png" alt="Francais">
-        <img src="design/customer/picture/anglais_2.png" alt="Anglais">
+        <img src="design/picture/francais_2.png" alt="Francais">
+        <img src="design/picture/anglais_2.png" alt="Anglais">
         <p>      
             Vous pouvez passer du français à l'anglais cliquant sur les icônes ci-dessus (situés en haut de la page). <br/>
             *Cette fonctionnalité n'est pas encore disponible*
         </p>
         
         <h3>Se déconnecter</h3>
-        <img src="design/customer/picture/deco_2.png" alt="Déconnexion">
+        <img src="design/picture/deco_2.png" alt="Déconnexion">
         <p>      
             Vous pouvez vous déconnecter en cliquant sur l'icône ci-dessus (situé en haut de la page). <br/>
-            *Cette fonctionnalité n'est pas encore disponible*
         </p>
         
         <h3>Menu de navigation</h3>
@@ -47,7 +46,7 @@
         <p>      
             L'onglet "Vue générale" vous permet de retourner sur l'écran d'accueil du site. <br/>
             Vous pouvez également retourner sur l'écran d'accueil en cliquant sur cet icône : <br/>
-            <img src="design/customer/picture/logo_harvey_3.png" alt="Logo d'Harvey"> <br/>
+            <img src="design/picture/logo_harvey_3.png" alt="Logo d'Harvey"> <br/>
             (en haut à gauche de votre écran)
         </p>
         

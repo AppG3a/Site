@@ -178,3 +178,14 @@ function cguModification()
     $cgu = getCgu();
     require("view/admin/cgu_modification_success_view.php");
 }
+
+function deconnexion()
+{
+    session_destroy();
+    require("view/authentication_view.php");
+}
+
+function openAdmin()
+{
+    require("view/admin/account_access_view.php");
+}
