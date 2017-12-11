@@ -1,6 +1,6 @@
 html
 {
-	background-color: rgb(112, 146, 190);
+	background: url("../picture/fond_2.jpg") fixed no-repeat;
 }
 
 body
@@ -19,9 +19,10 @@ header
 
 	h2
 	{
-		border: 1px white solid;
+		color: white;
+		border: 1px rgb(0, 0, 129) solid;
 		border-radius: 0px 0px 20px 20px;
-		background-color: white;
+		background-color: rgb(0, 0, 129);
 		order: 3;
 		margin: auto;
 		margin-top: 0px;
@@ -60,7 +61,8 @@ header
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		background-color: white;
+		background-color: rgb(112, 146, 190);
+		color: white;
 		border-radius: 25px;
 	}
 	
@@ -83,13 +85,20 @@ header
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			color: black;
+			color: white;
 			text-decoration: none;
 		}
 		
 		.menu_items a:hover
 		{
-			background-color: white;
+			/*background-color: rgb(112, 146, 190);*/
+			border: 3px rgb(69, 104, 152) outset;
+		}
+		
+		.menu_items a:active
+		{
+			border: 3px rgb(112, 146, 190) outset;
+			background-color: rgb(112, 146, 190);
 		}
 	
 	.content
@@ -97,8 +106,8 @@ header
 		width: 80%;
 		text-align: center;
 		overflow: auto;
-		color: white;
-		text-shadow: 1px 1px 1px black;
+		color: rgb(0, 0, 129);
+		/*text-shadow: 1px 1px 1px black;*/
 	}
 	
 		.left_justify
@@ -123,8 +132,8 @@ header
 		.content a
 		{
 			text-decoration: none;
-			border: 1px white solid;
-			background-color: white;
+			border: 1px rgb(112, 146, 190) solid;
+			background-color: rgb(112, 146, 190);
 			border-radius: 10px;
 			color: black;
 			padding: 5px;
