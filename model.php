@@ -13,12 +13,4 @@ function connexionbdd(){
 }
 
 
-
-function getprofile(){
-    $bdd = connexionbdd();
-    $sql = "select * from utilisateurs where pseudo = '$name' and mot_de_passe='$password'";
-    $result = $con->query($sql);
-    $rows=mysqli_num_rows($result);
-    return $rows;
-}
 ?>
