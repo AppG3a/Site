@@ -1,5 +1,6 @@
 <?php
 header("Content-Type: text/html; charset=utf-8");
+session_start();
 
 
 require("controler.php");
@@ -13,6 +14,8 @@ if(!isset($_POST["submit"])){
     
         $name = $_POST['pseudo'];
         $password = $_POST['password'];
+        $_SESSION['pseudo']=$name;
+        $_SESSION['password']=$password;
         if ($name && $password){
             
             $bdd = connexionbdd();
