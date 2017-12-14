@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 14 déc. 2017 à 10:22
+-- Généré le :  jeu. 14 déc. 2017 à 19:15
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -38,20 +38,23 @@ CREATE TABLE IF NOT EXISTS `capteurs` (
   `on_off` varchar(255) NOT NULL,
   `valeur` float NOT NULL,
   `valeur_cible` float DEFAULT NULL,
+  `favori` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `capteurs`
 --
 
-INSERT INTO `capteurs` (`id`, `id_utilisateur`, `id_emplacement`, `reference`, `description`, `on_off`, `valeur`, `valeur_cible`) VALUES
-(1, 1, 1, 'température', 'capteur de température', 'ON', 20, 21),
-(2, 1, 1, 'humidité', 'capteur d\'humidité', 'OFF', 23.3, NULL),
-(3, 4, 1, 'température', 'Capteur de température', 'OFF', 20, 2),
-(4, 4, 1, 'humidité', 'Capteur d\'humidité', 'OFF', 23.5, NULL),
-(5, 4, 2, 'température', 'Capteur de température', 'OFF', 21, NULL),
-(25, 3, 13, 'température', 'température', 'OFF', 10, NULL);
+INSERT INTO `capteurs` (`id`, `id_utilisateur`, `id_emplacement`, `reference`, `description`, `on_off`, `valeur`, `valeur_cible`, `favori`) VALUES
+(1, 1, 1, 'température', 'capteur de température', 'ON', 20, 21, 0),
+(2, 1, 1, 'humidité', 'capteur d\'humidité', 'OFF', 23.3, NULL, 0),
+(3, 4, 1, 'température', 'Capteur de température', 'ON', 20, NULL, 1),
+(4, 4, 1, 'humidité', 'Capteur d\'humidité', 'ON', 23.5, NULL, 0),
+(5, 4, 2, 'température', 'Capteur de température', 'OFF', 21, NULL, 0),
+(27, 4, 12, 'humidité', 'humidité', 'OFF', 10, NULL, 1),
+(26, 4, 12, 'température', 'température', 'OFF', 10, NULL, 1),
+(25, 3, 13, 'température', 'température', 'OFF', 10, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -98,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `cgu` (
 --
 
 INSERT INTO `cgu` (`id`, `texte`) VALUES
-(1, 'Il n\'existe pas d\'obligation légale quant à la rédaction de conditions générales d\'utilisation (CGU). <br/>Toutefois, il est fortement recommandé de les inclure au site internet. En effet, le contrat de CGU encadre juridiquement les rapports et les conflits pouvant naître entre l\'éditeur du site et le visiteur.<br/>\r\n\r\nEn revanche et conformément à la loi pour la confiance dans l\'économie numérique en date du 21 juin 2004, les mentions légales doivent obligatoirement figurer sur le site internet.<br/>Les CGU peuvent les reproduire ou indiquer un lien direct permettant d\'y accéder.<br/>\r\n\r\nTout visiteur du site internet accepte les CGU pour l\'accès et l\'utilisation aux services proposés par le site.<br/>\r\n\r\nLes CGU informent les visiteurs sur différentes informations comme :<br/>\r\n\r\nles mentions légales relatives à la société, à son siège social ;<br/>\r\nles conditions d\'accès au site ;<br/>\r\nles différents services et les produits qu\'offre le site ;<br/>\r\nles modalités relatives à la création d\'un compte visiteur, client ;<br/>\r\nla propriété intellectuelle ;<br/>\r\nla protection des données personnelles ;<br/>\r\nla responsabilité de l\'éditeur et ses limites ;<br/>\r\nla responsabilité du visiteur ;<br/>\r\nles liens hypertextes ;<br/>\r\nla durée du contrat ;<br/>\r\nl\'évolution du contrat ;<br/>\r\nla juridiction compétente et le droit applicable en cas de litige.<br/>');
+(1, '<div style=\"text-align: center;\"><b>Conditions Générales d\'Utilisation</b></div><div style=\"text-align: left;\"><b><br></b></div><div style=\"text-align: justify;\">Il n\'existe pas d\'obligation légale quant à la rédaction de conditions générales d\'utilisation (CGU). Toutefois, il est fortement recommandé de les inclure au site internet. En effet, le contrat de CGU encadre juridiquement les rapports et les conflits pouvant naître entre l\'éditeur du site et le visiteur. En revanche et conformément à la loi pour la confiance dans l\'économie numérique en date du 21 juin 2004, les mentions légales doivent obligatoirement figurer sur le site internet. Les CGU peuvent les reproduire ou indiquer un lien direct permettant d\'y accéder.</div><div style=\"text-align: left;\"><br></div><div style=\"text-align: left;\">Tout visiteur du site internet accepte les CGU pour l\'accès et l\'utilisation aux services proposés par le site.</div><div style=\"text-align: left;\">Les CGU informent les visiteurs sur différentes informations comme :</div><blockquote style=\"margin: 0 0 0 40px; border: none; padding: 0px;\"><div style=\"text-align: left;\">- les mentions légales relatives à la société, à son siège social ;</div></blockquote><blockquote style=\"margin: 0 0 0 40px; border: none; padding: 0px;\"><div style=\"text-align: left;\">- les conditions d\'accès au site ;</div><div style=\"text-align: left;\">- les différents services et les produits qu\'offre le site ;</div><div style=\"text-align: left;\">- les modalités relatives à la création d\'un compte visiteur, client ;</div><div style=\"text-align: left;\">- la propriété intellectuelle ;</div><div style=\"text-align: left;\">- la protection des données personnelles ;</div><div style=\"text-align: left;\">- la responsabilité de l\'éditeur et ses limites ;</div><div style=\"text-align: left;\">- la responsabilité du visiteur ;</div><div><div style=\"text-align: left;\">- les liens hypertextes ;</div></div><div><div><div style=\"text-align: left;\">- la durée du contrat ;</div></div></div><div><div><div style=\"text-align: left;\">- l\'évolution du contrat ;</div></div></div><div><div style=\"text-align: left;\">- la juridiction compétente et le droit applicable en cas de litige.</div></div></blockquote><div><div style=\"text-align: left;\"><br></div></div>');
 
 -- --------------------------------------------------------
 
@@ -193,26 +196,16 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `message` text NOT NULL,
   `sending_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `messages`
 --
 
 INSERT INTO `messages` (`id`, `id_customer`, `subject`, `message`, `sending_date`) VALUES
-(1, 1, 'Test', 'Premier test de la messagerie', '2017-11-25 22:33:11'),
 (2, 1, 'Problème technique', 'Bonjour, j\'ai un problème sur un de mes capteurs', '2017-11-25 23:14:04'),
 (3, 2, 'Pas content', 'Il n\'y a rien qui marche', '2017-11-25 23:15:42'),
-(4, 1, 'Deuxième test', 'Est-ce ça marche toujours ?', '2017-12-04 23:00:00'),
-(5, 1, 'Troisième test', 'J\'espère que ça va marcher', '2017-12-05 09:37:10'),
-(6, 4, 'Problème technique', 'Mon capteur d\'humidité a pris l\'eau', '2017-12-10 22:45:09'),
-(7, 4, 'Test', 'Tout marche', '2017-12-12 08:51:35'),
-(8, 4, 'rstjd', 'srhtd', '2017-12-12 09:02:58'),
-(9, 4, 'Test', 'blabla', '2017-12-12 10:01:36'),
-(10, 4, 'test', 'test', '2017-12-12 16:22:38'),
-(11, 4, 'Rien de spécial', '', '2017-12-14 00:14:18'),
-(12, 3, 'Tout va bien', '', '2017-12-14 11:08:59'),
-(13, 4, 'ok', '', '2017-12-14 11:21:40');
+(6, 4, 'Problème technique', 'Mon capteur d\'humidité a pris l\'eau', '2017-12-10 22:45:09');
 
 -- --------------------------------------------------------
 

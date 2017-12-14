@@ -7,19 +7,19 @@
     <?php include("bloc_nav_view.php")?>
     
     <?php ob_start(); ?>
-	<script src="view/admin/editor.js" type="text/javascript"></script>
-	<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+
     
     <div class="content">
 
 		<div class="sub_content">
-
+			<script src="view/admin/editor.js" type="text/javascript"></script>
+			<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 			
             <form method="post" action="index.php?action=cgu_modification">
             	<fieldset>
             		<legend>Modifier les Conditions Générales d'Utilisation</legend>
-            			<p>
-                        	<textarea name="cgu" rows="20" cols="70"><?= $cgu["texte"] ?></textarea><br/>
+            			<p class="editor">
+                        	<textarea name="cgu" rows="20" cols="110"><?= $cgu["texte"] ?></textarea><br/>
     					</p>
             	</fieldset>
             	

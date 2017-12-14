@@ -1,5 +1,5 @@
-<?php $css = "design/customer/sensors_view.css?<?php echo time(); ?"; ?>
-<?php $title = "Harvey"; ?>
+<?php $css = "design/customer/favorite_sensors_view.css?<?php echo time(); ?"; ?>
+<?php $title = "Mes capteurs"; ?>
 
 <?php include("bloc_header_view.php")?>
 
@@ -11,13 +11,11 @@
 	<div class="content">
 
 		<div class="sub_content">
-
+			<div class="sub_content2">
             <?php 
             while ($sensor = $sensors -> fetch())
             {
-                if ($sensor["favori"] != 0)
-                {
-                ?>
+            ?>
             	<div class="sensor">
                 	<p>
                 		<strong>Capteur :</strong> <?= $sensor["description"] ?><br/>
@@ -32,33 +30,44 @@
             			<?php 
                 		}
             			?>
-            			<br/>
-                		<a href="index.php?action=switch_favorite_sensor_status&id_sensor=<?= $sensor['id'] ?>&sensor_status=<?= $sensor['on_off'] ?>" class="on_off_button">ON/OFF</a><br/>
+            			
+                		<a href="index.php?action=switch_sensor_status&id_sensor=<?= $sensor['id'] ?>&sensor_status=<?= $sensor['on_off'] ?>" class="on_off_button">ON/OFF</a>
                 		
             			<?php 
                 		if (!empty($sensor["valeur_cible"]))
                 		{
                 		?>
-                			<a href="index.php?action=see_favorite_sensor_target&id_sensor=<?= $sensor['id'] ?>" class="on_off_button">Changer valeur cible</a><br/>
-                			<a href="index.php?action=remove_favorite_sensor_target&id_sensor=<?= $sensor['id'] ?>" class="on_off_button">Supprimer valeur cible</a><br/>
+                			<a href="index.php?action=see_sensor_target&id_sensor=<?= $sensor['id'] ?>" class="on_off_button">Changer valeur cible</a>
+                			<a href="index.php?action=remove_sensor_target&id_sensor=<?= $sensor['id'] ?>" class="on_off_button">Supprimer valeur cible</a><br/>
             			<?php 
                 		}
                 		else 
                 		{
             		    ?>
-            		    	<a href="index.php?action=see_favorite_sensor_target&id_sensor=<?= $sensor['id'] ?>" class="on_off_button">Définir valeur cible</a><br/>
+            		    	<a href="index.php?action=see_sensor_target&id_sensor=<?= $sensor['id'] ?>" class="on_off_button">Définir valeur cible</a><br/>
                 		<?php 
                 		}
             			?>
     
                 	</p>
+        			<form method="post" action="index.php?action=add_favorite_sensors">
+    					<input type="checkbox" name="<?= $sensor['id'] ?>" id="favorite" /> <label for="favorite">Favori</label>
+        			</form>
     			</div>
             
-            <?php
-                }
+            <?php 
             }
             $sensors -> closeCursor();
             ?>
+            
+			</div>
+			<input type="submit" name="envoyer" value="Sauvegarder les favoris" class="submit_button">
+        </div>
+		
+        
+        <!-- <div class="back_button"> -->
+        <div class="right_nav">
+        	<a href="index.php?action=see_sensors">Retour</a>
         </div>
 
     </div>    

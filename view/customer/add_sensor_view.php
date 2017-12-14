@@ -52,6 +52,33 @@
 				</p>
 			</form>
             
+            <h1>Favoris</h1>
+            <p>Les capteurs favoris apparaissent sur la page d'accueil</p>
+            
+			<form method="post" action="index.php?action=add_favorite_sensors">
+		            <?php 
+		            while ($favorite = $favorites -> fetch())
+                    {
+                        if ($favorite["favori"] != 0)
+                        {
+                        ?>
+                    		<input type="checkbox" name="<?= $favorite['id'] ?>" checked="checked" id="favorite" /> <label for="favorite"><?= $favorite["reference"] ?> - <?= $favorite["nom"] ?></label><br/>
+                		<?php 
+                        }
+                        else 
+                        {
+                		?>
+                			<input type="checkbox" name="<?= $favorite['id'] ?>" id="favorite" /> <label for="favorite"><?= $favorite["reference"] ?> - <?= $favorite["nom"] ?></label><br/>
+            		<?php 
+                        }
+                    }
+                    $favorites -> closeCursor();
+                	?>    				
+				<p>
+					<input type="submit" value="Valider">
+				</p>
+			</form>
+            
         </div>
         
         <div class="right_nav">

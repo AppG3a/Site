@@ -71,6 +71,11 @@ if (isset($_SESSION["user_type"]))
                 switchSensorStatus();
             }
             
+            elseif ($_GET["action"] == "switch_favorite_sensor_status")
+            {
+                switchFavoriteSensorStatus();
+            }
+            
             elseif ($_GET["action"] == "deconnexion")
             {
                 deconnexion();
@@ -81,14 +86,29 @@ if (isset($_SESSION["user_type"]))
                 seeSensorTarget();
             }
             
+            elseif ($_GET["action"] == "see_favorite_sensor_target")
+            {
+                seeFavoriteSensorTarget();
+            }
+            
             elseif ($_GET["action"] == "define_sensor_target")
             {
                 defineSensorTarget();
             }
             
+            elseif ($_GET["action"] == "define_favorite_sensor_target")
+            {
+                defineFavoriteSensorTarget();
+            }
+            
             elseif ($_GET["action"] == "remove_sensor_target")
             {
                 removeSensorTarget();
+            }
+            
+            elseif ($_GET["action"] == "remove_favorite_sensor_target")
+            {
+                removeFavoriteSensorTarget();
             }
             
             elseif ($_GET["action"] == "see_rooms")
@@ -124,6 +144,16 @@ if (isset($_SESSION["user_type"]))
             elseif ($_GET["action"] == "remove_sensor")
             {
                 removeSensor();
+            }
+            
+            /*elseif ($_GET["action"] == "see_add_favorite_sensors")
+            {
+                seeAddFavoriteSensors();
+            }*/
+            
+            elseif ($_GET["action"] == "add_favorite_sensors")
+            {
+                addFavoriteSensors();
             }
             
             else
@@ -282,7 +312,7 @@ else
         
         else 
         {
-            echo "Action inconnue 3";
+            seeAuthenticationPage();
         }
     }
     

@@ -1,6 +1,7 @@
 html
 {
-	background: url("../picture/fond_2.jpg") fixed no-repeat;
+	/*background: url("../picture/fond_2.jpg") fixed no-repeat;*/
+	background-image:radial-gradient(white, rgb(186,186,186));
 }
 
 body
@@ -102,26 +103,16 @@ header
 		{
 			width: 80%;
 		}
-	
-		form
-		{
-			texte-align: center;
-		}
-		
-		.left_justify
-		{
-
-		}
-		
-		.left_justify_2
-		{
-
-		}
-		
-		.back_button
-		{
-
-		}
+			
+			form
+			{
+				texte-align: center;
+			}
+			
+				.editor
+				{
+					background-color: white;
+				}
 	
 		.right_nav
 		{

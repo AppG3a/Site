@@ -94,6 +94,7 @@ function passwordChange()
 
 function seeHomePage()
 {
+    $sensors = getSensors();
     require("view/customer/home_view.php");
 }
 
@@ -148,11 +149,33 @@ function switchSensorStatus()
     seeSensors();   
 }
 
+function switchFavoriteSensorStatus()
+{
+    if ($_GET["sensor_status"] == "OFF")
+    {
+        sensorStatusUpdate($_GET["id_sensor"], "ON");
+    }
+    
+    else
+    {
+        sensorStatusUpdate($_GET["id_sensor"], "OFF");
+    }
+    
+    seeHomePage();
+}
+
 function seeSensorTarget()
 {
     $sensors = getSensors();
     $id_sensor = htmlspecialchars($_GET["id_sensor"]);
     require("view/customer/sensor_target_view.php");
+}
+
+function seeFavoriteSensorTarget()
+{
+    $sensors = getSensors();
+    $id_sensor = htmlspecialchars($_GET["id_sensor"]);
+    require("view/customer/favorite_sensor_target_view.php");
 }
 
 function defineSensorTarget()
@@ -163,11 +186,26 @@ function defineSensorTarget()
     seeSensors();
 }
 
+function defineFavoriteSensorTarget()
+{
+    $id_sensor = htmlspecialchars($_GET["id_sensor"]);
+    $new_target = htmlspecialchars($_POST["target"]);
+    updateSensorTarget($id_sensor, $new_target);
+    seeHomePage();
+}
+
 function removeSensorTarget()
 {
     $id_sensor = htmlspecialchars($_GET["id_sensor"]);
     updateSensorTarget($id_sensor, NULL);
     seeSensors();
+}
+
+function removeFavoriteSensorTarget()
+{
+    $id_sensor = htmlspecialchars($_GET["id_sensor"]);
+    updateSensorTarget($id_sensor, NULL);
+    seeHomePage();
 }
 
 function deconnexion()
@@ -215,6 +253,7 @@ function seeAddSensor()
     $id_house = getHouse();
     $rooms = getRooms($id_house);
     $sensors = getSensors();
+    $favorites = getSensors();
     require("view/customer/add_sensor_view.php");
 }
 
@@ -231,5 +270,29 @@ function removeSensor()
 {
     $id_sensor = htmlspecialchars($_POST["sensor"]);
     deleteSensor($id_sensor);
+    seeSensors();
+}
+
+/*function seeAddFavoriteSensors()
+{
+    $sensors = getSensors();
+    require("view/customer/favorite_sensors_view.php");
+}*/
+
+function addFavoriteSensors()
+{
+    $sensors = getSensors();
+    while ($sensor = $sensors -> fetch())
+    {
+        if (isset($_POST[$sensor["id"]]))
+        {
+            updateFavorite($sensor["id"], 1);
+        }
+        
+        else 
+        {
+            updateFavorite($sensor["id"], 0);
+        }
+    }    
     seeSensors();
 }

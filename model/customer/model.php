@@ -283,3 +283,15 @@ function deleteSensor($id_sensor)
     $req -> execute(array($id_sensor));
     $req -> closeCursor();
 }
+
+function updateFavorite($id_sensor, $favorite)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("UPDATE capteurs
+                            SET favori = :favorite
+                            WHERE id = :id_sensor");
+    $req -> execute(array(
+        "favorite" => $favorite,
+        "id_sensor" => $id_sensor));
+    $req -> closeCursor();
+}

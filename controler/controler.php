@@ -25,25 +25,19 @@ function checkAuthentication()
             
             else
             {
-                require("view/authentication_view.php");
-                echo "<strong>Mot de passe incorrect</strong>";
-                //return 0;
+                require("view/authentication_error1_view.php");
             }
         }
         
         else
         {
-            require("view/authentication_view.php");
-            echo "<strong>Pseudo incorrect</strong>";
-            //return 0;
+            require("view/authentication_error2_view.php");
         }
     }
     
     else
     {
-        require("view/authentication_view.php");
-        echo "<strong>Un des champs n'est pas renseigné</strong>";
-        //return 0;
+        require("view/authentication_error3_view.php");
     }
     
 }
