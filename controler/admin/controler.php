@@ -53,8 +53,8 @@ function passwordChange()
             
             else
             {
-                echo "L'ancien mot de passe n'est pas correct<br/>";
-                echo "<a href='index.php?action=see_profile_modification'>Retour</a>";
+                $profile = getProfile($_SESSION["id"]);
+                require("view/admin/profile_modification_error_password1_view.php");
             }
         }
         

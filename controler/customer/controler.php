@@ -148,6 +148,28 @@ function switchSensorStatus()
     seeSensors();   
 }
 
+function seeSensorTarget()
+{
+    $sensors = getSensors();
+    $id_sensor = htmlspecialchars($_GET["id_sensor"]);
+    require("view/customer/sensor_target_view.php");
+}
+
+function defineSensorTarget()
+{
+    $id_sensor = htmlspecialchars($_GET["id_sensor"]);
+    $new_target = htmlspecialchars($_POST["target"]);
+    updateSensorTarget($id_sensor, $new_target);
+    seeSensors();
+}
+
+function removeSensorTarget()
+{
+    $id_sensor = htmlspecialchars($_GET["id_sensor"]);
+    updateSensorTarget($id_sensor, NULL);
+    seeSensors();
+}
+
 function deconnexion()
 {
     session_destroy();
@@ -158,28 +180,56 @@ function openCustomer()
 {
     require("view/customer/account_access_view.php");
 }
-    
 
+function seeRooms()
+{
+    $id_house = getHouse();
+    $rooms = getRooms($id_house);
+    require("view/customer/rooms_view.php");
+}
 
+function seeAddRoom()
+{
+    $id_house = getHouse();
+    $rooms = getRooms($id_house);
+    require("view/customer/add_room_view.php");
+}
 
+function addRoom()
+{
+    $room = htmlspecialchars($_POST["name"]);
+    $id_house = getHouse();
+    insertRoom($room, $id_house);
+    seeRooms();
+}
 
+function removeRoom()
+{
+    $id_room = htmlspecialchars($_POST["room"]);
+    deleteRoom($id_room);
+    seeRooms();
+}
 
+function seeAddSensor()
+{
+    $id_house = getHouse();
+    $rooms = getRooms($id_house);
+    $sensors = getSensors();
+    require("view/customer/add_sensor_view.php");
+}
 
+function addSensor()
+{
+    $reference = htmlspecialchars($_POST["type"]);
+    $room = htmlspecialchars($_POST["room"]);
+    $id_house = getHouse();
+    insertSensor($reference, $room, $id_house);
+    seeSensors();
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function removeSensor()
+{
+    $id_sensor = htmlspecialchars($_POST["sensor"]);
+    deleteSensor($id_sensor);
+    seeSensors();
+}

@@ -10,10 +10,13 @@
     
     <div class="content">
 
-        <p>
-        	<?= $cgu["texte"] ?>
-        </p>
-		<a href="index.php?action=see_cgu_modification">Modifier les conditions générales d'utilisation</a>
+		<div class="sub_content">
+        	<p><?= $cgu["texte"] ?></p>
+    	</div>
+        
+        <div class="right_nav">
+			<a href="index.php?action=see_cgu_modification">Modifier les CGU</a>
+		</div>
 
     </div>    
     <?php $content = ob_get_clean(); ?>

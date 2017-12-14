@@ -9,7 +9,7 @@
 -->
 
 <nav>
-	<h1>Menu</h1>
+	<!-- <h1>Menu</h1> -->
 	<div class="menu_items">
     	<a href="index.php">Vue générale</a>
     	<a href="index.php?action=see_profile">Profil</a>

@@ -10,18 +10,21 @@
     
     <div class="content">
 
-        <h1>Numéro Domisep</h1>
+		<div class="sub_content">
+            <h1>Numéro Domisep</h1>
+            
+            <form method="post" action="index.php?action=phone_number_modification">
+            	<p>
+            	<label for="phone_number">Numéro</label> : <input type="text" name="phone_number" id="phone_number">
+            	</p>
+        		<p>
+            		<input type="submit" value="Changer le numéro">
+            	</p>
+            </form>
+        </div>
         
-        <form method="post" action="index.php?action=phone_number_modification">
-        	<p>
-        	<label for="phone_number">Numéro</label> : <input type="text" name="phone_number" id="phone_number">
-        	</p>
-    		<p>
-        		<input type="submit" value="Changer le numéro">
-        	</p>
-        </form>
-        
-        <div class="back_button">
+        <!-- <div class="back_button"> -->
+        <div class="right_nav">
         	<a href="index.php?action=see_contact">Retour</a>
         </div>
 

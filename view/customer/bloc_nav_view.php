@@ -9,12 +9,11 @@
 -->
 
 <nav>
-	<h1>Menu</h1>
 	<div class="menu_items">
     	<a href="index.php">Vue générale</a>
-    	<a href="#">Gestion des pièces</a>
+    	<a href="index.php?action=see_rooms">Gestion des pièces</a>
     	<a href="index.php?action=see_sensors">Gestion des capteurs</a>
-    	<a href="#">Consommation énergétique</a>
+    	<!-- <a href="#">Consommation énergétique</a> -->
     	<a href="index.php?action=see_profile">Profil utilisateur</a>
 	</div>
 </nav>

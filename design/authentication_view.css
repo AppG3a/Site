@@ -1,9 +1,13 @@
+html
+{
+	background: url("picture/background_3.jpg") fixed no-repeat;
+}
+
 body
 {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: url("picture/background_3.jpg") fixed no-repeat;
 }
 
 	form

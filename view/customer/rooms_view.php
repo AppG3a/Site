@@ -1,5 +1,5 @@
 <?php $css = "design/customer/home_view.css?<?php echo time(); ?"; ?>
-<?php $title = "Mon profil"; ?>
+<?php $title = "Mes pièces"; ?>
 
 <?php include("bloc_header_view.php")?>
 
@@ -11,19 +11,21 @@
 	<div class="content">
 
 		<div class="sub_content">
-            <h1>Mon profil</h1>
-            <p class="left_justify">
-            	Nom : <?= $profile["nom"] ?><br/>
-            	Prénom : <?= $profile["prenom"] ?><br/>
-            	Adresse : <?= $profile["adresse"] ?><br/>
-            	Mail : <?= $profile["mail"] ?><br/>
-            	Pseudo : <?= $profile["pseudo"] ?><br/>
-            </p>
+            <h1>Mes pièces</h1>
+            <?php 
+            while ($room = $rooms -> fetch())
+            {
+            ?>
+            	<p><?= $room["nom"] ?></p>
+        	<?php 
+            }
+            $rooms -> closeCursor();
+        	?>
+            
         </div>
         
-        <!-- <div class="back_button"> -->
         <div class="right_nav">
-            <a href="index.php?action=see_profile_modification">Modifier mon profil</a>
+            <a href="index.php?action=see_add_room">Ajouter une pièce</a>
             <a href="index.php">Revenir à la page d'accueil</a>
         </div>
 

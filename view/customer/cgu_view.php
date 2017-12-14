@@ -10,10 +10,15 @@
     
     <div class="content">
 
-        <p>
-        	<?= $cgu["texte"] ?>
-        </p>
-		<a href="index.php">Retour</a>
+		<div class="sub_content">
+            <p>
+            	<?= $cgu["texte"] ?>
+            </p>
+        </div>
+        
+        <div class="right_nav">
+			<a href="index.php">Revenir à la page d'accueil</a>
+		</div>
 
     </div>    
     <?php $content = ob_get_clean(); ?>

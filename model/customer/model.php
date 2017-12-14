@@ -170,12 +170,23 @@ function getCgu()
     return $cgu;
 }
 
-function getSensors()
+/*function getSensors2()
 {
     $db = dbConnect();
     $req = $db -> prepare("SELECT *
                             FROM capteurs
                             WHERE id_utilisateur = ?");
+    $req -> execute(array($_SESSION["id"]));
+    
+    return $req;
+}*/
+
+function getSensors()
+{
+    $db = dbConnect();
+    $req = $db -> prepare("SELECT capteurs.*, emplacements.nom
+                            FROM capteurs, emplacements
+                            WHERE (capteurs.id_utilisateur = ? AND emplacements.id = capteurs.id_emplacement)");
     $req -> execute(array($_SESSION["id"]));
     
     return $req;
@@ -193,16 +204,82 @@ function sensorStatusUpdate($id_sensor, $new_sensor_status)
     $req -> closeCursor();
 }
 
+function updateSensorTarget($id_sensor, $target)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("UPDATE capteurs
+                            SET valeur_cible = :target
+                            WHERE id = :id_sensor");
+    $req -> execute(array(
+        "target" => $target,
+        "id_sensor" => $id_sensor));
+    $req -> closeCursor();
+}
 
+function getHouse()
+{
+    $db = dbConnect();
+    $req = $db -> prepare("SELECT id
+                            FROM maisons
+                            WHERE id_utilisateur = ?");
+    $req -> execute(array($_SESSION["id"]));
+    $id_house = $req -> fetch();
+    $req -> closeCursor();
+    
+    return $id_house["id"];
+}
 
+function getRooms($id_house)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("SELECT *
+                            FROM emplacements
+                            WHERE id_maison = ?");
+    $req -> execute(array($id_house));
+    
+    return $req;
+}
 
+function insertRoom($room, $id_house)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("INSERT INTO emplacements(id_maison, nom)
+                            VALUES (:id_maison, :nom)");
+    $req -> execute(array(
+        "id_maison" => $id_house,
+        "nom" => $room));
+    $req -> closeCursor();
+}
 
+function deleteRoom($id_room)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("DELETE FROM emplacements
+                            WHERE id = ?");
+    $req -> execute(array($id_room));
+    $req -> closeCursor();
+}
 
+function insertSensor($reference, $room, $id_house)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("INSERT INTO capteurs(id_utilisateur, id_emplacement, reference, description, on_off, valeur)
+                        VALUES (:id_utilisateur, (SELECT id FROM emplacements WHERE nom = :nom AND id_maison = :id_maison), :reference, :description, 'OFF', 10)");
+    $req -> execute(array(
+        "id_utilisateur" => $_SESSION["id"],
+        "nom" => $room,
+        "id_maison" => $id_house,
+        "reference" => $reference,
+        "description" => $reference));
+    
+    $req -> closeCursor();
+}
 
-
-
-
-
-
-
-
+function deleteSensor($id_sensor)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("DELETE FROM capteurs
+                            WHERE id = ?");
+    $req -> execute(array($id_sensor));
+    $req -> closeCursor();
+}

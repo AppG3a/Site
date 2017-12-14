@@ -18,6 +18,7 @@ if (isset($_SESSION["user_type"]))
         require("controler/customer/controler.php");
         
         //En fonction de la situation, on dit au controler de faire telle ou telle action
+        //TODO : htmlspecialchars sur le $_GET["action"]
         if (isset($_GET["action"]))
         {
             if ($_GET["action"] == "see_profile")
@@ -73,6 +74,56 @@ if (isset($_SESSION["user_type"]))
             elseif ($_GET["action"] == "deconnexion")
             {
                 deconnexion();
+            }
+            
+            elseif ($_GET["action"] == "see_sensor_target")
+            {
+                seeSensorTarget();
+            }
+            
+            elseif ($_GET["action"] == "define_sensor_target")
+            {
+                defineSensorTarget();
+            }
+            
+            elseif ($_GET["action"] == "remove_sensor_target")
+            {
+                removeSensorTarget();
+            }
+            
+            elseif ($_GET["action"] == "see_rooms")
+            {
+                seeRooms();
+            }
+            
+            elseif ($_GET["action"] == "see_add_room")
+            {
+                seeAddRoom();
+            }
+            
+            elseif ($_GET["action"] == "add_room")
+            {
+                addRoom();
+            }
+            
+            elseif ($_GET["action"] == "remove_room")
+            {
+                removeRoom();
+            }
+            
+            elseif ($_GET["action"] == "see_add_sensor")
+            {
+                seeAddSensor();
+            }
+            
+            elseif ($_GET["action"] == "add_sensor")
+            {
+                addSensor();
+            }
+            
+            elseif ($_GET["action"] == "remove_sensor")
+            {
+                removeSensor();
             }
             
             else

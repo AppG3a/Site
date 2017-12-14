@@ -10,43 +10,48 @@
 
 	<div class="content">
 
-        <h1>Contacter le support</h1>
+		<div class="sub_content">
+            <h1>Contacter le support</h1>
+            
+            <form method="post" action="index.php?action=send_message">
+            	<fieldset>
+            		<legend>Envoyer un message</legend>
+            			<p>
+            				<label for="subject">Sujet du message</label> :<br/><input type="text" name="subject" id="subject"><br/>
+                        	<label for="message">Message</label> :<br/><textarea name="message" id="message"></textarea><br/>
+            			</p>
+            	</fieldset>
+            	<p>
+            		<input type="submit" value="Envoyer le message">
+            	</p>
+            </form>
+            
+            <h1>Messagerie</h1>
+            <?php 
+            while ($message = $messages -> fetch())
+            {
+            ?>
+            	<strong><?= htmlspecialchars($message["subject"]) ?></strong>
+            	<p>
+            		<em>Envoyé le <?= htmlspecialchars($message["sending_date"]) ?></em><br/>
+            		<?= htmlspecialchars($message["message"]) ?>
+            	</p>
+            	
+            <?php 
+            }
+            $messages -> closeCursor();
+            ?>
+            
+            <h1>Appeler le support</h1>
+            
+            <p><?= $phone_number ?></p>
+            
+            <br/>
+        </div>
         
-        <form method="post" action="index.php?action=send_message">
-        	<fieldset>
-        		<legend>Envoyer un message</legend>
-        			<p>
-        				<label for="subject">Sujet du message</label> :<br/><input type="text" name="subject" id="subject"><br/>
-                    	<label for="message">Message</label> :<br/><textarea name="message" id="message"></textarea><br/>
-        			</p>
-        	</fieldset>
-        	<p>
-        		<input type="submit" value="Envoyer le message">
-        	</p>
-        </form>
-        
-        <h1>Messagerie</h1>
-        <?php 
-        while ($message = $messages -> fetch())
-        {
-        ?>
-        	<strong><?= htmlspecialchars($message["subject"]) ?></strong>
-        	<p>
-        		<em>Envoyé le <?= htmlspecialchars($message["sending_date"]) ?></em><br/>
-        		<?= htmlspecialchars($message["message"]) ?>
-        	</p>
-        	
-        <?php 
-        }
-        $messages -> closeCursor();
-        ?>
-        
-        <h1>Appeler le support</h1>
-        
-        <p><?= $phone_number ?></p>
-        
-        <br/>
-        <a href="index.php">Revenir à la page d'accueil</a>
+        <div class="right_nav">
+        	<a href="index.php">Revenir à la page d'accueil</a>
+        </div>
 
     </div>    
     <?php $content = ob_get_clean(); ?>

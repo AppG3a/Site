@@ -10,6 +10,7 @@
     
     <div class="content">
 
+		<div class="sub_content">
         <h1>Historique des pannes client</h1>
         <?php 
         while ($breakdown = $breakdowns -> fetch())
@@ -25,9 +26,12 @@
         }
         $breakdowns -> closeCursor();
         ?>
+        </div>
         
-        <a href="index.php">Revenir à la page d'accueil</a>
-
+        <div class="right_nav">
+        	<a href="index.php">Retour</a>
+		</div>
+		
     </div>    
     <?php $content = ob_get_clean(); ?>
 

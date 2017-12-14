@@ -10,15 +10,17 @@
     
     <div class="content">
 
-        <h1>Numéro Domisep</h1>
-        <p>LE NUMERO A BIEN ETE CHANGE</p>
-        <p><?= $phone_number ?></p>
-        
-        <div class="back_button">
-        	<a href="index.php?action=see_phone_number_modification">Modifier le numéro de contact Domisep</a>
-            <a href="index.php">Revenir à la page d'accueil</a>
+		<div class="sub_content">
+            <h1>Numéro Domisep</h1>
+            <p><strong>LE NUMERO A BIEN ETE CHANGE</strong></p>
+            <p><?= $phone_number ?></p>
         </div>
-
+            
+            <!-- <div class="back_button"> -->
+            <div class="right_nav">
+            	<a href="index.php?action=see_phone_number_modification">Modifier le numéro de contact Domisep</a>
+                <a href="index.php">Revenir à la page d'accueil</a>
+            </div>
     </div>    
     <?php $content = ob_get_clean(); ?>
 

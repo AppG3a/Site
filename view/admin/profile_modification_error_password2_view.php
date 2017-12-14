@@ -37,6 +37,7 @@
                             <label for="new_password_1">Nouveau mot de passe</label> : <input type="password" name="new_password_1" id="new_password_1"><br/>
                             <label for="new_password_2">Confirmer le mot de passe</label> : <input type="password" name="new_password_2" id="new_password_2"><br/>
             			</p>
+            			<p><strong>LA CONFIRMATION DU NOUVEAU MOT DE PASSE EST INCORRECTE</strong></p>
             	</fieldset>
             	<p>
             		<input type="submit" value="Changer le mot de passe">
@@ -55,5 +56,3 @@
 </div>
 
 <?php include("bloc_footer_view.php")?>
-
-
