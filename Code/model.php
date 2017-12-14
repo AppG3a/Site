@@ -25,5 +25,34 @@ function getPieces()
     return $pieces;*/
     return $req;
 }
+function addPieceDb($nom)
+{
+    
+    $db = dbConnect();
+    $req = $db->prepare('INSERT INTO emplacements(nom) VALUES(:nom)');
+    $req->execute(array(
+        'nom' => $nom));
+   
+   }
+function addCapteurDb($nom,$description)
+   {
+       
+       $db = dbConnect();
+       $req = $db->prepare('INSERT INTO capteurs(reference, description) VALUES(:reference,:description)');
+       $req->execute(array(
+           'reference' => $nom,
+           'description'=>$description));
+       
+   }
+function getCapteurs()
+   {
+       $db = dbConnect();
+       $req = $db -> query("SELECT reference
+                        FROM capteurs
+                        WHERE id_emplacement = 1");
+       
+       return $req;
+   } 
+   
 
 ?>

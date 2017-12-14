@@ -8,8 +8,22 @@ if (isset($_GET["action"]))
     {
         seePiece();
     }
+    elseif ($_GET["action"] == "add_piece")
+    {     
+        addPiece();
+    }
+    elseif ($_GET["action"] == "see_capteur")
+   {
+        seeCapteur();
+    }
+    elseif ($_GET["action"] == "add_capteur")
+    {
+        addCapteur();
+    }
     
-    else 
+    
+    
+    else
     {
         echo "En travaux";
     }

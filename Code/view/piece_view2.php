@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 
-                                                            <head>
+<head>
   <meta charset="utf8">
   <link rel="stylesheet" href="">
   <title> Pièces </title>
-                                                            </head>
-                                                            <body>
+</head>
+<body>
 
 <h1> Liste des pièces</h1>
 
@@ -27,18 +27,17 @@
 
 <p> Ajouter pièce <p>
 
-  <form action="inndex.php?action=add_piece" method="post">
-    <p>
-      <p> <label for="nom"> Nom </label> : <input type="text" name="nom" id="nom_piece"> </p>
-      <p> <label for="taille">Taille (m²) </label> : <input type="int" name="nom" id="taille_piece"> </p>
-      <input type="text" name="prenom" /> <input type="submit" value="Valider" />
-    </p>
-  </form>
+<form action="index.php?action=add_piece" method="post">
+
+    <p> <label for="nom"> Nom </label> : <input type="text" name="nom" id="nom"> </p>
+    <p> <label for="taille">Taille (m²) </label> : <input type="int" name="nom" id="taille_piece"> </p>
+    <p> <input type="text" name="prenom" /> <input type="submit" value="Valider" /> </p>
+
+</form>
 
 
 
 
 
-
-                                                            </body>
+</body>
 </html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title> Changes </title>
+<title> Modification </title>
                                                             
                                                             
  <head>
@@ -11,13 +11,13 @@
 
     <h1> Modification générale </h1>
     
-    <p> <mark> Pièces </mark> </p>
+    <p> <h2><mark> Pièces </mark></h2> 
     
     <p> <a href="index.php?action=see_piece"> Ajouter/Supprimer pièces </a> </p>
     
-    <mark> Capteur </mark>
-    <p> <a href="index.php?action=see_capteur">Ajouter capteur </a></p>
-    <p> <a href="index.php?action=suppress_capteur"> Supprimer capteur </a></p>
+     <h2><mark> Capteur </mark></h2> 
+    <p> <a href="index.php?action=see_capteur">Ajout/Suppression capteur </a></p>
+    
 
 </body>
 </html>

@@ -7,9 +7,7 @@
   <title> Pièces </title>
                                                             </head>
                                                             <body>
-<?php
- Votre capteur à bien été ajouté avec echo $_POST
-?>
+
 
 
 
