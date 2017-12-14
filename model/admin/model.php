@@ -81,7 +81,7 @@ function profileCreation($nom, $prenom, $adresse, $mail, $pseudo, $mot_de_passe)
 {
     $db = dbConnect();
     $req = $db -> prepare("INSERT INTO utilisateurs(nom, prenom, adresse, mail, pseudo, mot_de_passe, categorie_utilisateur)
-                            VALUES (:nom, :prenom, :adresse, :mail, :pseudo, :mot_de_passe, 'customer')");
+                            VALUES (:nom, :prenom, :adresse, :mail, :pseudo, :mot_de_passe, 'admin')");
     $req -> execute(array(
         "nom" => $nom,
         "prenom" => $prenom,

@@ -7,10 +7,14 @@
     <?php include("bloc_nav_view.php")?>
     
     <?php ob_start(); ?>
+	<script src="editor.js" type="text/javascript"></script>
+	<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
     
     <div class="content">
 
 		<div class="sub_content">
+
+			
             <form method="post" action="index.php?action=cgu_modification">
             	<fieldset>
             		<legend>Modifier les Conditions Générales d'Utilisation</legend>

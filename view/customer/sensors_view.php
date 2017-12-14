@@ -11,7 +11,7 @@
 	<div class="content">
 
 		<div class="sub_content">
-            <h1>Mes capteurs</h1>
+
             <?php 
             while ($sensor = $sensors -> fetch())
             {

@@ -11,7 +11,7 @@
 	<div class="content">
 
 		<div class="sub_content">
-            <h1>Mon profil</h1>
+		
             <p class="left_justify">
             	Nom : <?= $profile["nom"] ?><br/>
             	Prénom : <?= $profile["prenom"] ?><br/>

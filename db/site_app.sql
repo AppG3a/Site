@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 11 déc. 2017 à 10:29
+-- Généré le :  jeu. 14 déc. 2017 à 10:22
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -37,18 +37,21 @@ CREATE TABLE IF NOT EXISTS `capteurs` (
   `description` text NOT NULL,
   `on_off` varchar(255) NOT NULL,
   `valeur` float NOT NULL,
+  `valeur_cible` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `capteurs`
 --
 
-INSERT INTO `capteurs` (`id`, `id_utilisateur`, `id_emplacement`, `reference`, `description`, `on_off`, `valeur`) VALUES
-(1, 1, 1, 'température', 'capteur de température', 'ON', 20),
-(2, 1, 1, 'humidité', 'capteur d\'humidité', 'OFF', 23.3),
-(3, 4, 1, 'température', 'Capteur de température', 'ON', 20),
-(4, 4, 1, 'humidité', 'Capteur d\'humidité', 'OFF', 23.5);
+INSERT INTO `capteurs` (`id`, `id_utilisateur`, `id_emplacement`, `reference`, `description`, `on_off`, `valeur`, `valeur_cible`) VALUES
+(1, 1, 1, 'température', 'capteur de température', 'ON', 20, 21),
+(2, 1, 1, 'humidité', 'capteur d\'humidité', 'OFF', 23.3, NULL),
+(3, 4, 1, 'température', 'Capteur de température', 'OFF', 20, 2),
+(4, 4, 1, 'humidité', 'Capteur d\'humidité', 'OFF', 23.5, NULL),
+(5, 4, 2, 'température', 'Capteur de température', 'OFF', 21, NULL),
+(25, 3, 13, 'température', 'température', 'OFF', 10, NULL);
 
 -- --------------------------------------------------------
 
@@ -126,7 +129,18 @@ CREATE TABLE IF NOT EXISTS `emplacements` (
   `id_maison` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `emplacements`
+--
+
+INSERT INTO `emplacements` (`id`, `id_maison`, `nom`) VALUES
+(1, 1, 'Salon'),
+(2, 1, 'Cuisine'),
+(12, 1, 'Garage'),
+(13, 2, 'Salon'),
+(5, 1, 'Salle de bain');
 
 -- --------------------------------------------------------
 
@@ -155,7 +169,15 @@ CREATE TABLE IF NOT EXISTS `maisons` (
   `superficie` int(11) NOT NULL,
   `nb_occupants` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `maisons`
+--
+
+INSERT INTO `maisons` (`id`, `id_utilisateur`, `adresse`, `superficie`, `nb_occupants`) VALUES
+(1, 4, '23, rue de Penthièvre\r\n07000 PRIVAS', 120, 3),
+(2, 3, '15, rue des six frères Ruellan\r\n57200 SARREGUEMINES', 90, 4);
 
 -- --------------------------------------------------------
 
@@ -171,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `message` text NOT NULL,
   `sending_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `messages`
@@ -183,7 +205,14 @@ INSERT INTO `messages` (`id`, `id_customer`, `subject`, `message`, `sending_date
 (3, 2, 'Pas content', 'Il n\'y a rien qui marche', '2017-11-25 23:15:42'),
 (4, 1, 'Deuxième test', 'Est-ce ça marche toujours ?', '2017-12-04 23:00:00'),
 (5, 1, 'Troisième test', 'J\'espère que ça va marcher', '2017-12-05 09:37:10'),
-(6, 4, 'Problème technique', 'Mon capteur d\'humidité a pris l\'eau', '2017-12-10 22:45:09');
+(6, 4, 'Problème technique', 'Mon capteur d\'humidité a pris l\'eau', '2017-12-10 22:45:09'),
+(7, 4, 'Test', 'Tout marche', '2017-12-12 08:51:35'),
+(8, 4, 'rstjd', 'srhtd', '2017-12-12 09:02:58'),
+(9, 4, 'Test', 'blabla', '2017-12-12 10:01:36'),
+(10, 4, 'test', 'test', '2017-12-12 16:22:38'),
+(11, 4, 'Rien de spécial', '', '2017-12-14 00:14:18'),
+(12, 3, 'Tout va bien', '', '2017-12-14 11:08:59'),
+(13, 4, 'ok', '', '2017-12-14 11:21:40');
 
 -- --------------------------------------------------------
 
@@ -203,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `numeros_domisep` (
 --
 
 INSERT INTO `numeros_domisep` (`id`, `numero`) VALUES
-(1, '0606060203');
+(1, '0102030405');
 
 -- --------------------------------------------------------
 
@@ -248,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `mot_de_passe` varchar(255) NOT NULL,
   `categorie_utilisateur` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `utilisateurs`
@@ -259,7 +288,7 @@ INSERT INTO `utilisateurs` (`id`, `nom`, `prenom`, `adresse`, `mail`, `pseudo`, 
 (2, 'MARGAND', 'Nanna', '96, place Stanislas\r\n54000 NANCY', 'nanna.margand@gmail.com', 'Colened', 'aVah8othie9', 'admin'),
 (3, 'MARCOUX', 'Sydney', '15, rue des six frères Ruellan\r\n57200 SARREGUEMINES', 'sydney.marcoux@gmail.com', 'Canualal', 'eipooC4c', 'customer'),
 (4, 'GUIBORD', 'Gabriel', '23, rue de Penthièvre\r\n07000 PRIVAS', 'gabriel.guibord@gmail.com', 'Offied', '1234', 'customer'),
-(5, 'QUENNEVILLE', 'Cosette', '55, Rue Hubert de Lisle\r\n33310 LORMONT', 'cosette.quenneville@gmail.com', 'Niatand', 'ieNgee6eeRae', 'customer'),
+(5, 'QUENNEVILLE', 'Cosette', '55, Rue Hubert de Lisle\r\n33310 LORMONT', 'cosette.quenneville@gmail.com', 'Niatand', 'test', 'customer'),
 (6, 'VARIEUR', 'Aurélie', '17, place de Miremont\r\n92390 VILLENEUVE-LA-GARENNE', 'aurelie.varieur@gmail.com', 'Timentep', 'keeTh0caeG', 'customer'),
 (7, 'MOREAU', 'Alphonse', '19, avenue du Marechal Juin\r\n97436 SAINT-LEU', 'alphonse.moreau@gmail.com', 'Grearlacte1948', 'xoeL4quoar', 'customer'),
 (8, 'DUFOUR', 'Hamilton', '22, avenue de Provence\r\n26000 VALENCE', 'hamilton.dufour@gmail.com', 'Thestrand', 'eiPhee0hai', 'customer'),

@@ -11,7 +11,7 @@
 	<div class="content">
 
 		<div class="sub_content">
-            <h1>Mes pièces</h1>
+
             <?php 
             while ($room = $rooms -> fetch())
             {

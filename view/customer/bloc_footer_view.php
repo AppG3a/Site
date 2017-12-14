@@ -7,6 +7,6 @@
 
 <footer>
 	<p>
-		Copyright 2017 - <a href="index.php?action=see_cgu">Conditions générales d'utilisation</a>
+		Copyright 2017 - <a href="cgu_customer.php"  onclick="open('view/customer/cgu_customer.php', 'Popup', 'scrollbars=1,resizable=1,height=520,width=630'); return false;" >Conditions Générales d'Utilisation</a>
 	</p>
 </footer>
