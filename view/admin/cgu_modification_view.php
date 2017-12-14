@@ -7,7 +7,7 @@
     <?php include("bloc_nav_view.php")?>
     
     <?php ob_start(); ?>
-	<script src="editor.js" type="text/javascript"></script>
+	<script src="view/admin/editor.js" type="text/javascript"></script>
 	<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
     
     <div class="content">
@@ -20,7 +20,6 @@
             		<legend>Modifier les Conditions Générales d'Utilisation</legend>
             			<p>
                         	<textarea name="cgu" rows="20" cols="70"><?= $cgu["texte"] ?></textarea><br/>
-                        	*Pour le moment il faut mettre la balise &lt;br/&gt; pour faire un retour à la ligne*
     					</p>
             	</fieldset>
             	

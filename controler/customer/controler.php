@@ -111,8 +111,9 @@ function sendMessage()
     
     messagingUpdate($subject, $message);
     
-    echo "Votre message a bien été envoyé au support<br/>";
-    echo "<a href='index.php?action=see_contact'>Retour</a>";
+    $messages = getMessages();
+    $phone_number = getPhoneNumber();
+    require("view/customer/message_send_view.php");
 }
 
 function seeHelp()
