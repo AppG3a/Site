@@ -24,6 +24,7 @@
             	<p>
             		<input type="submit" value="Créer le compte">
             	</p>
+            	<p><strong>UN DES CHAMPS DE CREATION DE COMPTE EST VIDE</strong></p>
             </form>
         </div>
 

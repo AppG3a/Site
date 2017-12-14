@@ -11,7 +11,6 @@
     <div class="content">
 
         <div class="sub_content">
-            <h1>Voir une fiche client</h1>
             
             <form method="post" action="index.php?action=see_customer_profile">
             	<fieldset>

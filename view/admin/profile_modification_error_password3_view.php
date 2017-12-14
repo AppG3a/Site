@@ -37,7 +37,7 @@
                             <label for="new_password_1">Nouveau mot de passe</label> : <input type="password" name="new_password_1" id="new_password_1"><br/>
                             <label for="new_password_2">Confirmer le mot de passe</label> : <input type="password" name="new_password_2" id="new_password_2"><br/>
             			</p>
-            			<p><strong>L'ANCIEN MOT DE PASSE EST INCORRECT</strong></p>
+            			<p><strong>UN DES CHAMPS DE MODIFICATION DU MOT DE PASSE EST VIDE</strong></p>
             	</fieldset>
             	<p>
             		<input type="submit" value="Changer le mot de passe">

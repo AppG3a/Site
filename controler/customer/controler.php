@@ -60,7 +60,6 @@ function passwordChange()
             if ($former_password == $db_password["mot_de_passe"])
             {
                 passwordUpdate($new_password_1);
-                echo "Votre mot de passe a été changé";
                 $profile = getProfile();
                 require("view/customer/success_password_change_view.php");
             }

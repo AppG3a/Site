@@ -24,6 +24,7 @@
             	<p>
             		<input type="submit" value="Créer le compte">
             	</p>
+            	<p><strong>LE COMPTE ADMINISTRATEUR A ETE CREE</strong></p>
             </form>
         </div>
 

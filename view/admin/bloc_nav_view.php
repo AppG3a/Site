@@ -14,7 +14,7 @@
     	<a href="index.php">Vue générale</a>
     	<a href="index.php?action=see_profile">Profil</a>
     	<a href="index.php?action=see_customer_profile_selection">Voir une fiche client</a>
-    	<a href="index.php?action=see_customer_profile_creation">Créer un compte client</a>
+    	<a href="index.php?action=see_customer_profile_creation">Créer un compte Admin</a>
     	<a href="index.php?action=see_breakdown_history">Historique des pannes</a>
 	</div>
 </nav>

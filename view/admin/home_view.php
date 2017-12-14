@@ -10,8 +10,11 @@
     
     <div class="content">
 
-        <h1>Compte administrateur</h1>
-        
+		<div class="sub_content">
+            <h1>Compte administrateur</h1>
+            
+            <p>*Nouveaux messages*</p>
+        </div>
         <!-- <a href="index.php?action=see_profile">Profil</a><br/>
         <a href="index.php?action=see_customer_profile_selection">Voir une fiche client</a><br/>
         <a href="index.php?action=see_customer_profile_creation">Créer un compte client</a><br/>

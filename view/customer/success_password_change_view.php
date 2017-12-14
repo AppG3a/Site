@@ -20,7 +20,7 @@
             	Pseudo : <?= $profile["pseudo"] ?><br/>
             </p>
             
-            <p>VOTRE MOT DE PASSE A ETE CHANGE AVEC SUCCES</p>
+            <p><strong>VOTRE MOT DE PASSE A ETE CHANGE AVEC SUCCES</strong></p>
         </div>
         
         <!-- <div class="back_button"> -->

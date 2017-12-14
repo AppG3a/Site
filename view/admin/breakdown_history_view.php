@@ -1,5 +1,5 @@
 <?php $css = "design/admin/home_view.css?<?php echo time(); ?"; ?>
-<?php $title = "Fiche client"; ?>
+<?php $title = "Historique des pannes"; ?>
 
 <?php include("bloc_header_view.php")?>
 
@@ -11,7 +11,6 @@
     <div class="content">
 
 		<div class="sub_content">
-        <h1>Historique des pannes client</h1>
         <?php 
         while ($breakdown = $breakdowns -> fetch())
         {

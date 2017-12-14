@@ -48,7 +48,8 @@ function passwordChange()
             if ($former_password == $db_password["mot_de_passe"])
             {
                 passwordUpdate($new_password_1);
-                echo "Votre mot de passe a été changé";
+                $profile = getProfile($_SESSION["id"]);
+                require("view/admin/success_password_change_view.php");
             }
             
             else
@@ -60,16 +61,16 @@ function passwordChange()
         
         else
         {
-            echo "La confirmation du nouveau mot de passe n'est pas correcte<br/>";
-            echo "<a href='index.php?action=see_profile_modification'>Retour</a>";
+            $profile = getProfile($_SESSION["id"]);
+            require("view/admin/profile_modification_error_password2_view.php");
         }
         
     }
     
     else
     {
-        echo "Un des champs de modification du mot de passe n'a pas été rempli<br/>";
-        echo "<a href='index.php?action=see_profile_modification'>Retour</a>";
+        $profile = getProfile($_SESSION["id"]);
+        require("view/admin/profile_modification_error_password3_view.php");
     }
 }
 
@@ -114,15 +115,13 @@ function customerProfileCreation()
     if (!empty($nom) && !empty($prenom) && !empty($adresse) && !empty($mail) && !empty($pseudo) && !empty($mot_de_passe))
     {
         profileCreation($nom, $prenom, $adresse, $mail, $pseudo, $mot_de_passe);
-        echo "Le compte a bien été créé<br/>";
+        require("view/admin/customer_profile_creation_success_view.php");
     }
     
     else 
     {
-        echo "Un des champs est vide<br/>";
+        require("view/admin/customer_profile_creation_error_view.php");
     }
-
-    echo "<a href='index.php?action=see_customer_profile_creation'>Retour</a>";
 }
 
 function seeBreakdownHistory()

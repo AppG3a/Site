@@ -11,7 +11,7 @@
     <div class="content">
 
 		<div class="sub_content">
-
+            <h1>Mon profil administrateur</h1>
             <p class="left_justify">
             	Nom : <?= $profile["nom"] ?><br/>
             	Prénom : <?= $profile["prenom"] ?><br/>
@@ -19,7 +19,9 @@
             	Mail : <?= $profile["mail"] ?><br/>
             	Pseudo : <?= $profile["pseudo"] ?><br/>
             </p>
-        </div>
+            
+            <p><strong>VOTRE MOT DE PASSE A ETE CHANGE AVEC SUCCES</strong></p>
+                    </div>
         
         <!-- <div class="back_button"> -->
         <div class="right_nav">
