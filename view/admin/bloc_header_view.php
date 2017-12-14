@@ -13,8 +13,7 @@
 	<h2><?= $title ?></h2>
 	
 	<div class="logo">
-		<a href="index.php"><img src="design/picture/logo_harvey_3.png" alt="Logo d'Harvey"/></a>
-		
+		<a href="index.php"><img src="design/picture/logo_harvey_3.png" alt="Logo d'Harvey"/></a>		
 	</div>
     
     

@@ -3,8 +3,8 @@
 
 <?php ob_start(); ?>
 
-<h1>Harvey</h1>
-
+<!-- <h1>Harvey</h1> -->
+<img src="design/picture/logo_harvey_2.png" alt="Logo d'Harvey" class="logo"/>
 <p><strong>UN DES CHAMPS N'EST PAS RENSEIGNE</strong></p>
 <form method="post" action="index.php?action=connexion">
 	<p class="champ">
@@ -16,7 +16,15 @@
 	</p>
 </form>
 
-<h2>*Catalogue*</h2>
+<h2>Produits Domisep</h2>
+
+<div class="catalogue">
+    <img src="design/picture/camera_2.jpg" alt="Caméra"/>
+    <img src="design/picture/capteur_2.jpg" alt="Capteur"/>
+    <img src="design/picture/montre_2.jpg" alt="Montre"/>
+</div>
+
+<a href="#" title="Boutique Domisep">Consulter l'offre de produits Domisep</a>
 
 <?php $content = ob_get_clean(); ?>
 

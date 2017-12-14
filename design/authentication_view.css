@@ -9,6 +9,11 @@ body
 	flex-direction: column;
 	align-items: center;
 }
+	
+	.logo
+	{
+		filter: drop-shadow(1px 1px 5px white);
+	}
 
 	form
 	{
@@ -27,7 +32,7 @@ body
 			border-radius: 5px;
 		}
 		
-	h1, p, strong
+	h1, h2, p, strong, a
 	{
 		color: white;
 		text-shadow: 1px 1px 1px black;

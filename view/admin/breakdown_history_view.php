@@ -28,7 +28,7 @@
         </div>
         
         <div class="right_nav">
-        	<a href="index.php">Retour</a>
+        	<a href="index.php">Revenir à la page d'accueil</a>
 		</div>
 		
     </div>    
