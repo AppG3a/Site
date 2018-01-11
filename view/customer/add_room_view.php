@@ -1,4 +1,4 @@
-<?php $css = "design/customer/home_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/customer/home_view.css?<?php echo time(); ?"; ?>
 <?php $title = "Mes pièces"; ?>
 
 <?php include("bloc_header_view.php")?>
@@ -13,7 +13,7 @@
 		<div class="sub_content">
             <h1>Ajouter une pièce</h1>
             
-			<form method="post" action="index.php?action=add_room">
+			<form method="post" action="roter.php?action=add_room">
 				<label for="name">Nom de la pièce</label> : <input type="text" name="name" id="name">
 				<p>
 					<input type="submit" value="Valider">
@@ -22,7 +22,7 @@
 			
             <h1>Supprimer une pièce</h1>
             
-			<form method="post" action="index.php?action=remove_room">
+			<form method="post" action="roter.php?action=remove_room">
 				<label for="room">Pièce à supprimer :</label>
 				<select name="room" id="room">
 		            <?php 
@@ -43,13 +43,13 @@
         </div>
         
         <div class="right_nav">
-            <a href="index.php?action=see_rooms">Retour</a>
+            <a href="roter.php?action=see_rooms">Retour</a>
         </div>
 
     </div>    
     <?php $content = ob_get_clean(); ?>
 
-<?php require("view/customer/template.php"); ?>
+<?php require("../../view/customer/template.php"); ?>
 </div>
 
 <?php include("bloc_footer_view.php")?>

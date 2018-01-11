@@ -1,4 +1,4 @@
-<?php $css = "design/customer/sensors_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/customer/sensors_view.css?<?php echo time(); ?"; ?>
 <?php $title = "Harvey"; ?>
 
 <?php include("bloc_header_view.php")?>
@@ -35,29 +35,29 @@
             		{
         		    ?>
         		    	<br/>
-            		    <form method="post" action="index.php?action=define_favorite_sensor_target&id_sensor=<?= $sensor['id'] ?>">
+            		    <form method="post" action="roter.php?action=define_favorite_sensor_target&id_sensor=<?= $sensor['id'] ?>">
             		    	<label for="target">Cible</label> : <input type="number" name="target" id="target">
             		    	<input type="submit" value="Valider">
             		    </form>
             		    
-            		    <a href="index.php?action=switch_favorite_sensor_status&id_sensor=<?= $sensor['id'] ?>&sensor_status=<?= $sensor['on_off'] ?>" class="on_off_button">ON/OFF</a><br/>
-            			<a href="index.php" class="on_off_button">Annuler</a>
+            		    <a href="roter.php?action=switch_favorite_sensor_status&id_sensor=<?= $sensor['id'] ?>&sensor_status=<?= $sensor['on_off'] ?>" class="on_off_button">ON/OFF</a><br/>
+            			<a href="roter.php" class="on_off_button">Annuler</a>
         		    <?php
             		}
             		elseif (!empty($sensor["valeur_cible"]))
             		{
         		    ?>
         		    	<br/>
-            		    <a href="index.php?action=switch_favorite_sensor_status&id_sensor=<?= $sensor['id'] ?>&sensor_status=<?= $sensor['on_off'] ?>" class="on_off_button">ON/OFF</a><br/>
-            			<a href="index.php?action=see_favorite_sensor_target&id_sensor=<?= $sensor['id'] ?>" class="on_off_button">Changer valeur cible</a><br/>
+            		    <a href="roter.php?action=switch_favorite_sensor_status&id_sensor=<?= $sensor['id'] ?>&sensor_status=<?= $sensor['on_off'] ?>" class="on_off_button">ON/OFF</a><br/>
+            			<a href="roter.php?action=see_favorite_sensor_target&id_sensor=<?= $sensor['id'] ?>" class="on_off_button">Changer valeur cible</a><br/>
         			<?php 
             		}
             		else 
             		{
         		    ?>
         		    	<br/>
-        		    	<a href="index.php?action=switch_favorite_sensor_status&id_sensor=<?= $sensor['id'] ?>&sensor_status=<?= $sensor['on_off'] ?>" class="on_off_button">ON/OFF</a><br/>
-        		    	<a href="index.php?action=see_favorite_sensor_target&id_sensor=<?= $sensor['id'] ?>" class="on_off_button">Définir valeur cible</a><br/>
+        		    	<a href="roter.php?action=switch_favorite_sensor_status&id_sensor=<?= $sensor['id'] ?>&sensor_status=<?= $sensor['on_off'] ?>" class="on_off_button">ON/OFF</a><br/>
+        		    	<a href="roter.php?action=see_favorite_sensor_target&id_sensor=<?= $sensor['id'] ?>" class="on_off_button">Définir valeur cible</a><br/>
             		<?php 
             		}
         			?>
@@ -72,7 +72,7 @@
     </div>    
     <?php $content = ob_get_clean(); ?>
 
-<?php require("view/customer/template.php"); ?>
+<?php require("../../view/customer/template.php"); ?>
 </div>
 
 <?php include("bloc_footer_view.php")?>

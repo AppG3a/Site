@@ -8,8 +8,54 @@
 
 $_SESSION["id"] = 1;
 $_SESSION["user_type"] = "customr";*/
-session_start();
+//session_start();
 
+require("controler/controler.php");
+
+if (isset($_GET["action"]))
+{
+    if ($_GET["action"] == "connexion")
+    {
+        $db_content = checkAuthentication();
+        
+        
+        session_start();
+        
+        $_SESSION["id"] = $db_content["id"];
+        $_SESSION["user_type"] = $db_content["categorie_utilisateur"];
+        $_SESSION["first_name"] = $db_content["prenom"];
+        $_SESSION["welcome"] = 1;
+        
+        if ($_SESSION["user_type"] == "admin")
+        {
+            openAdmin();
+        }
+        
+        elseif ($_SESSION["user_type"] == "customer")
+        {
+            openCustomer();
+        }
+        
+        else
+        {
+            //echo "Catégorie inconnue 2";
+        }
+        
+    }
+    
+    else
+    {
+        seeAuthenticationPage();
+    }
+}
+
+else
+{
+    seeAuthenticationPage();
+}
+
+
+/*
 if (isset($_SESSION["user_type"]))
 {
     if ($_SESSION["user_type"] == "customer")
@@ -149,7 +195,7 @@ if (isset($_SESSION["user_type"]))
             /*elseif ($_GET["action"] == "see_add_favorite_sensors")
             {
                 seeAddFavoriteSensors();
-            }*/
+            }
             
             elseif ($_GET["action"] == "add_favorite_sensors")
             {
@@ -164,12 +210,11 @@ if (isset($_SESSION["user_type"]))
         
         else
         {
-            //Ca c'est temporaire, pour le moment je ne m'occupe que du profil donc je peux laisser ça par défaut, après faudra changer ce else
             seeHomePage();
         }
     }
     
-    elseif ($_SESSION["user_type"] == "admin")
+    if ($_SESSION["user_type"] == "admin")
     { 
         //On appelle le controler adapté
         require("controler/admin/controler.php");
@@ -265,7 +310,6 @@ if (isset($_SESSION["user_type"]))
         
         else
         {
-            //Ca c'est temporaire, pour le moment je ne m'occupe que du profil donc je peux laisser ça par défaut, après faudra changer ce else
             seeHomePage();
         }
     }
@@ -278,49 +322,7 @@ if (isset($_SESSION["user_type"]))
 
 else 
 { 
-    require("controler/controler.php");
-    
-    if (isset($_GET["action"]))
-    {
-        if ($_GET["action"] == "connexion")
-        {
-            session_destroy();
-            $db_content = checkAuthentication();
-            
-            
-            session_start();
-            
-            $_SESSION["id"] = $db_content["id"];
-            $_SESSION["user_type"] = $db_content["categorie_utilisateur"];
-            
-            if ($_SESSION["user_type"] == "admin")
-            {
-                openAdmin();
-            }
-            
-            elseif ($_SESSION["user_type"] == "customer")
-            {
-                openCustomer();
-            }
-            
-            else
-            {
-                //echo "Catégorie inconnue 2";
-            }
 
-        }
-        
-        else 
-        {
-            seeAuthenticationPage();
-        }
-    }
-    
-    else 
-    {
-        seeAuthenticationPage();
-    }
-
-}
+}*/
 
 

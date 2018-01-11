@@ -1,4 +1,4 @@
-<?php $css = "design/customer/home_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/customer/home_view.css?<?php echo time(); ?"; ?>
 <?php $title = "Support"; ?>
 
 <?php include("bloc_header_view.php")?>
@@ -13,7 +13,7 @@
 		<div class="sub_content">
             <h1>Contacter le support</h1>
             
-            <form method="post" action="index.php?action=send_message">
+            <form method="post" action="roter.php?action=send_message">
             	<fieldset>
             		<legend>Envoyer un message</legend>
             			<p>
@@ -50,13 +50,13 @@
         </div>
         
         <div class="right_nav">
-        	<a href="index.php">Revenir à la page d'accueil</a>
+        	<a href="roter.php">Revenir à la page d'accueil</a>
         </div>
 
     </div>    
     <?php $content = ob_get_clean(); ?>
 
-<?php require("view/customer/template.php"); ?>
+<?php require("../../view/customer/template.php"); ?>
 </div>
 
 <?php include("bloc_footer_view.php")?>

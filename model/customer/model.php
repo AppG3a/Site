@@ -254,10 +254,19 @@ function insertRoom($room, $id_house)
 function deleteRoom($id_room)
 {
     $db = dbConnect();
+    
+    // On supprime la pièce
     $req = $db -> prepare("DELETE FROM emplacements
                             WHERE id = ?");
     $req -> execute(array($id_room));
+    
+    // On supprime tous les capteurs liés à cette pièce
+    $req = $db -> prepare("DELETE FROM capteurs
+                            WHERE id_emplacement = ?");
+    $req -> execute(array($id_room));
     $req -> closeCursor();
+    
+    
 }
 
 function insertSensor($reference, $room, $id_house)
@@ -295,3 +304,27 @@ function updateFavorite($id_sensor, $favorite)
         "id_sensor" => $id_sensor));
     $req -> closeCursor();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

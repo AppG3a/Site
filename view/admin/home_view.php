@@ -1,4 +1,4 @@
-<?php $css = "design/admin/home_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/admin/home_view.css?<?php echo time(); ?"; ?>
 <?php $title = "Harvey"; ?>
 
 <?php include("bloc_header_view.php")?>
@@ -23,7 +23,7 @@
     </div>    
     <?php $content = ob_get_clean(); ?>
 
-<?php require("view/admin/template.php"); ?>
+<?php require("../../view/admin/template.php"); ?>
 </div>
 
 <?php include("bloc_footer_view.php")?>

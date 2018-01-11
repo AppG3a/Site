@@ -8,10 +8,13 @@
     
     <div class="content">
         
-        <a href="index.php">Accéder à mon espace utilisateur</a>
+        <!-- <a href="index.php">Accéder à mon espace utilisateur</a> -->
+        <a href="../../index.php">Accéder à mon espace utilisateur</a>
 
     </div>    
     <?php $content = ob_get_clean(); ?>
 
-<?php require("view/customer/template.php"); ?>
+<?php //require("view/customer/template.php"); 
+require("template.php"); 
+?>
 </div>

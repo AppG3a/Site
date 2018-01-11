@@ -1,25 +1,25 @@
 <?php
 
 //On appelle le model
-require("model/admin/model.php");
+require("../../model/admin/model.php");
 
 function seeProfile()
 //Affiche la page de profil de l'utilisateur qui a l'id donné
 {
     $profile = getProfile($_SESSION["id"]);
-    require("view/admin/profile_view.php");
+    require("../../view/admin/profile_view.php");
 }
 
 function seeHomePage()
 {
-    require("view/admin/home_view.php");
+    require("../../view/admin/home_view.php");
 }
 
 function seeProfileModification()
 //Affiche la page de modification de profil de l'utilisateur qui a l'id donné
 {
     $profile = getProfile($_SESSION["id"]);
-    require("view/admin/profile_modification_view.php");
+    require("../../view/admin/profile_modification_view.php");
 }
 
 function profileModification()
@@ -49,20 +49,20 @@ function passwordChange()
             {
                 passwordUpdate($new_password_1);
                 $profile = getProfile($_SESSION["id"]);
-                require("view/admin/success_password_change_view.php");
+                require("../../view/admin/success_password_change_view.php");
             }
             
             else
             {
                 $profile = getProfile($_SESSION["id"]);
-                require("view/admin/profile_modification_error_password1_view.php");
+                require("../../view/admin/profile_modification_error_password1_view.php");
             }
         }
         
         else
         {
             $profile = getProfile($_SESSION["id"]);
-            require("view/admin/profile_modification_error_password2_view.php");
+            require("../../view/admin/profile_modification_error_password2_view.php");
         }
         
     }
@@ -70,14 +70,19 @@ function passwordChange()
     else
     {
         $profile = getProfile($_SESSION["id"]);
-        require("view/admin/profile_modification_error_password3_view.php");
+        require("../../view/admin/profile_modification_error_password3_view.php");
     }
 }
 
 function seeCustomerProfileSelection()
 //Affiche la page qui permet à l'administrateur de choisir une fiche client
 {
-    require("view/admin/customer_profile_selection_view.php");
+    require("../../view/admin/customer_profile_selection_view.php");
+}
+
+function seeCustomerProfileSelectionBis()
+{    
+    require("../../view/admin/customer_profile_selection_bis_view.php");
 }
 
 function seeCustomerProfile()
@@ -88,19 +93,19 @@ function seeCustomerProfile()
     if (!empty($customer_id))
     {
         $profile = getProfile($customer_id);
-        require("view/admin/customer_profile_view.php");
+        require("../../view/admin/customer_profile_view.php");
     }
     
     else 
     {
-        require("view/admin/customer_profile_selection_view.php");
+        require("../../view/admin/customer_profile_selection_view.php");
         echo "Aucun numéro client n'a été sélectionné";
     }
 }
 
 function seeCustomerProfileCreation()
 {
-    require("view/admin/customer_profile_creation_view.php");
+    require("../../view/admin/customer_profile_creation_view.php");
 }
 
 function customerProfileCreation()
@@ -115,30 +120,30 @@ function customerProfileCreation()
     if (!empty($nom) && !empty($prenom) && !empty($adresse) && !empty($mail) && !empty($pseudo) && !empty($mot_de_passe))
     {
         profileCreation($nom, $prenom, $adresse, $mail, $pseudo, $mot_de_passe);
-        require("view/admin/customer_profile_creation_success_view.php");
+        require("../../view/admin/customer_profile_creation_success_view.php");
     }
     
     else 
     {
-        require("view/admin/customer_profile_creation_error_view.php");
+        require("../../view/admin/customer_profile_creation_error_view.php");
     }
 }
 
 function seeBreakdownHistory()
 {
     $breakdowns = getBreakdowns();
-    require("view/admin/breakdown_history_view.php");
+    require("../../view/admin/breakdown_history_view.php");
 }
 
 function seeContact()
 {
     $phone_number = getPhoneNumber();
-    require("view/admin/contact_view.php");
+    require("../../view/admin/contact_view.php");
 }
 
 function seePhoneNumberModification()
 {
-    require("view/admin/phone_number_modification_view.php");
+    require("../../view/admin/phone_number_modification_view.php");
 }
 
 function phoneNumberModification()
@@ -148,25 +153,25 @@ function phoneNumberModification()
     {
         updatePhoneNumber($new_phone_number);
         $phone_number = getPhoneNumber();
-        require("view/admin/phone_number_modification_success_view.php");
+        require("../../view/admin/phone_number_modification_success_view.php");
     }
     
     else
     {
-        require("view/admin/phone_number_modification_fail_view.php");
+        require("../../view/admin/phone_number_modification_fail_view.php");
     }
 }
 
 function seeCgu()
 {
     $cgu = getCgu();
-    require("view/admin/cgu_view.php");
+    require("../../view/admin/cgu_view.php");
 }
 
 function seeCguModification()
 {
     $cgu = getCgu();
-    require("view/admin/cgu_modification_view.php");
+    require("../../view/admin/cgu_modification_view.php");
 }
 
 function cguModification()
@@ -175,16 +180,17 @@ function cguModification()
     $cgu = $_POST["cgu"];
     cguUpdate($cgu);
     $cgu = getCgu();
-    require("view/admin/cgu_modification_success_view.php");
+    require("../../view/admin/cgu_modification_success_view.php");
 }
 
 function deconnexion()
 {
     session_destroy();
-    require("view/authentication_view.php");
+    //require("../../view/authentication_view.php");
+    header("Location: ../../index.php");
 }
 
 function openAdmin()
 {
-    require("view/admin/account_access_view.php");
+    require("../../view/admin/account_access_view.php");
 }

@@ -1,4 +1,4 @@
-<?php $css = "design/admin/home_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/admin/home_view.css?<?php echo time(); ?"; ?>
 <?php $title = "Contact"; ?>
 
 <?php include("bloc_header_view.php")?>
@@ -13,7 +13,7 @@
 		<div class="sub_content">
             <h1>Numéro Domisep</h1>
             
-            <form method="post" action="index.php?action=phone_number_modification">
+            <form method="post" action="roter.php?action=phone_number_modification">
             	<p>
             	<label for="phone_number">Numéro</label> : <input type="text" name="phone_number" id="phone_number">
             	</p>
@@ -25,13 +25,13 @@
         
         <!-- <div class="back_button"> -->
         <div class="right_nav">
-        	<a href="index.php?action=see_contact">Retour</a>
+        	<a href="roter.php?action=see_contact">Retour</a>
         </div>
 
     </div>    
     <?php $content = ob_get_clean(); ?>
 
-<?php require("view/admin/template.php"); ?>
+<?php require("../../view/admin/template.php"); ?>
 </div>
 
 <?php include("bloc_footer_view.php")?>

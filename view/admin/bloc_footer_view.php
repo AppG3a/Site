@@ -7,6 +7,6 @@
 
 <footer>
 	<p>
-		Copyright 2017 - <a href="index.php?action=see_cgu">Conditions générales d'utilisation</a>
+		Copyright 2017 - <a href="roter.php?action=see_cgu">Conditions générales d'utilisation</a>
 	</p>
 </footer>

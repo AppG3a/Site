@@ -1,4 +1,4 @@
-<?php $css = "design/customer/home_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/customer/home_view.css?<?php echo time(); ?"; ?>
 <?php $title = "Mes capteurs"; ?>
 
 <?php include("bloc_header_view.php")?>
@@ -13,7 +13,7 @@
 		<div class="sub_content">
             <h1>Ajouter un capteur</h1>
             
-			<form method="post" action="index.php?action=add_sensor">
+			<form method="post" action="roter.php?action=add_sensor">
 				<label for="type">Type de capteur</label><br/><input type="text" name="type" id="type"><br/>
 				<label for="room">Pièce de la maison</label><br/>
 				<select name="room" id="room">
@@ -34,7 +34,7 @@
 			
             <h1>Supprimer un capteur</h1>
             
-			<form method="post" action="index.php?action=remove_sensor">
+			<form method="post" action="roter.php?action=remove_sensor">
 				<label for="sensor">Capteur à supprimer :</label>
 				<select name="sensor" id="sensor">
 		            <?php 
@@ -55,7 +55,7 @@
             <h1>Favoris</h1>
             <p>Les capteurs favoris apparaissent sur la page d'accueil</p>
             
-			<form method="post" action="index.php?action=add_favorite_sensors">
+			<form method="post" action="roter.php?action=add_favorite_sensors">
 		            <?php 
 		            while ($favorite = $favorites -> fetch())
                     {
@@ -82,13 +82,13 @@
         </div>
         
         <div class="right_nav">
-            <a href="index.php?action=see_sensors">Retour</a>
+            <a href="roter.php?action=see_sensors">Retour</a>
         </div>
 
     </div>    
     <?php $content = ob_get_clean(); ?>
 
-<?php require("view/customer/template.php"); ?>
+<?php require("../../view/customer/template.php"); ?>
 </div>
 
 <?php include("bloc_footer_view.php")?>

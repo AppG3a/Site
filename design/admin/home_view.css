@@ -109,6 +109,18 @@ header
 				texte-align: center;
 			}
 			
+				#error_message
+				{
+					background-color: #F08080;
+					padding: 15px;
+				}
+				
+				#success_message
+				{
+					background-color: #90EE90;
+					padding: 15px;
+				}
+			
 				.editor
 				{
 					background-color: white;

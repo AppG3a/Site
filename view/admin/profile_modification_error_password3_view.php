@@ -1,4 +1,4 @@
-<?php $css = "design/admin/home_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/admin/home_view.css?<?php echo time(); ?"; ?>
 <?php $title = "Modification du profil"; ?>
 
 <?php include("bloc_header_view.php")?>
@@ -13,7 +13,7 @@
         <!-- <h1>Modifier mon profil administrateur</h1> -->
         
         <div class="sub_content">
-            <form method="post" action="index.php?action=profile_modification">
+            <form method="post" action="roter.php?action=profile_modification">
             	<fieldset>
             		<legend>Informations personnelles</legend>
             			<p class="left_justify">
@@ -29,7 +29,7 @@
             	</p>
             </form>
             
-            <form method="post" action="index.php?action=password_change">
+            <form method="post" action="roter.php?action=password_change">
             	<fieldset>
             		<legend>Mot de passe</legend>
             			<p class="left_justify">
@@ -46,13 +46,13 @@
         </div>
         
         <div class="right_nav">
-        	<a href="index.php?action=see_profile">Retour</a>
+        	<a href="roter.php?action=see_profile">Retour</a>
 		</div>
 		
     </div>    
     <?php $content = ob_get_clean(); ?>
 
-<?php require("view/admin/template.php"); ?>
+<?php require("../../view/admin/template.php"); ?>
 </div>
 
 <?php include("bloc_footer_view.php")?>

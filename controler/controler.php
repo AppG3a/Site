@@ -44,10 +44,14 @@ function checkAuthentication()
 
 function openAdmin()
 {
-    require("view/admin/account_access_view.php");
+    //require("view/admin/account_access_view.php");
+    //header("Location: view/admin/account_access_view.php");
+    header("Location: roter/admin/roter.php");
 }
 
 function openCustomer()
 {
-    require("view/customer/account_access_view.php");
+    //require("view/customer/account_access_view.php");
+    //header("Location: view/customer/account_access_view.php");
+    header("Location: roter/customer/roter.php");
 }

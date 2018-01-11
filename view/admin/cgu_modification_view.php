@@ -1,4 +1,4 @@
-<?php $css = "design/admin/home_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/admin/home_view.css?<?php echo time(); ?"; ?>
 <?php $title = "Conditions générales d'utilisation"; ?>
 
 <?php include("bloc_header_view.php")?>
@@ -12,10 +12,10 @@
     <div class="content">
 
 		<div class="sub_content">
-			<script src="view/admin/editor.js" type="text/javascript"></script>
+			<script src="../../view/admin/editor.js" type="text/javascript"></script>
 			<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 			
-            <form method="post" action="index.php?action=cgu_modification">
+            <form method="post" action="roter.php?action=cgu_modification">
             	<fieldset>
             		<legend>Modifier les Conditions Générales d'Utilisation</legend>
             			<p class="editor">
@@ -30,13 +30,13 @@
         </div>
 
 		<div class="right_nav">
-			<a href="index.php?action=see_cgu">Retour</a>
+			<a href="roter.php?action=see_cgu">Retour</a>
 		</div>
 
     </div>    
     <?php $content = ob_get_clean(); ?>
 
-<?php require("view/admin/template.php"); ?>
+<?php require("../../view/admin/template.php"); ?>
 </div>
 
 <?php include("bloc_footer_view.php")?>

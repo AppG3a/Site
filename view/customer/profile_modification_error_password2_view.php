@@ -1,4 +1,4 @@
-<?php $css = "design/customer/home_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/customer/home_view.css?<?php echo time(); ?"; ?>
 <?php $title = "Modifier mon profil"; ?>
 
 <?php include("bloc_header_view.php")?>
@@ -11,7 +11,7 @@
 	<div class="content">
 
 		<div class="sub_content">
-            <form method="post" action="index.php?action=profile_modification">
+            <form method="post" action="roter.php?action=profile_modification">
             	<fieldset>
             		<legend>Informations personnelles</legend>
             			<p>
@@ -27,7 +27,7 @@
             	</p>
             </form>
             
-            <form method="post" action="index.php?action=password_change">
+            <form method="post" action="roter.php?action=password_change">
             	<fieldset>
             		<legend>Mot de passe</legend>
             			<p>
@@ -44,13 +44,13 @@
         </div>
         
         <div class="right_nav">
-        	<a href="index.php?action=see_profile">Revenir au profil</a>
+        	<a href="roter.php?action=see_profile">Revenir au profil</a>
     	</div>
 
     </div>    
     <?php $content = ob_get_clean(); ?>
 
-<?php require("view/customer/template.php"); ?>
+<?php require("../../view/customer/template.php"); ?>
 </div>
 
 <?php include("bloc_footer_view.php")?>

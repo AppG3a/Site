@@ -1,4 +1,4 @@
-<?php $css = "design/admin/home_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/admin/home_view.css?<?php echo time(); ?"; ?>
 <?php $title = "Fiche client"; ?>
 
 <?php include("bloc_header_view.php")?>
@@ -12,7 +12,7 @@
 
 		<div class="sub_content">
             
-            <form method="post" action="index.php?action=see_customer_profile">
+            <form method="post" action="roter.php?action=see_customer_profile">
             	<fieldset>
             		<legend>Sélectionner le numéro du client</legend>
             			<p>
@@ -34,13 +34,13 @@
         </div>
         
         <div class="right_nav">
-        	<a href="index.php">Revenir à la page d'accueil</a>
+        	<a href="roter.php">Revenir à la page d'accueil</a>
     	</div>
 
     </div>    
     <?php $content = ob_get_clean(); ?>
 
-<?php require("view/admin/template.php"); ?>
+<?php require("../../view/admin/template.php"); ?>
 </div>
 
 <?php include("bloc_footer_view.php")?>

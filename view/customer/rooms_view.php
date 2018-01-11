@@ -1,4 +1,4 @@
-<?php $css = "design/customer/home_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/customer/home_view.css?<?php echo time(); ?"; ?>
 <?php $title = "Mes pièces"; ?>
 
 <?php include("bloc_header_view.php")?>
@@ -25,14 +25,14 @@
         </div>
         
         <div class="right_nav">
-            <a href="index.php?action=see_add_room">Ajouter une pièce</a>
-            <a href="index.php">Revenir à la page d'accueil</a>
+            <a href="roter.php?action=see_add_room">Ajouter une pièce</a>
+            <a href="roter.php">Revenir à la page d'accueil</a>
         </div>
 
     </div>    
     <?php $content = ob_get_clean(); ?>
 
-<?php require("view/customer/template.php"); ?>
+<?php require("../../view/customer/template.php"); ?>
 </div>
 
 <?php include("bloc_footer_view.php")?>

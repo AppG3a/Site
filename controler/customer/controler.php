@@ -7,20 +7,20 @@
  */
 
 //On appelle le model
-require("model/customer/model.php");
+require("../../model/customer/model.php");
 
 function seeProfile()
 //Affiche la page de profil de l'utilisateur qui a l'id donné
 {
     $profile = getProfile();
-    require("view/customer/profile_view.php");
+    require("../../view/customer/profile_view.php");
 }
 
 function seeProfileModification()
 //Affiche la page de modification de profil de l'utilisateur qui a l'id donné
 {
     $profile = getProfile();
-    require("view/customer/profile_modification_view.php");
+    require("../../view/customer/profile_modification_view.php");
 }
 
 function profileModification()
@@ -30,14 +30,13 @@ function profileModification()
     $test = profileUpdate();
     if ($test == 1)
     {
-        echo "Je suis toujours là";
         seeProfile();
     }
     
     else
     {
         $profile = getProfile();
-        require("view/customer/profile_modification_error_pseudo_view.php");
+        require("../../view/customer/profile_modification_error_pseudo_view.php");
     }
 }
 
@@ -45,6 +44,8 @@ function passwordChange()
 /*Gère le changement de mot de passe de l'utilisateur qui a l'id donné
  * Si l'utilisateur effectue correctement le changement, le mot de passe est changé
  * Sinon l'utilisateur reçoit le message d'erreur approprié
+ * EDIT : maintenant une partie des vérifications est prise en charge par javascript
+ * Cette fonction pourrait donc facilement être réduite
  */
 {
     $former_password = htmlspecialchars($_POST["mot_de_passe"]);
@@ -61,7 +62,7 @@ function passwordChange()
             {
                 passwordUpdate($new_password_1);
                 $profile = getProfile();
-                require("view/customer/success_password_change_view.php");
+                require("../../view/customer/success_password_change_view.php");
             }
             
             else
@@ -69,7 +70,7 @@ function passwordChange()
                 //echo "L'ancien mot de passe n'est pas correct<br/>";
                 //echo "<a href='index.php?action=see_profile_modification'>Retour</a>";
                 $profile = getProfile();
-                require("view/customer/profile_modification_error_password1_view.php");
+                require("../../view/customer/profile_modification_error_password1_view.php");
             }
         }
         
@@ -78,7 +79,7 @@ function passwordChange()
             //echo "La confirmation du nouveau mot de passe n'est pas correcte<br/>";
             //echo "<a href='index.php?action=see_profile_modification'>Retour</a>";
             $profile = getProfile();
-            require("view/customer/profile_modification_error_password2_view.php");
+            require("../../view/customer/profile_modification_error_password2_view.php");
         }
         
     }
@@ -88,21 +89,21 @@ function passwordChange()
         //echo "Un des champs de modification du mot de passe n'a pas été rempli<br/>";
         //echo "<a href='index.php?action=see_profile_modification'>Retour</a>";
         $profile = getProfile();
-        require("view/customer/profile_modification_error_password3_view.php");
+        require("../../view/customer/profile_modification_error_password3_view.php");
     }
 }
 
 function seeHomePage()
 {
     $sensors = getSensors();
-    require("view/customer/home_view.php");
+    require("../../view/customer/home_view.php");
 }
 
 function seeContact()
 {
     $messages = getMessages();
     $phone_number = getPhoneNumber();
-    require("view/customer/contact_view.php");
+    require("../../view/customer/contact_view.php");
 }
 
 function sendMessage()
@@ -114,24 +115,24 @@ function sendMessage()
     
     $messages = getMessages();
     $phone_number = getPhoneNumber();
-    require("view/customer/message_send_view.php");
+    require("../../view/customer/message_send_view.php");
 }
 
 function seeHelp()
 {
-    require("view/customer/help_view.php");
+    require("../../view/customer/help_view.php");
 }
 
 function seeCgu()
 {
     $cgu = getCgu();
-    require("view/customer/cgu_view.php");
+    require("../../view/customer/cgu_view.php");
 }
 
 function seeSensors()
 {
     $sensors = getSensors();
-    require("view/customer/sensors_view.php");
+    require("../../view/customer/sensors_view.php");
 }
 
 function switchSensorStatus()
@@ -168,14 +169,14 @@ function seeSensorTarget()
 {
     $sensors = getSensors();
     $id_sensor = htmlspecialchars($_GET["id_sensor"]);
-    require("view/customer/sensor_target_view.php");
+    require("../../view/customer/sensor_target_view.php");
 }
 
 function seeFavoriteSensorTarget()
 {
     $sensors = getSensors();
     $id_sensor = htmlspecialchars($_GET["id_sensor"]);
-    require("view/customer/favorite_sensor_target_view.php");
+    require("../../view/customer/favorite_sensor_target_view.php");
 }
 
 function defineSensorTarget()
@@ -211,7 +212,8 @@ function removeFavoriteSensorTarget()
 function deconnexion()
 {
     session_destroy();
-    require("view/authentication_view.php");
+    //require("../../view/authentication_view.php");
+    header("Location: ../../index.php");
 }
 
 function openCustomer()
@@ -223,14 +225,14 @@ function seeRooms()
 {
     $id_house = getHouse();
     $rooms = getRooms($id_house);
-    require("view/customer/rooms_view.php");
+    require("../../view/customer/rooms_view.php");
 }
 
 function seeAddRoom()
 {
     $id_house = getHouse();
     $rooms = getRooms($id_house);
-    require("view/customer/add_room_view.php");
+    require("../../view/customer/add_room_view.php");
 }
 
 function addRoom()
@@ -254,7 +256,7 @@ function seeAddSensor()
     $rooms = getRooms($id_house);
     $sensors = getSensors();
     $favorites = getSensors();
-    require("view/customer/add_sensor_view.php");
+    require("../../view/customer/add_sensor_view.php");
 }
 
 function addSensor()

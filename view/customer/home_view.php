@@ -1,4 +1,6 @@
-<?php $css = "design/customer/sensors_view.css?<?php echo time(); ?"; ?>
+<?php //$css = "design/customer/sensors_view.css?<?php echo time(); ?";
+$css = "../../design/customer/sensors_view.css?<?php echo time(); ?";
+?>
 <?php $title = "Harvey"; ?>
 
 <?php include("bloc_header_view.php")?>
@@ -9,8 +11,9 @@
 	<?php ob_start(); ?>
 
 	<div class="content">
-
-		<div class="sub_content">
+		<div id="welcome_message"></div>
+		
+		<div class="sub_content">		
 
             <?php 
             while ($sensor = $sensors -> fetch())
@@ -33,20 +36,20 @@
                 		}
             			?>
             			<br/>
-                		<a href="index.php?action=switch_favorite_sensor_status&id_sensor=<?= $sensor['id'] ?>&sensor_status=<?= $sensor['on_off'] ?>" class="on_off_button">ON/OFF</a><br/>
+                		<a href="roter.php?action=switch_favorite_sensor_status&id_sensor=<?= $sensor['id'] ?>&sensor_status=<?= $sensor['on_off'] ?>" class="on_off_button">ON/OFF</a><br/>
                 		
             			<?php 
                 		if (!empty($sensor["valeur_cible"]))
                 		{
                 		?>
-                			<a href="index.php?action=see_favorite_sensor_target&id_sensor=<?= $sensor['id'] ?>" class="on_off_button">Changer valeur cible</a><br/>
-                			<a href="index.php?action=remove_favorite_sensor_target&id_sensor=<?= $sensor['id'] ?>" class="on_off_button">Supprimer valeur cible</a><br/>
+                			<a href="roter.php?action=see_favorite_sensor_target&id_sensor=<?= $sensor['id'] ?>" class="on_off_button">Changer valeur cible</a><br/>
+                			<a href="roter.php?action=remove_favorite_sensor_target&id_sensor=<?= $sensor['id'] ?>" class="on_off_button">Supprimer valeur cible</a><br/>
             			<?php 
                 		}
                 		else 
                 		{
             		    ?>
-            		    	<a href="index.php?action=see_favorite_sensor_target&id_sensor=<?= $sensor['id'] ?>" class="on_off_button">Définir valeur cible</a><br/>
+            		    	<a href="roter.php?action=see_favorite_sensor_target&id_sensor=<?= $sensor['id'] ?>" class="on_off_button">Définir valeur cible</a><br/>
                 		<?php 
                 		}
             			?>
@@ -64,7 +67,24 @@
     </div>    
     <?php $content = ob_get_clean(); ?>
 
-<?php require("view/customer/template.php"); ?>
+<?php //require("view/customer/template.php"); 
+require("../../view/customer/template.php"); 
+?>
 </div>
 
 <?php include("bloc_footer_view.php")?>
+
+<script type="text/javascript">
+<!--
+	var welcome = <?= $_SESSION["welcome"]; ?>;
+	var userFirstName = "<?= $_SESSION["first_name"]; ?>";
+//-->
+</script>
+<script src="../../js/home_view.js"></script>
+
+<?php 
+$_SESSION["welcome"] = 0;
+?>
+
+
+

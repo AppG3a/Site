@@ -140,3 +140,28 @@ function cguUpdate($cgu)
     $req -> execute(array($cgu));
     $req -> closeCursor();    
 }
+
+function getCustomers()
+{
+    $db = dbConnect();
+    $req = $db -> query("SELECT *
+                        FROM utilisateurs");
+    return $req;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
