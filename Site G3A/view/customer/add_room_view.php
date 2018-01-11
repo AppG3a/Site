@@ -20,7 +20,7 @@
 				</p>
 			</form>
 			
-            <h1>Supprimer une pièce</h1>
+           <h1>Supprimer une pièce</h1>
             
 			<form method="post" action="index.php?action=remove_room">
 				<label for="room">Pièce à supprimer :</label>
@@ -33,8 +33,32 @@
                 	<?php 
                     }
                     $rooms -> closeCursor();
+                    
                 	?>    				
 				</select>
+				<p>
+					<input type="submit" value="Valider">
+				</p>
+				
+			</form> 
+		<h1>Modifier une pièce</h1>
+            
+			<form method="post" action="index.php?action=change_room">
+				<label for="room">Pièce  :</label>
+				<select name="room" id="room">
+		             <?php 
+                    while ($room2 = $rooms2 -> fetch())
+                    {
+                    ?>
+                    	<option value="<?= $room2["id"] ?>"><?= $room2["nom"] ?> </option>
+                	<?php 
+                    }
+                    $rooms2 -> closeCursor();
+                    ?>
+				</select>
+				<p>
+				<label for="name">Nom de la pièce</label> : <input type="text" name="name" id="name">
+				</p>
 				<p>
 					<input type="submit" value="Valider">
 				</p>

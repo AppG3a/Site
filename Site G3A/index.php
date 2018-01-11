@@ -130,6 +130,10 @@ if (isset($_SESSION["user_type"]))
             {
                 removeRoom();
             }
+            elseif ($_GET["action"] == "change_room")
+            {
+                changeRoom();
+            }
             
             elseif ($_GET["action"] == "see_add_sensor")
             {

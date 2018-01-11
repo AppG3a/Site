@@ -10,7 +10,6 @@ catch(Exception $e)
 
 $reponse = $bdd->query('SELECT nom FROM piece WHERE ID_maison="$..." ');
 
-echo '<p>Voici les 10 premières entrées de la table jeux_video :</p>';
 while ($donnees = $reponse->fetch())
 {
     echo $donnees['nom'] . '<br />';

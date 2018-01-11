@@ -260,6 +260,18 @@ function deleteRoom($id_room)
     $req -> closeCursor();
 }
 
+function updateRoom($name,$id_room)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("UPDATE emplacements 
+                            SET nom = :name
+                            WHERE id = :id_room ");
+    $req -> execute(array(
+        "name"=> $name,
+        "id_room"=>$id_room));
+   
+    $req -> closeCursor();
+}
 function insertSensor($reference, $room, $id_house)
 {
     $db = dbConnect();
@@ -295,3 +307,4 @@ function updateFavorite($id_sensor, $favorite)
         "id_sensor" => $id_sensor));
     $req -> closeCursor();
 }
+

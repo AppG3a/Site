@@ -229,7 +229,8 @@ function seeRooms()
 function seeAddRoom()
 {
     $id_house = getHouse();
-    $rooms = getRooms($id_house);
+    $rooms = getRooms($id_house); 
+    $rooms2 = getRooms($id_house);
     require("view/customer/add_room_view.php");
 }
 
@@ -246,6 +247,15 @@ function removeRoom()
     $id_room = htmlspecialchars($_POST["room"]);
     deleteRoom($id_room);
     seeRooms();
+}
+function changeRoom()
+{
+    $id_room = htmlspecialchars($_POST["room"]);
+    $name = htmlspecialchars($_POST["name"]);
+    
+    updateRoom($name, $id_room);    
+    seeRooms();
+
 }
 
 function seeAddSensor()
