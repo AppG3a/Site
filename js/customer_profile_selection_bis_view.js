@@ -121,11 +121,11 @@ function testPhp(reponse)
 				
 				customers.sort(function(a, b)
 				{
-					if (a.date_inscription < b.inscription)
+					if (a.date_inscription > b.date_inscription)
 					{
 						return -1;
 					}
-					if (a.date_inscription > b.date_inscription)
+					if (a.date_inscription < b.date_inscription)
 					{
 						return 1;
 					}
@@ -144,7 +144,7 @@ function testPhp(reponse)
 		table.appendChild(trElt);
 		
 		// Remplissage du tableau
-		customersList.forEach(function(customer)
+		customers.forEach(function(customer)
 		{		
 			var trElt = document.createElement("tr");
 				trElt.addEventListener("click", function(event)

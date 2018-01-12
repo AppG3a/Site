@@ -131,8 +131,8 @@ function customerProfileCreation()
 
 function seeBreakdownHistory()
 {
-    $breakdowns = getBreakdowns();
-    require("../../view/admin/breakdown_history_view.php");
+    //$breakdowns = getBreakdowns();
+    require("../../view/admin/breakdown_history_bis_view.php");
 }
 
 function seeContact()

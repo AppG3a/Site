@@ -17,6 +17,7 @@
             	<fieldset>
             		<legend>Envoyer un message</legend>
             			<p>
+            				Email : <?= $_SESSION["email"] ?><br/><br/>
             				<label for="subject">Sujet du message</label> :<br/><input type="text" name="subject" id="subject"><br/>
                         	<label for="message">Message</label> :<br/><textarea name="message" id="message"></textarea><br/>
             			</p>
@@ -26,7 +27,7 @@
             	</p>
             </form>
             
-            <h1>Messagerie</h1>
+            <!-- <h1>Messagerie</h1>
             <?php 
             while ($message = $messages -> fetch())
             {
@@ -40,7 +41,7 @@
             <?php 
             }
             $messages -> closeCursor();
-            ?>
+            ?> -->
             
             <h1>Appeler le support</h1>
             

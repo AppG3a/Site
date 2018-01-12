@@ -305,8 +305,16 @@ function updateFavorite($id_sensor, $favorite)
     $req -> closeCursor();
 }
 
-
-
+function getActivity($id_sensor)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("SELECT date_mesure, valeur
+                            FROM activite
+                            WHERE id_capteur = ?");
+    $req -> execute(array($id_sensor));
+    
+    return $req;
+}
 
 
 

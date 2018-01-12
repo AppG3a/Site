@@ -13,7 +13,7 @@
 		<div class="sub_content">
 			<a href="#" title="Changer la photo de profil"><img src="../../design/picture/profil_2.png" alt="Photo profil" class="profile_picture"/></a>
             <p class="left_justify">
-            	Pseudo : <?= $profile["pseudo"] ?><br/>
+            	<!-- Pseudo : <?= $profile["pseudo"] ?><br/> -->
             	<?= $profile["prenom"] ?> <?= $profile["nom"] ?><br/>
 				<?= $profile["adresse"] ?><br/>
 				<?= $profile["mail"] ?><br/>            	

@@ -96,7 +96,7 @@ function profileCreation($nom, $prenom, $adresse, $mail, $pseudo, $mot_de_passe)
 function getBreakdowns()
 {
     $db = dbConnect();
-    $req = $db -> query("SELECT description, date_panne, solution, date_solution, id_client
+    $req = $db -> query("SELECT id, description, date_panne, solution, date_solution, id_client
                             FROM pannes");
     
     return $req;

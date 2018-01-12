@@ -8,13 +8,15 @@
 <p><strong>UN DES CHAMPS N'EST PAS RENSEIGNE</strong></p>
 <form method="post" action="index.php?action=connexion">
 	<p class="champ">
-		<label for="pseudo">Pseudo</label><br/><input type="text" name="pseudo" id="pseudo"><br/>
+		<!-- <label for="pseudo">Pseudo</label><br/><input type="text" name="pseudo" id="pseudo"><br/> -->
+		<label for="mail">Mail</label><br/><input type="text" name="mail" id="mail"><br/>
     	<label for="mot_de_passe">Mot de passe</label><br/><input type="password" name="mot_de_passe" id="mot_de_passe"><br/>
 	</p>
 	<p>
 		<input type="submit" value="Connexion" class="submit_button">
 	</p>
 </form>
+<a href="index.php?action=see_cgu" target="_blank">Conditions générales d'utilisation</a>
 
 <h2>Produits Domisep</h2>
 

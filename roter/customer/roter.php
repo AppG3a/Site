@@ -116,6 +116,10 @@ if (isset($_GET["action"]))
             addFavoriteSensors();
             break;
             
+        case "see_activity":
+            seeActivity();
+            break;
+            
         default:
             echo "Action inconnue - Customer Roter";      
     }

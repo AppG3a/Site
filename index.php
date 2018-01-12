@@ -14,10 +14,57 @@ require("controler/controler.php");
 
 if (isset($_GET["action"]))
 {
+    $action = htmlspecialchars($_GET["action"]);
+    
+    switch($action)
+    {
+        case "connexion":
+            $db_content = checkAuthentication();
+            
+            session_start();
+            
+            $_SESSION["id"] = $db_content["id"];
+            $_SESSION["user_type"] = $db_content["categorie_utilisateur"];
+            $_SESSION["first_name"] = $db_content["prenom"];
+            $_SESSION["email"] = $db_content["mail"];
+            $_SESSION["welcome"] = 1;
+            
+            if ($_SESSION["user_type"] == "admin")
+            {
+                openAdmin();
+            }
+            
+            elseif ($_SESSION["user_type"] == "customer")
+            {
+                openCustomer();
+            }
+            
+            else
+            {
+                //echo "Catégorie inconnue - index";
+            }
+            break;
+            
+        case "see_cgu":
+            seeCgu();
+            break;
+            
+        default:
+            seeAuthenticationPage();
+            break;
+    }
+}
+else
+{
+    seeAuthenticationPage();
+}
+
+/*
+if (isset($_GET["action"]))
+{
     if ($_GET["action"] == "connexion")
     {
-        $db_content = checkAuthentication();
-        
+        $db_content = checkAuthentication();     
         
         session_start();
         
@@ -53,7 +100,7 @@ else
 {
     seeAuthenticationPage();
 }
-
+*/
 
 /*
 if (isset($_SESSION["user_type"]))

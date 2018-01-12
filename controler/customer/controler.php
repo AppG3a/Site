@@ -108,8 +108,21 @@ function seeContact()
 
 function sendMessage()
 {
+    /*$subject = htmlspecialchars($_POST["subject"]);
+    $message = htmlspecialchars($_POST["message"]);
+    
+    messagingUpdate($subject, $message);
+    
+    $messages = getMessages();
+    $phone_number = getPhoneNumber();
+    require("../../view/customer/message_send_view.php");*/
+    
     $subject = htmlspecialchars($_POST["subject"]);
     $message = htmlspecialchars($_POST["message"]);
+    $mailclient = $_SESSION["email"];
+    $destinataire = 'hugo.alayrangues@gmail.com';
+    
+    //mail($destinataire, $subject, $message, $mailclient);
     
     messagingUpdate($subject, $message);
     
@@ -298,3 +311,30 @@ function addFavoriteSensors()
     }    
     seeSensors();
 }
+
+function seeActivity()
+{
+    $id_sensor = 33; // Valeur temporaire
+    $activity = getActivity($id_sensor);
+    $x_data = [];
+    $y_data = [];
+    
+    while ($measure = $activity -> fetch())
+    {
+        $x_data []= $measure["date_mesure"];
+        $y_data []= $measure["valeur"];
+    }
+    
+    $x_data = json_encode($x_data);
+    $y_data = json_encode($y_data);
+    require("../../view/customer/activity_view.php");
+}
+
+
+
+
+
+
+
+
+

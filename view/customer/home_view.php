@@ -1,5 +1,5 @@
 <?php //$css = "design/customer/sensors_view.css?<?php echo time(); ?";
-$css = "../../design/customer/sensors_view.css?<?php echo time(); ?";
+$css = "../../design/customer/sensors_view_2.css?<?php echo time(); ?";
 ?>
 <?php $title = "Harvey"; ?>
 

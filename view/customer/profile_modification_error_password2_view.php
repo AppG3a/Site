@@ -19,7 +19,7 @@
                         	<label for="prenom">Prénom</label> : <input type="text" name="prenom" id="prenom" value="<?= $profile["prenom"] ?>"><br/>
                         	<label for="adresse">Adresse</label> :<br/><textarea name="adresse" id="adresse"><?= $profile["adresse"] ?></textarea><br/>
                         	<label for="mail">Mail</label> : <input type="text" name="mail" id="mail" value="<?= $profile["mail"] ?>"><br/>
-                        	<label for="pseudo">Pseudo</label> : <input type="text" name="pseudo" id="pseudo" value="<?= $profile["pseudo"] ?>"><br/>
+                        	<!-- <label for="pseudo">Pseudo</label> : <input type="text" name="pseudo" id="pseudo" value="<?= $profile["pseudo"] ?>"><br/> -->
             			</p>
             	</fieldset>
             	<p>
