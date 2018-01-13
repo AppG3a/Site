@@ -1,4 +1,5 @@
 <?php
+
 /*model.php
  * c'est la partie du code qui gère la base de données
  * il va essentiellement s'occuper d'effectuer les bonnes requêtes SQL
@@ -206,6 +207,7 @@ function sensorStatusUpdate($id_sensor, $new_sensor_status)
 
 function updateSensorTarget($id_sensor, $target)
 {
+
     $db = dbConnect();
     $req = $db -> prepare("UPDATE capteurs
                             SET valeur_cible = :target
@@ -215,6 +217,7 @@ function updateSensorTarget($id_sensor, $target)
         "id_sensor" => $id_sensor));
     $req -> closeCursor();
 }
+
 
 function getHouse()
 {

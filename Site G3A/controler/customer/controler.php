@@ -182,16 +182,30 @@ function defineSensorTarget()
 {
     $id_sensor = htmlspecialchars($_GET["id_sensor"]);
     $new_target = htmlspecialchars($_POST["target"]);
-    updateSensorTarget($id_sensor, $new_target);
-    seeSensors();
+    if ($new_target<=40)
+    {
+        updateSensorTarget($id_sensor, $new_target);
+        seeSensors();
+    }
+    else
+    {
+        seeSensors();
+    }
 }
 
 function defineFavoriteSensorTarget()
 {
     $id_sensor = htmlspecialchars($_GET["id_sensor"]);
     $new_target = htmlspecialchars($_POST["target"]);
+    if ($new_target<=40)
+    {
     updateSensorTarget($id_sensor, $new_target);
     seeHomePage();
+    }
+    else
+    {
+        seeHomePage();
+    }
 }
 
 function removeSensorTarget()
