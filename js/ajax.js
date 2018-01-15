@@ -21,3 +21,7 @@ function ajaxGet(url, callback)
     
     req.send(null);
 }
+ 
+
+
+ req.send(null);
