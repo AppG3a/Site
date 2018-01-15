@@ -24,4 +24,4 @@ function ajaxGet(url, callback)
  
 
 
- req.send(null);
+ 
