@@ -18,8 +18,8 @@
             		<legend>Envoyer un message</legend>
             			<p>
             				Email : <?= $_SESSION["email"] ?><br/><br/>
-            				<label for="subject">Sujet du message</label> :<br/><input type="text" name="subject" id="subject"><br/>
-                        	<label for="message">Message</label> :<br/><textarea name="message" id="message"></textarea><br/>
+            				<label for="subject">Sujet du message</label> :<br/><input type="text" name="subject" id="subject" required><br/>
+                        	<label for="message">Message</label> :<br/><textarea name="message" id="message" required></textarea><br/>
             			</p>
             	</fieldset>
             	<p>

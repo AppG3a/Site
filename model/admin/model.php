@@ -102,22 +102,36 @@ function getBreakdowns()
     return $req;
 }
 
-function getPhoneNumber()
+function getContact($id_contact)
 {
     $db = dbConnect();
-    $req = $db -> query("SELECT numero
-                        FROM numeros_domisep");
-    $phone_number = $req -> fetch();
+    $req = $db -> prepare("SELECT numero
+                            FROM numeros_domisep
+                            WHERE id = ?");
+    $req -> execute(array($id_contact));
+    $contact = $req -> fetch();
+    $req -> closeCursor();
     
-    return $phone_number["numero"];
+    return $contact["numero"];
 }
 
 function updatePhoneNumber($phone_number)
 {
     $db = dbConnect();
     $req = $db -> prepare("UPDATE numeros_domisep
-                            SET numero = ?");
+                            SET numero = ?
+                            WHERE id = 1");
     $req -> execute(array($phone_number));
+    $req -> closeCursor();
+}
+
+function updateEmail($email)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("UPDATE numeros_domisep
+                            SET numero = ?
+                            WHERE id = 2");
+    $req -> execute(array($email));
     $req -> closeCursor();
 }
 
@@ -145,7 +159,8 @@ function getCustomers()
 {
     $db = dbConnect();
     $req = $db -> query("SELECT *
-                        FROM utilisateurs");
+                        FROM utilisateurs
+                        WHERE categorie_utilisateur = 'customer'");
     return $req;
 }
 

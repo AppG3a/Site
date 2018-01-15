@@ -14,7 +14,8 @@
         	<div id="buttons"></div>
         	<div id="breakdown"></div>
         	<div id="restore"></div> 
-            <table></table>         
+            <table></table>    
+            <div id="page"></div>      
         </div>
         
         <div class="right_nav">

@@ -13,19 +13,19 @@
 		<div class="sub_content">
             <h1>Adresse mail Domisep</h1>
             
-            <p><?= $email; ?></p>
-            
-            <h1>Numéro Domisep</h1>
-            
-            <p><?= $phone_number; ?></p>
+            <form method="post" action="roter.php?action=email_modification">
+            	<p>
+            	<label for="email">Adresse email</label> : <input type="email" name="email" id="email" required>
+            	</p>
+        		<p>
+            		<input type="submit" value="Changer l'adresse mail">
+            	</p>
+            </form>
         </div>
-        
         
         <!-- <div class="back_button"> -->
         <div class="right_nav">
-        	<a href="roter.php?action=see_email_modification">Modifier email</a>
-        	<a href="roter.php?action=see_phone_number_modification">Modifier le numéro</a>
-            <a href="roter.php">Revenir à la page d'accueil</a>
+        	<a href="roter.php?action=see_contact">Retour</a>
         </div>
 
     </div>    

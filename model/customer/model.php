@@ -192,6 +192,14 @@ function getSensors()
     return $req;
 }
 
+function getSensorTypes()
+{
+    $db = dbConnect();
+    $req = $db -> query("SELECT *
+                        FROM types_capteurs");
+    return $req;
+}
+
 function sensorStatusUpdate($id_sensor, $new_sensor_status)
 {
     $db = dbConnect();
@@ -280,6 +288,28 @@ function insertSensor($reference, $room, $id_house)
         "id_maison" => $id_house,
         "reference" => $reference,
         "description" => $reference));
+    
+    $req -> closeCursor();
+}
+
+function insertSensorBis($room, $id_house, $category, $type)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("INSERT INTO capteurs(id_utilisateur, id_emplacement, reference, description, on_off, valeur, id_type, categorie)
+                            VALUES (:id_utilisateur, 
+                                    (SELECT id FROM emplacements WHERE nom = :nom AND id_maison = :id_maison),
+                                    'reference',
+                                    'description', 
+                                    'OFF',
+                                    10,
+                                    (SELECT id FROM types_capteurs WHERE type = :type),
+                                    :category)");
+    $req -> execute(array(
+        "id_utilisateur" => $_SESSION["id"],
+        "nom" => $room,
+        "id_maison" => $id_house,
+        "type" => $type,
+        "category" => $category));
     
     $req -> closeCursor();
 }

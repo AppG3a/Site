@@ -11,7 +11,6 @@
 	<div class="content">
 
 		<div class="sub_content">
-            <h1>Comment ça s'allume ?</h1>
             
             <p>Vous trouverez ci-dessous toutes les explications nécessaires concernant les fonctionnalités d'Harvey.</p>
             
@@ -19,7 +18,7 @@
             <img src="../../design/picture/contact_2.png" alt="Contact">
             <p>      
                 Vous pouvez contacter le support en cliquant sur l'icône ci-dessus (situé en haut à droite de la page). <br/>
-                Vous pourrez envoyer un message au support et y voir tous les messages que vous avez déjà envoyés. <br/>
+                Vous pourrez envoyer un message au support <!-- et y voir tous les messages que vous avez déjà envoyés. --> <br/>
                 Un numéro vous est également fourni pour contacter Domisep.
             </p>
             

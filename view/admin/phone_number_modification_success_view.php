@@ -11,14 +11,19 @@
     <div class="content">
 
 		<div class="sub_content">
+            <h1>Adresse mail Domisep</h1>
+            
+            <p><?= $email; ?></p>
+            
             <h1>Numéro Domisep</h1>
-            <p><strong>LE NUMERO A BIEN ETE CHANGE</strong></p>
-            <p><?= $phone_number ?></p>
+            <p><strong>LE NUMERO A BIEN ETE CHANGE</strong></p>            
+            <p><?= $phone_number; ?></p>
         </div>
             
             <!-- <div class="back_button"> -->
             <div class="right_nav">
-            	<a href="roter.php?action=see_phone_number_modification">Modifier le numéro de contact Domisep</a>
+            	<a href="roter.php?action=see_email_modification">Modifier email</a>
+            	<a href="roter.php?action=see_phone_number_modification">Modifier le numéro</a>
                 <a href="roter.php">Revenir à la page d'accueil</a>
             </div>
     </div>    

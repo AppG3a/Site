@@ -137,7 +137,17 @@ function seeBreakdownHistory()
 
 function seeContact()
 {
-    $phone_number = getPhoneNumber();
+    /*$contacts = getContacts();
+    while ($contact = $contacts -> fetch())
+    {
+        $contactsTab []= $contact["numero"];
+    }
+    $numero = $contactsTab[0];
+    $email = $contactsTab[1];
+    //$phone_number = getPhoneNumber();*/
+    // 1 pour le numéro de téléphone, 2 pour l'adresse mail
+    $phone_number = getContact(1);
+    $email = getContact(2);
     require("../../view/admin/contact_view.php");
 }
 
@@ -152,8 +162,31 @@ function phoneNumberModification()
     if (!empty($new_phone_number))
     {
         updatePhoneNumber($new_phone_number);
-        $phone_number = getPhoneNumber();
-        require("../../view/admin/phone_number_modification_success_view.php");
+        $phone_number = getContact(1);
+        $email = getContact(2);
+        require("../../view/admin/contact_modification_success_view.php");
+    }
+    
+    else
+    {
+        require("../../view/admin/phone_number_modification_fail_view.php");
+    }
+}
+
+function seeEmailModification()
+{
+    require("../../view/admin/email_modification_view.php");
+}
+
+function emailModification()
+{
+    $new_email = htmlspecialchars($_POST["email"]);
+    if (!empty($new_email))
+    {
+        updateEmail($new_email);
+        $phone_number = getContact(1);
+        $email = getContact(2);
+        require("../../view/admin/contact_modification_success_view.php");
     }
     
     else

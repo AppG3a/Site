@@ -103,6 +103,14 @@ header
 		{
 			width: 80%;
 		}
+		
+			.sub_content strong
+			{
+				text-align: center;
+				background-color: #90EE90;
+				padding: 15px;
+			}
+			
 	
 			form
 			{
@@ -120,6 +128,11 @@ header
 					background-color: #90EE90;
 					padding: 15px;
 				}
+				
+			#rooms
+			{
+				/*display: none;*/
+			}
 	
 		.right_nav
 		{

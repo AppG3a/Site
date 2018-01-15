@@ -36,14 +36,14 @@ header
 	.logo
 	{
 		order: 1;
-		width: 12%;
+		width: 14%;
 		text-align: center;
 	}
 	
 	.bouton
 	{
 		order: 3;
-		width: 12%;
+		width: 14%;
 		display: flex;
 		justify-content: space-around;	
 	}
@@ -65,8 +65,7 @@ header
 		.menu_items
 		{
 			display: flex;
-			flex-direction: column;
-			
+			flex-direction: column;	
 		}
 		
 		.menu_items a
@@ -79,13 +78,13 @@ header
 			background-color: rgb(0, 0, 129);
 			padding: 10px;
 			margin-bottom: 10px;
-			width: 50%;
+			width: 52%;
 		}
 		
 		.menu_items a:hover
 		{
 			padding-left: 10%;
-			width: 55%;
+			width: 57%;
 		}
 		
 		.menu_items a:active
@@ -97,41 +96,32 @@ header
 	{
 		flex: 1;
 		display: flex;
+		flex-direction: row;
 	}	
+		.sub_content_2
+		{
+			display: flex;
+			flex-direction: column;
+		}
 		
 		.sub_content
 		{
 			width: 80%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap : wrap;
 		}
-			
-			.sub_content strong
+	
+			.sensor
 			{
-				text-align: center;
-				background-color: #90EE90;
-				padding: 15px;
+				border: 2px rgb(0, 0, 129) solid;
+				border-radius: 10px;
+				background-color: rgb(215,215,215);
+				width: 225px;
+				height: 200px;
+				margin: 10px;
+				padding: 10px;
 			}
-			
-			form
-			{
-				texte-align: center;
-			}
-			
-				#error_message
-				{
-					background-color: #F08080;
-					padding: 15px;
-				}
-				
-				#success_message
-				{
-					background-color: #90EE90;
-					padding: 15px;
-				}
-			
-				.editor
-				{
-					background-color: white;
-				}
 	
 		.right_nav
 		{
@@ -154,13 +144,13 @@ header
 				background-color: rgb(0, 0, 129);
 				padding: 10px;
 				margin-bottom: 10px;
-				width: 70%;		
+				width: 80%;		
 			}
 			
 			.right_nav a:hover
 			{
 				padding-right: 30px;
-				width: 75%;
+				width: 85%;
 			}
 			
 			

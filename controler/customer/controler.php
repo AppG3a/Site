@@ -269,7 +269,8 @@ function seeAddSensor()
     $rooms = getRooms($id_house);
     $sensors = getSensors();
     $favorites = getSensors();
-    require("../../view/customer/add_sensor_view.php");
+    //require("../../view/customer/add_sensor_view.php");
+    require("../../view/customer/add_sensor_bis_view.php");
 }
 
 function addSensor()
@@ -278,13 +279,32 @@ function addSensor()
     $room = htmlspecialchars($_POST["room"]);
     $id_house = getHouse();
     insertSensor($reference, $room, $id_house);
+    $_SESSION["sensor_modification"] = 1;
     seeSensors();
+}
+
+function addSensorBis()
+{
+    $room = htmlspecialchars($_POST["room"]);
+    $id_house = getHouse();
+    $category = htmlspecialchars($_POST["category"]);
+    $type = htmlspecialchars($_POST["type"]);
+    insertSensorBis($room, $id_house, $category, $type);
+    $_SESSION["sensor_modification"] = 1;
+    seeSensors();
+}
+
+function seeRemoveSensor()
+{
+    $sensors = getSensors();
+    require("../../view/customer/remove_sensor_view.php");
 }
 
 function removeSensor()
 {
     $id_sensor = htmlspecialchars($_POST["sensor"]);
     deleteSensor($id_sensor);
+    $_SESSION["sensor_modification"] = 1;
     seeSensors();
 }
 
@@ -293,6 +313,12 @@ function removeSensor()
     $sensors = getSensors();
     require("view/customer/favorite_sensors_view.php");
 }*/
+
+function seeAddFavoriteSensors()
+{
+    $favorites = getSensors();
+    require("../../view/customer/add_favorite_sensors_view.php");
+}
 
 function addFavoriteSensors()
 {
@@ -308,7 +334,8 @@ function addFavoriteSensors()
         {
             updateFavorite($sensor["id"], 0);
         }
-    }    
+    }
+    $_SESSION["sensor_modification"] = 1;
     seeSensors();
 }
 

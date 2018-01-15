@@ -13,14 +13,18 @@
 		<div class="sub_content">
             <h1>Contacter le support</h1>
             
-            <p><strong>LE MESSAGE A ETE ENVOYE AU SUPPORT</strong></p>
+            <p>
+            	<strong>
+            		Le message a été envoyé au support. Vous recevrez une réponse par mail.
+            	</strong>
+            </p>
             <form method="post" action="roter.php?action=send_message">
             	<fieldset>
             		<legend>Envoyer un message</legend>
             			<p>
             				Email : <?= $_SESSION["email"] ?><br/><br/>
-            				<label for="subject">Sujet du message</label> :<br/><input type="text" name="subject" id="subject"><br/>
-                        	<label for="message">Message</label> :<br/><textarea name="message" id="message"></textarea><br/>
+            				<label for="subject">Sujet du message</label> :<br/><input type="text" name="subject" id="subject" required><br/>
+                        	<label for="message">Message</label> :<br/><textarea name="message" id="message" required></textarea><br/>
             			</p>
             	</fieldset>
             	<p>

@@ -59,11 +59,19 @@ if (isset($_GET["action"]))
         case "see_phone_number_modification":        
             seePhoneNumberModification();
             break;
-        
+                  
         case "phone_number_modification":        
             phoneNumberModification();
             break;
+                        
+        case "see_email_modification":
+            seeEmailModification();
+            break;
         
+        case "email_modification":
+            emailModification();
+            break;
+            
         case "see_cgu":        
             seeCgu();
             break;

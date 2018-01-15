@@ -28,6 +28,7 @@ if (isset($_GET["action"]))
             $_SESSION["first_name"] = $db_content["prenom"];
             $_SESSION["email"] = $db_content["mail"];
             $_SESSION["welcome"] = 1;
+            $_SESSION["sensor_modification"] = 0;
             
             if ($_SESSION["user_type"] == "admin")
             {

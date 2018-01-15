@@ -107,11 +107,23 @@ if (isset($_GET["action"]))
         case "add_sensor":
             addSensor();
             break;
+            
+        case "add_sensor_bis":
+            addSensorBis();
+            break;
+            
+        case "see_remove_sensor":
+            seeRemoveSensor();
+            break;
         
         case "remove_sensor":
             removeSensor();
             break;
         
+        case "see_add_favorite_sensors":
+            seeAddFavoriteSensors();
+            break;
+            
         case "add_favorite_sensors":
             addFavoriteSensors();
             break;

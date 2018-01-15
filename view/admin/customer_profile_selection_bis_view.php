@@ -13,8 +13,9 @@
         <div class="sub_content">
         	<div id="buttons"></div>
         	<div id="customer"></div>
-        	<div id="restore"></div> 
+        	<div id="restore"></div>
             <table></table>         
+            <div id="page"></div>  
         </div>
         
         <div class="right_nav">

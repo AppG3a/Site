@@ -63,7 +63,7 @@ function testPhp(reponse)
 			{
 				table.innerHTML = "";
 				
-				customers.sort(function(a, b)
+				customersList.sort(function(a, b)
 				{
 					if (Number(a.id) < Number(b.id))
 					{
@@ -76,7 +76,7 @@ function testPhp(reponse)
 					return 0;		
 				});
 				
-				initTable();
+				initTable(customersList);
 				
 				console.log("Tri par id");
 			});
@@ -89,7 +89,7 @@ function testPhp(reponse)
 			{
 				table.innerHTML = "";
 				
-				customers.sort(function(a, b)
+				customersList.sort(function(a, b)
 				{
 					if (a.nom < b.nom)
 					{
@@ -102,7 +102,7 @@ function testPhp(reponse)
 					return 0;		
 				});
 				
-				initTable();
+				initTable(customersList);
 				
 				console.log("Tri par nom");
 			});
@@ -119,7 +119,7 @@ function testPhp(reponse)
 			{
 				table.innerHTML = "";
 				
-				customers.sort(function(a, b)
+				customersList.sort(function(a, b)
 				{
 					if (a.date_inscription > b.date_inscription)
 					{
@@ -132,7 +132,7 @@ function testPhp(reponse)
 					return 0;		
 				});
 				
-				initTable();
+				initTable(customersList);
 				
 				console.log("Tri par date d'inscription");
 			});
@@ -144,7 +144,7 @@ function testPhp(reponse)
 		table.appendChild(trElt);
 		
 		// Remplissage du tableau
-		customers.forEach(function(customer)
+		customersList.forEach(function(customer)
 		{		
 			var trElt = document.createElement("tr");
 				trElt.addEventListener("click", function(event)
@@ -187,22 +187,21 @@ function testPhp(reponse)
 		});		
 	}
 	
-	initTable(customers);	
-	
 	// Initialisation d'un formulaire (le formulaire sera défini dans les events des différents boutons)
 	//var formElt = document.querySelector("form");
 	var formElt = document.createElement("form");
 	document.getElementsByClassName("sub_content")[0].insertBefore(formElt, customerElt);
 	
 	// Création de boutons pour sélectionner un critère de recherche
-	// Bouton qui permet de restaurer la liste des utilisateurs (seul bouton qui ne fait pas partie de <div id="buttons"></div>
+	// Bouton qui permet de restaurer la liste des utilisateurs
 	var restoreElt = document.getElementById("restore");
 	
 	var buttonRestoreElt = document.createElement("button");
 		buttonRestoreElt.textContent = "Restaurer la liste complète des utilisateurs";
 		buttonRestoreElt.addEventListener("click", function(event)
 		{
-			initTable(customers);
+			pagination(customers);
+			initTable(customersSubList[0]);
 			restoreElt.innerHTML = "";
 		});
 		
@@ -286,7 +285,9 @@ function testPhp(reponse)
 					{
 						restoreElt.appendChild(buttonRestoreElt);
 						
-						initTable(customerNameList);
+						//initTable(customerNameList);
+						pagination(customerNameList);
+						initTable(customersSubList[0]);
 					}
 					else
 					{
@@ -303,6 +304,86 @@ function testPhp(reponse)
 		
 	divButtonsElt.appendChild(buttonIdElt);
 	divButtonsElt.appendChild(buttonNameElt);	
+	
+	
+	//initTable(customers);
+	// Affichage des utilisateurs 5 par 5
+	
+	var customersSubList = [];
+	function pagination(customersList)
+	{
+		// Découpage de la liste des utilisateurs
+		customersSubList = [];
+		var customersSubSubList = [];
+		var k = 0; // k est un compteur
+		customersList.forEach(function(customer)
+		{
+			if (k < 7)
+			{
+				customersSubSubList.push(customer);
+				k++;
+			}
+			else
+			{
+				k = 0;
+				customersSubList.push(customersSubSubList);
+				customersSubSubList = [];
+				customersSubSubList.push(customer);
+				k++;
+			}
+		});
+		if (customersSubSubList.length != 0)
+		{
+			k = 0;
+			customersSubList.push(customersSubSubList);
+			customersSubSubList = [];		
+		}
+		console.log(customersSubList);
+			
+		// Bouton de recherche par page
+		var buttonPageElt = document.createElement("button");
+			buttonPageElt.textContent = "Page";
+			buttonPageElt.addEventListener("click", function(event)
+			{
+				console.log("Recherche par page");
+				formPageElt.innerHTML = "";
+				
+				var inputElt = document.createElement("input");
+					inputElt.type = "number";
+					inputElt.min = 1;
+					inputElt.max = customersSubList.length;
+					inputElt.placeholder = inputElt.min + "-" + inputElt.max;
+					
+				var submitElt = document.createElement("input");
+					submitElt.type = "submit";
+					submitElt.value = "Afficher";
+					submitElt.addEventListener("click", function(event)
+					{
+						var page = formPageElt.elements[0].value - 1;
+						console.log(page);
+						initTable(customersSubList[page]);
+						event.preventDefault();
+					});
+					
+				formPageElt.appendChild(inputElt);
+				formPageElt.appendChild(submitElt);
+				divPageElt.appendChild(formPageElt);
+			});
+			
+		var divPageElt = document.getElementById("page");
+		var formPageElt = document.createElement("form");
+		
+		divPageElt.innerHTML = "";
+		divPageElt.appendChild(buttonPageElt);
+		
+		
+	}
+
+	pagination(customers);
+	initTable(customersSubList[0]);
+	
+	
+	
 }
 
 ajaxGet("http://localhost/site_app/Site/controler/admin/requete.php", testPhp);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 12 jan. 2018 à 16:45
+-- Généré le :  lun. 15 jan. 2018 à 09:47
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -84,22 +84,23 @@ CREATE TABLE IF NOT EXISTS `capteurs` (
   `valeur` float NOT NULL,
   `valeur_cible` float DEFAULT NULL,
   `favori` tinyint(1) NOT NULL DEFAULT '0',
+  `id_type` int(11) NOT NULL,
+  `categorie` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `capteurs`
 --
 
-INSERT INTO `capteurs` (`id`, `id_utilisateur`, `id_emplacement`, `reference`, `description`, `on_off`, `valeur`, `valeur_cible`, `favori`) VALUES
-(1, 1, 1, 'température', 'capteur de température', 'ON', 20, 21, 0),
-(2, 1, 1, 'humidité', 'capteur d\'humidité', 'OFF', 23.3, NULL, 0),
-(3, 4, 1, 'température', 'température', 'ON', 20, 10, 1),
-(33, 4, 17, 'température', 'température', 'OFF', 10, 15, 1),
-(5, 4, 2, 'température', 'température', 'OFF', 21, 22, 1),
-(26, 4, 12, 'température', 'température', 'ON', 10, NULL, 1),
-(25, 3, 13, 'température', 'température', 'OFF', 10, NULL, 0),
-(32, 4, 5, 'température', 'température', 'OFF', 10, 16, 0);
+INSERT INTO `capteurs` (`id`, `id_utilisateur`, `id_emplacement`, `reference`, `description`, `on_off`, `valeur`, `valeur_cible`, `favori`, `id_type`, `categorie`) VALUES
+(1, 1, 1, 'température', 'capteur de température', 'ON', 20, 21, 0, 0, 'simple'),
+(2, 1, 1, 'humidité', 'capteur d\'humidité', 'OFF', 23.3, NULL, 0, 0, 'simple'),
+(33, 4, 17, 'température', 'température', 'OFF', 10, 15, 1, 1, 'objet'),
+(26, 4, 12, 'température', 'température', 'ON', 10, NULL, 1, 1, 'simple'),
+(25, 3, 13, 'température', 'température', 'OFF', 10, NULL, 0, 0, 'simple'),
+(32, 4, 5, 'température', 'température', 'ON', 10, 16, 0, 1, 'simple'),
+(34, 4, 20, 'reference', 'description', 'ON', 10, NULL, 0, 3, 'objet');
 
 -- --------------------------------------------------------
 
@@ -115,17 +116,6 @@ CREATE TABLE IF NOT EXISTS `catalogue` (
   `prix` float NOT NULL,
   `vignette` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `categories`
---
-
-DROP TABLE IF EXISTS `categories`;
-CREATE TABLE IF NOT EXISTS `categories` (
-  `categorie` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -185,7 +175,6 @@ CREATE TABLE IF NOT EXISTS `emplacements` (
 
 INSERT INTO `emplacements` (`id`, `id_maison`, `nom`) VALUES
 (20, 1, 'Chambre enfant'),
-(2, 1, 'Cuisine'),
 (12, 1, 'Garage'),
 (13, 2, 'Salon'),
 (5, 1, 'Salle de bain'),
@@ -243,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `message` text NOT NULL,
   `sending_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `messages`
@@ -261,7 +250,17 @@ INSERT INTO `messages` (`id`, `id_customer`, `subject`, `message`, `sending_date
 (19, 4, 'thg', 'rjyhtgr', '2017-12-21 19:10:51'),
 (18, 4, 'test', '', '2017-12-15 15:01:44'),
 (17, 4, 'test', '', '2017-12-15 14:12:03'),
-(16, 4, 'Problème capteur', 'J\'ai un problème', '2017-12-15 13:52:24');
+(16, 4, 'Problème capteur', 'J\'ai un problème', '2017-12-15 13:52:24'),
+(25, 4, '', '', '2018-01-14 17:38:25'),
+(26, 4, '', '', '2018-01-14 17:43:51'),
+(27, 4, '', '', '2018-01-14 17:47:01'),
+(28, 4, '', '', '2018-01-14 17:47:27'),
+(29, 4, '', '', '2018-01-14 17:47:49'),
+(30, 4, '', '', '2018-01-14 17:49:01'),
+(31, 4, '', '', '2018-01-14 17:49:16'),
+(32, 4, '', '', '2018-01-14 17:49:19'),
+(33, 4, 'tjyrf', 'dtj', '2018-01-14 17:50:31'),
+(34, 4, 'iètk', 'fit', '2018-01-14 17:50:41');
 
 -- --------------------------------------------------------
 
@@ -274,14 +273,15 @@ CREATE TABLE IF NOT EXISTS `numeros_domisep` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `numero` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `numeros_domisep`
 --
 
 INSERT INTO `numeros_domisep` (`id`, `numero`) VALUES
-(1, '0102030405');
+(1, '1234567800'),
+(2, 'domisep@isep.fr');
 
 -- --------------------------------------------------------
 
@@ -308,6 +308,31 @@ INSERT INTO `pannes` (`id`, `description`, `date_panne`, `solution`, `date_solut
 (1, 'Le capteur de température ne marche plus', '2017-11-01 09:12:09', 'Intervention - Changement du capteur', '2017-11-05 16:37:44', 5),
 (2, 'Plus aucun capteur ne marche', '2017-11-07 14:06:34', 'Rebrancher la passerelle', '2017-11-09 18:35:13', 6),
 (3, 'Le volet est bloqué', '2017-11-17 13:09:32', 'Intervention - Réparation du capteur', '2017-11-29 19:19:06', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `types_capteurs`
+--
+
+DROP TABLE IF EXISTS `types_capteurs`;
+CREATE TABLE IF NOT EXISTS `types_capteurs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) NOT NULL,
+  `categorie` varchar(255) NOT NULL,
+  `lien_image` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `types_capteurs`
+--
+
+INSERT INTO `types_capteurs` (`id`, `type`, `categorie`, `lien_image`) VALUES
+(1, 'Température', 'simple', ''),
+(2, 'Luminosité', 'simple', ''),
+(3, 'Radiateur', 'objet', ''),
+(4, 'Lampe', 'objet', '');
 
 -- --------------------------------------------------------
 

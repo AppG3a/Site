@@ -21,9 +21,11 @@ function testPhp(reponse)
 		breakdownElt.innerHTML = "";
 		
 		var pElt = document.createElement("p");
-			pElt.innerHTML = "Id : " + breakdown.id + "<br/>" 
-							+ "Problème : " + breakdown.description + "<br/>"
-							+ "Solution : " + breakdown.solution;
+			pElt.innerHTML = "Id : " + breakdown.id + " - Id client : " + breakdown.id_client +"<br/>" 
+							+ "<strong>Problème</strong> <em>" + breakdown.date_panne + "</em> : <br/>"
+							+ breakdown.description + "<br/>"
+							+ "<strong>Solution</strong> <em>" + breakdown.date_solution + "</em> : <br/>"
+							+ breakdown.solution;
 			pElt.style.backgroundColor = "#ADD8E6";
 			pElt.style.padding = "20px";
 			pElt.style.width = "393px";
@@ -63,7 +65,7 @@ function testPhp(reponse)
 			{
 				table.innerHTML = "";
 				
-				breakdowns.sort(function(a, b)
+				breakdownsList.sort(function(a, b)
 				{
 					if (Number(a.id) < Number(b.id))
 					{
@@ -76,7 +78,7 @@ function testPhp(reponse)
 					return 0;		
 				});
 				
-				initTable();
+				initTable(breakdownsList);
 				
 				console.log("Tri par id");
 			});
@@ -117,7 +119,7 @@ function testPhp(reponse)
 			{
 				table.innerHTML = "";
 				
-				breakdowns.sort(function(a, b)
+				breakdownsList.sort(function(a, b)
 				{
 					if (Number(a.id_client) < Number(b.id_client))
 					{
@@ -130,7 +132,7 @@ function testPhp(reponse)
 					return 0;		
 				});
 				
-				initTable();
+				initTable(breakdownsList);
 				
 				console.log("Tri par id_client");
 			});
@@ -149,7 +151,7 @@ function testPhp(reponse)
 			{
 				table.innerHTML = "";
 				
-				breakdowns.sort(function(a, b)
+				breakdownsList.sort(function(a, b)
 				{
 					if (a.date_panne > b.date_panne)
 					{
@@ -162,7 +164,7 @@ function testPhp(reponse)
 					return 0;		
 				});
 				
-				initTable();
+				initTable(breakdownsList);
 				
 				console.log("Tri par date de panne");
 			});
@@ -174,7 +176,7 @@ function testPhp(reponse)
 			{
 				table.innerHTML = "";
 				
-				breakdowns.sort(function(a, b)
+				breakdownsList.sort(function(a, b)
 				{
 					if (a.date_solution > b.date_solution)
 					{
@@ -187,7 +189,7 @@ function testPhp(reponse)
 					return 0;		
 				});
 				
-				initTable();
+				initTable(breakdownsList);
 				
 				console.log("Tri par date de solution");
 			});
@@ -200,7 +202,7 @@ function testPhp(reponse)
 		table.appendChild(trElt);
 		
 		// Remplissage du tableau
-		breakdowns.forEach(function(breakdown)
+		breakdownsList.forEach(function(breakdown)
 		{		
 			var trElt = document.createElement("tr");
 				trElt.addEventListener("click", function(event)
@@ -255,9 +257,9 @@ function testPhp(reponse)
 		});		
 	}
 	
-	initTable(breakdowns);	
+	//initTable(breakdowns);	
 	
-	/*
+	
 	// Initialisation d'un formulaire (le formulaire sera défini dans les events des différents boutons)
 	//var formElt = document.querySelector("form");
 	var formElt = document.createElement("form");
@@ -268,10 +270,12 @@ function testPhp(reponse)
 	var restoreElt = document.getElementById("restore");
 	
 	var buttonRestoreElt = document.createElement("button");
-		buttonRestoreElt.textContent = "Restaurer la liste complète des utilisateurs";
+		buttonRestoreElt.textContent = "Restaurer la liste complète des pannes";
 		buttonRestoreElt.addEventListener("click", function(event)
 		{
-			initTable(breakdowns);
+			//initTable(breakdowns);
+			pagination(breakdowns);
+			initTable(breakdownsSubList[0]);
 			restoreElt.innerHTML = "";
 		});
 		
@@ -289,14 +293,14 @@ function testPhp(reponse)
 			
 			var inputElt = document.createElement("input");
 				inputElt.type = "number";
-				inputElt.placeholder = "Id de l'utilisateur";
+				inputElt.placeholder = "Id de la panne";
 				
 			var submitElt = document.createElement("input");
 				submitElt.type = "submit";
 				submitElt.value = "Rechercher";
 				submitElt.addEventListener("click", function(event)
 				{
-					// Fonction permettant de récupérer le profil complet de l'id donné
+					// Fonction permettant de récupérer le détail de la panne qui a l'id donné
 					function findId(breakdown)
 					{
 						return breakdown.id == formElt.elements[0].value;
@@ -309,7 +313,7 @@ function testPhp(reponse)
 					}
 					else
 					{
-						showErrorMessage("Aucun utilisateur n'a cet Id");
+						showErrorMessage("Aucune panne n'a cet Id");
 						console.log("N'existe pas");
 					}	
 					
@@ -319,7 +323,102 @@ function testPhp(reponse)
 			formElt.appendChild(inputElt);
 			formElt.appendChild(submitElt);
 		});
-	
+	/*	
+	// Bouton de recherche par id client
+	var buttonCustomerIdElt = document.createElement("button");
+		buttonCustomerIdElt.textContent = "Id client";
+		buttonCustomerIdElt.style.margin = "5px";
+		buttonCustomerIdElt.addEventListener("click", function(event)
+		{
+			console.log("Recherche par id client");
+			formElt.innerHTML = "";
+			
+			var inputElt = document.createElement("input");
+				inputElt.type = "number";
+				inputElt.placeholder = "Id du client";
+				
+			var submitElt = document.createElement("input");
+				submitElt.type = "submit";
+				submitElt.value = "Rechercher";
+				submitElt.addEventListener("click", function(event)
+				{
+					// Fonction permettant de récupérer le détail de la panne qui a l'id client donné
+					function findId(breakdown)
+					{
+						return breakdown.id_client == formElt.elements[0].value;
+					}
+					
+					if (breakdowns.find(findId))
+					{
+						var breakdown = breakdowns.find(findId);
+						showBreakdownInfo(breakdown);
+					}
+					else
+					{
+						showErrorMessage("L'id client donné ne correspond à aucune panne");
+						console.log("N'existe pas");
+					}	
+					
+					event.preventDefault();
+				});
+				
+			formElt.appendChild(inputElt);
+			formElt.appendChild(submitElt);
+		});*/
+		
+	// Bouton de recherche par id client
+	var buttonCustomerIdElt = document.createElement("button");
+		buttonCustomerIdElt.textContent = "Id client";
+		buttonCustomerIdElt.addEventListener("click", function(event)
+		{
+			console.log("Recherche par id client");
+			formElt.innerHTML = "";
+			
+			var inputElt = document.createElement("input");
+				inputElt.type = "text";
+				inputElt.placeholder = "Id du client";
+				
+			var submitElt = document.createElement("input");
+				submitElt.type = "submit";
+				submitElt.value = "Rechercher";
+				submitElt.addEventListener("click", function(event)
+				{
+					var breakdownCustomerId = formElt.elements[0].value;
+					console.log("Id client recherché : " + breakdownCustomerId);
+					
+					var breakdownCustomerIdList = []; 	// Liste qui contiendra tous les utilisateurs qui ont l'id recherché
+					
+					breakdowns.forEach(function(breakdown)
+					{
+						if (breakdown.id_client == breakdownCustomerId)
+						{
+							breakdownCustomerIdList.push(breakdown);
+						}
+					});
+					
+					console.log(breakdownCustomerIdList);
+					if (breakdownCustomerIdList.length != 0)
+					{
+						restoreElt.appendChild(buttonRestoreElt);
+
+						//initTable(breakdownCustomerIdList);
+						pagination(breakdownCustomerIdList);
+						initTable(breakdownsSubList[0]);
+					}
+					else
+					{
+						initTable(breakdowns);
+						showErrorMessage("L'id client donné ne correspond à aucune panne");
+					}
+					
+					event.preventDefault();
+				});
+				
+			formElt.appendChild(inputElt);
+			formElt.appendChild(submitElt);
+		});
+		
+	/*
 	// Bouton de recherche par nom
 	var buttonNameElt = document.createElement("button");
 		buttonNameElt.textContent = "Nom";
@@ -369,9 +468,86 @@ function testPhp(reponse)
 			formElt.appendChild(inputElt);
 			formElt.appendChild(submitElt);
 		});
-		
+	*/	
 	divButtonsElt.appendChild(buttonIdElt);
-	divButtonsElt.appendChild(buttonNameElt);*/
+	divButtonsElt.appendChild(buttonCustomerIdElt);
+	//divButtonsElt.appendChild(buttonNameElt);
+	
+	//initTable(breakdowns);
+	// Affichage des utilisateurs 5 par 5
+	
+	var breakdownsSubList = [];
+	function pagination(breakdownsList)
+	{
+		// Découpage de la liste des utilisateurs
+		breakdownsSubList = [];
+		var breakdownsSubSubList = [];
+		var k = 0; // k est un compteur
+		breakdownsList.forEach(function(customer)
+		{
+			if (k < 2)
+			{
+				breakdownsSubSubList.push(customer);
+				k++;
+			}
+			else
+			{
+				k = 0;
+				breakdownsSubList.push(breakdownsSubSubList);
+				breakdownsSubSubList = [];
+				breakdownsSubSubList.push(customer);
+				k++;
+			}
+		});
+		if (breakdownsSubSubList.length != 0)
+		{
+			k = 0;
+			breakdownsSubList.push(breakdownsSubSubList);
+			breakdownsSubSubList = [];		
+		}
+		//console.log(breakdownsSubList);
+			
+		// Bouton de recherche par page
+		var buttonPageElt = document.createElement("button");
+			buttonPageElt.textContent = "Page";
+			buttonPageElt.addEventListener("click", function(event)
+			{
+				console.log("Recherche par page");
+				formPageElt.innerHTML = "";
+				
+				var inputElt = document.createElement("input");
+					inputElt.type = "number";
+					inputElt.min = 1;
+					inputElt.max = breakdownsSubList.length;
+					inputElt.placeholder = inputElt.min + "-" + inputElt.max;
+					
+				var submitElt = document.createElement("input");
+					submitElt.type = "submit";
+					submitElt.value = "Afficher";
+					submitElt.addEventListener("click", function(event)
+					{
+						var page = formPageElt.elements[0].value - 1;
+						console.log(page);
+						initTable(breakdownsSubList[page]);
+						event.preventDefault();
+					});
+					
+				formPageElt.appendChild(inputElt);
+				formPageElt.appendChild(submitElt);
+				divPageElt.appendChild(formPageElt);
+			});
+			
+		var divPageElt = document.getElementById("page");
+		var formPageElt = document.createElement("form");
+		
+		divPageElt.innerHTML = "";
+		divPageElt.appendChild(buttonPageElt);
+		
+		
+	}
+
+	pagination(breakdowns);
+	initTable(breakdownsSubList[0]);
 }
 
 ajaxGet("http://localhost/site_app/Site/controler/admin/requete_2.php", testPhp);
