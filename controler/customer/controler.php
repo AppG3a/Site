@@ -238,6 +238,8 @@ function seeRooms()
 {
     $id_house = getHouse();
     $rooms = getRooms($id_house);
+    $delete_rooms = getRooms($id_house);
+    $modify_rooms = getRooms($id_house);
     require("../../view/customer/rooms_view.php");
 }
 
@@ -260,6 +262,14 @@ function removeRoom()
 {
     $id_room = htmlspecialchars($_POST["room"]);
     deleteRoom($id_room);
+    seeRooms();
+}
+
+function modifyRoom()
+{
+    $id_room = htmlspecialchars($_POST["room"]);
+    $new_name = htmlspecialchars($_POST["new_name"]);
+    updateRoom($id_room, $new_name);
     seeRooms();
 }
 
@@ -289,7 +299,9 @@ function addSensorBis()
     $id_house = getHouse();
     $category = htmlspecialchars($_POST["category"]);
     $type = htmlspecialchars($_POST["type"]);
-    insertSensorBis($room, $id_house, $category, $type);
+    $default_value = getDefaultValue($type);
+    
+    insertSensorBis($room, $id_house, $category, $type, $default_value);
     $_SESSION["sensor_modification"] = 1;
     seeSensors();
 }
@@ -303,6 +315,7 @@ function seeRemoveSensor()
 function removeSensor()
 {
     $id_sensor = htmlspecialchars($_POST["sensor"]);
+    echo $id_sensor;
     deleteSensor($id_sensor);
     $_SESSION["sensor_modification"] = 1;
     seeSensors();

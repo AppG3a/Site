@@ -181,12 +181,26 @@ function getCgu()
     return $req;
 }*/
 
+/*
 function getSensors()
 {
     $db = dbConnect();
     $req = $db -> prepare("SELECT capteurs.*, emplacements.nom
                             FROM capteurs, emplacements
                             WHERE (capteurs.id_utilisateur = ? AND emplacements.id = capteurs.id_emplacement)");
+    $req -> execute(array($_SESSION["id"]));
+    
+    return $req;
+}
+*/
+function getSensors()
+{
+    $db = dbConnect();
+    $req = $db -> prepare("SELECT capteurs.*, emplacements.nom, types_capteurs.*
+                            FROM capteurs, emplacements, types_capteurs
+                            WHERE (capteurs.id_utilisateur = ? 
+                                AND emplacements.id = capteurs.id_emplacement
+                                AND capteurs.id_type = types_capteurs.id_type)");
     $req -> execute(array($_SESSION["id"]));
     
     return $req;
@@ -273,8 +287,18 @@ function deleteRoom($id_room)
                             WHERE id_emplacement = ?");
     $req -> execute(array($id_room));
     $req -> closeCursor();
-    
-    
+}
+
+function updateRoom($id_room, $new_name)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("UPDATE emplacements
+                            SET nom = :new_name
+                            WHERE id = :id_room");
+    $req -> execute(array(
+        "new_name" => $new_name,
+        "id_room" => $id_room));
+    $req -> closeCursor();
 }
 
 function insertSensor($reference, $room, $id_house)
@@ -292,7 +316,20 @@ function insertSensor($reference, $room, $id_house)
     $req -> closeCursor();
 }
 
-function insertSensorBis($room, $id_house, $category, $type)
+function getDefaultValue($type)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("SELECT valeur_defaut
+                            FROM types_capteurs
+                            WHERE type = ?");
+    $req -> execute(array($type));
+    $default_value = $req -> fetch();
+    $req -> closeCursor();
+    
+    return $default_value["valeur_defaut"];
+}
+
+function insertSensorBis($room, $id_house, $category, $type, $default_value)
 {
     $db = dbConnect();
     $req = $db -> prepare("INSERT INTO capteurs(id_utilisateur, id_emplacement, reference, description, on_off, valeur, id_type, categorie)
@@ -301,13 +338,14 @@ function insertSensorBis($room, $id_house, $category, $type)
                                     'reference',
                                     'description', 
                                     'OFF',
-                                    10,
-                                    (SELECT id FROM types_capteurs WHERE type = :type),
+                                    :default_value,
+                                    (SELECT id_type FROM types_capteurs WHERE type = :type),
                                     :category)");
     $req -> execute(array(
         "id_utilisateur" => $_SESSION["id"],
         "nom" => $room,
         "id_maison" => $id_house,
+        "default_value" => $default_value,
         "type" => $type,
         "category" => $category));
     

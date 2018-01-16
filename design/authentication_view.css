@@ -59,3 +59,76 @@ body
 		border: 1px rgba(0, 0, 0, 0) solid;
 		box-shadow: 2px 2px 50px white inset;
 	}
+	
+	
+/* Carousel */	
+	
+#container {
+    overflow: hidden;
+    position: relative;
+    width: 606px;
+    height: 150px;
+    border: 3px solid #333; 
+    overflow: hidden; 
+    position: relative;
+    margin: 0 auto;
+}
+#list {
+    position: absolute;
+    width: 1818px;
+    height: 150px;
+    z-index: 1;
+}
+#list img {
+            float: left;
+            width: 202px;
+            height: 150px;
+}
+#buttons {
+    position: absolute;
+    height: 10px;
+    width: 100px;
+    bottom: 20px;
+    left: 253px;
+    z-index: 2;
+}
+#buttons span {
+    display: inline-block;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, .5);
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+}
+#buttons .on {
+    background-color: orangered;
+}
+.arrow {
+    display: none;
+    background-color: rgba(0, 0, 0, .3);
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    line-height: 39px;
+    font-weight: bold;
+    font-size: 36px;
+    color: #fff;
+    text-align: center;
+}
+.arrow:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .5);
+}
+#prev {
+    left: 10px;
+}
+#next {
+    right: 10px;
+}
+#container:hover .arrow {
+    display: block;
+}

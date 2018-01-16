@@ -23,11 +23,44 @@
 
 <h2>Produits Domisep</h2>
 
+<!-- 
 <div class="catalogue">
     <img src="design/picture/camera_2.jpg" alt="Caméra"/>
     <img src="design/picture/capteur_2.jpg" alt="Capteur"/>
     <img src="design/picture/montre_2.jpg" alt="Montre"/>
 </div>
+
+<a href="#" title="Boutique Domisep">Consulter l'offre de produits Domisep</a> -->
+<!-- Début du carousel en JS -->
+
+<!-- <link rel="stylesheet" href="design/carousel.css"> -->
+<div id="container">
+        <div id="list" style="left:-404px;">
+          <a href="#"><img src="design/picture/montre_2.jpg" alt="1"></a>
+           <a href="#"> <img src="design/picture/montre_2.jpg" alt="1"></a>
+            <a href="#"><img src="design/picture/camera_2.jpg" alt="1"></a>
+           <a href="#"> <img src="design/picture/capteur_2.jpg" alt="2"></a>
+           <a href="#"> <img src="design/picture/montre_2.jpg" alt="3"></a>
+           <a href="#"> <img src="design/picture/montre_2.jpg" alt="4"></a>
+           <a href="#"> <img src="design/picture/montre_2.jpg" alt="5"></a>
+            <a href="#"><img src="design/picture/camera_2.jpg" alt="5"></a>
+           <a href="#"> <img src="design/picture/capteur_2.jpg" alt="5"></a>
+           
+        </div>
+        <div id="buttons">
+            <span data-index="1" class="on"></span>
+            <span data-index="2"></span>
+            <span data-index="3"></span>
+            <span data-index="4"></span>
+            <span data-index="5"></span>
+        </div>
+        <a href="javascript:void(0);" class="arrow" id="prev">&lt;</a>
+        <a href="javascript:void(0);" class="arrow" id="next">&gt;</a>
+    </div>
+    <script type="text/javascript" src="js/carousel.js">
+    </script>
+    
+<!-- Fin du carousel en JS -->
 
 <a href="#" title="Boutique Domisep">Consulter l'offre de produits Domisep</a>
 

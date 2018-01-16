@@ -21,7 +21,7 @@
                     while ($sensor = $sensors -> fetch())
                     {
                     ?>
-                    	<option value="<?= $sensor["id"] ?>"><?= $sensor["reference"] ?> - <?= $sensor["nom"] ?></option>
+                    	<option value="<?= $sensor["id"] ?>"><?= $sensor["type"] ?> - <?= $sensor["nom"] ?></option>
                 	<?php 
                     }
                     $sensors -> closeCursor();

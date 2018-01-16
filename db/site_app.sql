@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 15 jan. 2018 à 09:47
+-- Généré le :  mar. 16 jan. 2018 à 22:42
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -81,26 +81,25 @@ CREATE TABLE IF NOT EXISTS `capteurs` (
   `reference` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `on_off` varchar(255) NOT NULL,
-  `valeur` float NOT NULL,
+  `valeur` float DEFAULT NULL,
   `valeur_cible` float DEFAULT NULL,
   `favori` tinyint(1) NOT NULL DEFAULT '0',
   `id_type` int(11) NOT NULL,
   `categorie` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `capteurs`
 --
 
 INSERT INTO `capteurs` (`id`, `id_utilisateur`, `id_emplacement`, `reference`, `description`, `on_off`, `valeur`, `valeur_cible`, `favori`, `id_type`, `categorie`) VALUES
-(1, 1, 1, 'température', 'capteur de température', 'ON', 20, 21, 0, 0, 'simple'),
-(2, 1, 1, 'humidité', 'capteur d\'humidité', 'OFF', 23.3, NULL, 0, 0, 'simple'),
+(1, 1, 1, 'température', 'capteur de température', 'ON', 20, 21, 1, 0, 'simple'),
 (33, 4, 17, 'température', 'température', 'OFF', 10, 15, 1, 1, 'objet'),
-(26, 4, 12, 'température', 'température', 'ON', 10, NULL, 1, 1, 'simple'),
+(26, 4, 12, 'température', 'température', 'OFF', 10, NULL, 0, 1, 'simple'),
 (25, 3, 13, 'température', 'température', 'OFF', 10, NULL, 0, 0, 'simple'),
-(32, 4, 5, 'température', 'température', 'ON', 10, 16, 0, 1, 'simple'),
-(34, 4, 20, 'reference', 'description', 'ON', 10, NULL, 0, 3, 'objet');
+(38, 4, 5, 'reference', 'description', 'OFF', 10, NULL, 0, 4, 'objet'),
+(34, 4, 20, 'reference', 'description', 'OFF', 10, NULL, 1, 3, 'objet');
 
 -- --------------------------------------------------------
 
@@ -167,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `emplacements` (
   `id_maison` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `emplacements`
@@ -232,7 +231,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `message` text NOT NULL,
   `sending_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `messages`
@@ -260,7 +259,8 @@ INSERT INTO `messages` (`id`, `id_customer`, `subject`, `message`, `sending_date
 (31, 4, '', '', '2018-01-14 17:49:16'),
 (32, 4, '', '', '2018-01-14 17:49:19'),
 (33, 4, 'tjyrf', 'dtj', '2018-01-14 17:50:31'),
-(34, 4, 'iètk', 'fit', '2018-01-14 17:50:41');
+(34, 4, 'iètk', 'fit', '2018-01-14 17:50:41'),
+(35, 4, 'fj', 'fyj', '2018-01-16 08:45:30');
 
 -- --------------------------------------------------------
 
@@ -317,22 +317,27 @@ INSERT INTO `pannes` (`id`, `description`, `date_panne`, `solution`, `date_solut
 
 DROP TABLE IF EXISTS `types_capteurs`;
 CREATE TABLE IF NOT EXISTS `types_capteurs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_type` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) NOT NULL,
   `categorie` varchar(255) NOT NULL,
   `lien_image` text NOT NULL,
-  PRIMARY KEY (`id`)
+  `unite` varchar(255) NOT NULL,
+  `valeur_defaut` int(11) DEFAULT NULL,
+  `max` int(11) NOT NULL,
+  `min` int(11) NOT NULL,
+  `code_affichage` int(11) NOT NULL,
+  PRIMARY KEY (`id_type`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `types_capteurs`
 --
 
-INSERT INTO `types_capteurs` (`id`, `type`, `categorie`, `lien_image`) VALUES
-(1, 'Température', 'simple', ''),
-(2, 'Luminosité', 'simple', ''),
-(3, 'Radiateur', 'objet', ''),
-(4, 'Lampe', 'objet', '');
+INSERT INTO `types_capteurs` (`id_type`, `type`, `categorie`, `lien_image`, `unite`, `valeur_defaut`, `max`, `min`, `code_affichage`) VALUES
+(1, 'Température', 'simple', 'http://localhost/site_app/Site/design/picture/thermo_2.png', '°C', 10, 0, 0, 1),
+(2, 'Luminosité', 'simple', 'http://localhost/site_app/Site/design/picture/soleil_2.png', 'lux', 100, 0, 0, 1),
+(3, 'Radiateur', 'objet', 'http://localhost/site_app/Site/design/picture/radiateur_2.png', '°C', 15, 35, 0, 2),
+(4, 'Lampe', 'objet', 'http://localhost/site_app/Site/design/picture/ampoule_2.png', '', NULL, 0, 0, 1);
 
 -- --------------------------------------------------------
 

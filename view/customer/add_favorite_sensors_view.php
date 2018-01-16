@@ -22,13 +22,13 @@
                         if ($favorite["favori"] != 0)
                         {
                         ?>
-                    		<input type="checkbox" name="<?= $favorite['id'] ?>" checked="checked" id="favorite" /> <label for="favorite"><?= $favorite["reference"] ?> - <?= $favorite["nom"] ?></label><br/>
+                    		<input type="checkbox" name="<?= $favorite['id'] ?>" checked="checked" id="favorite" /> <label for="favorite"><?= $favorite["type"] ?> - <?= $favorite["nom"] ?></label><br/>
                 		<?php 
                         }
                         else 
                         {
                 		?>
-                			<input type="checkbox" name="<?= $favorite['id'] ?>" id="favorite" /> <label for="favorite"><?= $favorite["reference"] ?> - <?= $favorite["nom"] ?></label><br/>
+                			<input type="checkbox" name="<?= $favorite['id'] ?>" id="favorite" /> <label for="favorite"><?= $favorite["type"] ?> - <?= $favorite["nom"] ?></label><br/>
             		<?php 
                         }
                     }

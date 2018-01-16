@@ -19,34 +19,44 @@ $css = "../../design/customer/sensors_view_3.css?<?php echo time(); ?";
             <?php 
             while ($sensor = $sensors -> fetch())
             {
-                if ($sensor["categorie"] == "simple")
+                if ($sensor["code_affichage"] == 1)
                 {
             ?>
             	<div class="sensor">
-                	<p>
-                		<strong>Capteur :</strong> <?= $sensor["description"] ?><br/>
-                		Catégorie : <?= $sensor["categorie"] ?><br/>
+                	<!-- <p> -->
+                		<strong><?= $sensor["type"] ?> . <?= $sensor["valeur"] ?> <?= $sensor["unite"] ?></strong><br/>
                 		Pièce : <?= $sensor["nom"] ?><br/>
                 		Etat : <?= $sensor["on_off"] ?><br/>
-                		<?= $sensor["reference"] ?> : <?= $sensor["valeur"] ?><br/>
-  
-            			<br/>
+
                 		<a href="roter.php?action=switch_sensor_status&id_sensor=<?= $sensor['id'] ?>&sensor_status=<?= $sensor['on_off'] ?>" class="on_off_button">ON/OFF</a><br/>
-                	</p>
+                		<img src=<?= $sensor["lien_image"] ?> alt=<?= $sensor["type"] ?> title=<?= $sensor["type"] ?> />
+                		<?php 
+                		if ($sensor["favori"] == 1)
+                		{
+                		?>
+                			<img src="http://localhost/site_app/Site/design/picture/favori_on_2.png" alt="Favori" title="Favori" />
+            			<?php 
+                		}
+                		else 
+                		{
+            			?>
+            				<img src="http://localhost/site_app/Site/design/picture/favori_off_2.png" alt="Non favori" title="Non favori" />
+        				<?php 
+                		}
+        				?>
+                	<!-- </p> -->
     			</div>
             
             <?php
                 }
-                else if ($sensor["categorie"] == "objet")
+                elseif ($sensor["code_affichage"] == 2)
                 {
             ?>
             	<div class="sensor">
-                	<p>
-                		<strong>Capteur :</strong> <?= $sensor["description"] ?><br/>
-                		Catégorie : <?= $sensor["categorie"] ?><br/>
+                	<!-- <p> -->
+                		<strong><?= $sensor["type"] ?> . <?= $sensor["valeur"] ?> <?= $sensor["unite"] ?></strong><br/>
                 		Pièce : <?= $sensor["nom"] ?><br/>
-                		Etat : <?= $sensor["on_off"] ?><br/>
-                		<?= $sensor["reference"] ?> : <?= $sensor["valeur"] ?><br/>
+                		Etat : <?= $sensor["on_off"] ?>
                 		<?php 
                 		if (!empty($sensor["valeur_cible"]))
                 		{
@@ -73,8 +83,24 @@ $css = "../../design/customer/sensors_view_3.css?<?php echo time(); ?";
                 		<?php 
                 		}
             			?>
+            			
+                		<img src=<?= $sensor["lien_image"] ?> alt=<?= $sensor["type"] ?> title=<?= $sensor["type"] ?> />
+                		<?php 
+                		if ($sensor["favori"] == 1)
+                		{
+                		?>
+                			<img src="http://localhost/site_app/Site/design/picture/favori_on_2.png" alt="Favori" title="Favori" />
+            			<?php 
+                		}
+                		else 
+                		{
+            			?>
+            				<img src="http://localhost/site_app/Site/design/picture/favori_off_2.png" alt="Non favori" title="Non favori" />
+        				<?php 
+                		}
+        				?>
     
-                	</p>
+                	<!-- </p> -->
     			</div>
 			<?php
                 }

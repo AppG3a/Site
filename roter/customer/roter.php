@@ -99,6 +99,10 @@ if (isset($_GET["action"]))
         case "remove_room":
             removeRoom();
             break;
+            
+        case "modify_room":
+            modifyRoom();
+            break;
         
         case "see_add_sensor":
             seeAddSensor();
