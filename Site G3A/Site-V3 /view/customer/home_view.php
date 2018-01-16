@@ -3,12 +3,11 @@ $css = "../../design/customer/sensors_view_2.css?<?php echo time(); ?";
 ?>
 <?php $title = "Harvey"; ?>
 
-<?php include("bloc_header_view.php")?>
-
-<div class="center">
-    <?php include("bloc_nav_view.php")?>
-    
 	<?php ob_start(); ?>
+	
+	<?php include("bloc_header_view.php")?>
+	<div class="center">
+	 <?php include("bloc_nav_view.php")?>
 
 	<div class="content">
 		<div id="welcome_message"></div>
@@ -64,15 +63,19 @@ $css = "../../design/customer/sensors_view_2.css?<?php echo time(); ?";
             ?>
         </div>
 
-    </div>    
+    </div>   
+    
+    </div>
+    <?php include("bloc_footer_view.php")?> 
     <?php $content = ob_get_clean(); ?>
+    
 
 <?php //require("view/customer/template.php"); 
 require("../../view/customer/template.php"); 
 ?>
-</div>
 
-<?php include("bloc_footer_view.php")?>
+
+
 
 <script type="text/javascript">
 <!--

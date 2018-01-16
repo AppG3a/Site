@@ -27,6 +27,7 @@ function profileModification()
 //Fais les modifications du profil demandées puis affiche la page de profil de l'utilisateur qui a l'id donné
 //A REFAIRE : cette fonction est à refaire, elle est trop longue et peut facilement être améliorée
 {
+    $_POST["nom"]=strtoupper($_POST["nom"]);
     $test = profileUpdate();
     if ($test == 1)
     {
