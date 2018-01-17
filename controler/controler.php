@@ -3,6 +3,7 @@ require("model/model.php");
 
 function seeAuthenticationPage()
 {
+    $pictures = getPictures();
     require("view/authentication_view.php");
 }
 
@@ -33,21 +34,28 @@ function checkAuthentication()
             
             else
             {
+                $pictures = getPictures();
                 require("view/authentication_error1_view.php");
             }
         }
         
         else
         {
+            $pictures = getPictures();
             require("view/authentication_error2_view.php");
         }
     }
     
     else
     {
+        $pictures = getPictures();
         require("view/authentication_error3_view.php");
     }
-    
+}
+
+function seeForgottenPassword()
+{
+    require("view/forgotten_password_view.php");
 }
 
 function openAdmin()

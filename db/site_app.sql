@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 16 jan. 2018 à 22:42
+-- Généré le :  mer. 17 jan. 2018 à 19:08
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `capteurs` (
   `id_type` int(11) NOT NULL,
   `categorie` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `capteurs`
@@ -98,6 +98,7 @@ INSERT INTO `capteurs` (`id`, `id_utilisateur`, `id_emplacement`, `reference`, `
 (33, 4, 17, 'température', 'température', 'OFF', 10, 15, 1, 1, 'objet'),
 (26, 4, 12, 'température', 'température', 'OFF', 10, NULL, 0, 1, 'simple'),
 (25, 3, 13, 'température', 'température', 'OFF', 10, NULL, 0, 0, 'simple'),
+(44, 4, 5, 'reference', 'description', 'OFF', 2, NULL, 0, 5, 'simple'),
 (38, 4, 5, 'reference', 'description', 'OFF', 10, NULL, 0, 4, 'objet'),
 (34, 4, 20, 'reference', 'description', 'OFF', 10, NULL, 1, 3, 'objet');
 
@@ -191,7 +192,22 @@ CREATE TABLE IF NOT EXISTS `images` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `lien` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `images`
+--
+
+INSERT INTO `images` (`id`, `lien`) VALUES
+(1, 'http://localhost/site_app/Site/design/picture/montre_2.jpg'),
+(2, 'http://localhost/site_app/Site/design/picture/camera_2.jpg'),
+(3, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg'),
+(4, 'http://localhost/site_app/Site/design/picture/montre_2.jpg'),
+(5, 'http://localhost/site_app/Site/design/picture/camera_2.jpg'),
+(6, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg'),
+(7, 'http://localhost/site_app/Site/design/picture/montre_2.jpg'),
+(8, 'http://localhost/site_app/Site/design/picture/camera_2.jpg'),
+(9, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg');
 
 -- --------------------------------------------------------
 
@@ -321,13 +337,13 @@ CREATE TABLE IF NOT EXISTS `types_capteurs` (
   `type` varchar(255) NOT NULL,
   `categorie` varchar(255) NOT NULL,
   `lien_image` text NOT NULL,
-  `unite` varchar(255) NOT NULL,
+  `unite` varchar(255) NOT NULL DEFAULT '',
   `valeur_defaut` int(11) DEFAULT NULL,
-  `max` int(11) NOT NULL,
-  `min` int(11) NOT NULL,
+  `max` int(11) DEFAULT NULL,
+  `min` int(11) DEFAULT NULL,
   `code_affichage` int(11) NOT NULL,
   PRIMARY KEY (`id_type`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `types_capteurs`
@@ -337,7 +353,8 @@ INSERT INTO `types_capteurs` (`id_type`, `type`, `categorie`, `lien_image`, `uni
 (1, 'Température', 'simple', 'http://localhost/site_app/Site/design/picture/thermo_2.png', '°C', 10, 0, 0, 1),
 (2, 'Luminosité', 'simple', 'http://localhost/site_app/Site/design/picture/soleil_2.png', 'lux', 100, 0, 0, 1),
 (3, 'Radiateur', 'objet', 'http://localhost/site_app/Site/design/picture/radiateur_2.png', '°C', 15, 35, 0, 2),
-(4, 'Lampe', 'objet', 'http://localhost/site_app/Site/design/picture/ampoule_2.png', '', NULL, 0, 0, 1);
+(4, 'Lampe', 'objet', 'http://localhost/site_app/Site/design/picture/ampoule_2.png', '', NULL, 0, 0, 1),
+(5, 'Humidité', 'simple', 'http://localhost/site_app/Site/design/picture/goutte_2.png', '%', 2, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 

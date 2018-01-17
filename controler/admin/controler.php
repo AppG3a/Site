@@ -195,6 +195,61 @@ function emailModification()
     }
 }
 
+function seeSensorCreation()
+{
+    require("../../view/admin/sensor_creation_view.php");
+}
+
+function sensorCreation()
+{
+    // Données obligatoires (required ou radio)
+    $category = htmlspecialchars($_POST["category"]);
+    $type = htmlspecialchars($_POST["type"]);
+    $display_code = htmlspecialchars($_POST["display_code"]);
+    $picture_link = htmlspecialchars($_POST["picture_link"]);
+    
+    // Données facultatives (unité, valeurs défaut/min/max)
+    function optionalData($data_name, $value)
+    {
+        if (!empty($_POST[$data_name]))
+        {
+            $data = htmlspecialchars($_POST[$data_name]);
+        }
+        else
+        {
+            $data = $value;
+        }
+        
+        return $data;
+    }
+        
+    $unity = optionalData("unity", "");
+    $default_value = optionalData("default_value", null);
+    $min = optionalData("min", null);
+    $max = optionalData("max", null);
+    
+    insertSensor($type, $category, $picture_link, $unity, $default_value, $max, $min, $display_code);
+    
+    seeSensorCreation();
+}
+
+function seeCarouselModification()
+{
+    $pictures = getPictures();
+    require("../../view/admin/carousel_modification_view.php");
+}
+
+function carouselModification()
+{
+    $picture_link = htmlspecialchars($_POST["picture_link"]);
+    $id_pictures = $_POST["id_pictures"];
+    foreach($id_pictures as $id_picture)
+    {
+        updatePicture($id_picture, $picture_link);
+    }
+    seeCarouselModification();
+}
+
 function seeCgu()
 {
     $cgu = getCgu();

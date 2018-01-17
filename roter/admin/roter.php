@@ -72,6 +72,22 @@ if (isset($_GET["action"]))
             emailModification();
             break;
             
+        case "see_sensor_creation":
+            seeSensorCreation();
+            break;
+            
+        case "sensor_creation":
+            sensorCreation();
+            break;
+            
+        case "see_carousel_modification":
+            seeCarouselModification();
+            break;
+            
+        case "carousel_modification":
+            carouselModification();
+            break;
+            
         case "see_cgu":        
             seeCgu();
             break;
@@ -94,7 +110,7 @@ if (isset($_GET["action"]))
 }
 else
 {
-    seeHomePage();
+    seeCustomerProfileSelectionBis();
 }
 
 ?>

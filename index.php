@@ -50,6 +50,10 @@ if (isset($_GET["action"]))
             seeCgu();
             break;
             
+        case "see_forgotten_password":
+            seeForgottenPassword();
+            break;
+            
         default:
             seeAuthenticationPage();
             break;

@@ -54,3 +54,35 @@ function getCgu()
     return $cgu;
 }
 
+function getPictures()
+{
+    $db = dbConnect();
+    $req = $db -> query("SELECT *
+                        FROM images");    
+    return $req;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

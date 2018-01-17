@@ -164,6 +164,43 @@ function getCustomers()
     return $req;
 }
 
+function insertSensor($type, $category, $picture_link, $unity, $default_value, $max, $min, $display_code)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("INSERT INTO types_capteurs(type, categorie, lien_image, unite, valeur_defaut, max, min, code_affichage)
+                            VALUES (:type, :categorie, :lien_image, :unite, :valeur_defaut, :max, :min, :code_affichage)");
+    $req -> execute(array(
+        "type" => $type,
+        "categorie" => $category,
+        "lien_image" => $picture_link,
+        "unite" => $unity,
+        "valeur_defaut" => $default_value,
+        "max" => $max,
+        "min" => $min,
+        "code_affichage" => $display_code));
+    
+    $req -> closeCursor();
+}
+
+function getPictures()
+{
+    $db = dbConnect();
+    $req = $db -> query("SELECT *
+                        FROM images");
+    return $req;
+}
+
+function updatePicture($id_picture, $picture_link)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("UPDATE images
+                            SET lien = :lien
+                            WHERE id = :id");
+    $req -> execute(array(
+        "lien" => $picture_link,
+        "id" => $id_picture));
+    $req -> closeCursor();  
+}
 
 
 
