@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 18 jan. 2018 à 20:47
+-- Généré le :  jeu. 18 jan. 2018 à 22:32
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -95,12 +95,12 @@ CREATE TABLE IF NOT EXISTS `capteurs` (
 
 INSERT INTO `capteurs` (`id`, `id_utilisateur`, `id_emplacement`, `reference`, `description`, `on_off`, `valeur`, `valeur_cible`, `favori`, `id_type`, `categorie`) VALUES
 (1, 1, 1, 'température', 'capteur de température', 'ON', 20, 21, 1, 0, 'simple'),
-(33, 4, 17, 'température', 'température', 'OFF', 10, 15, 1, 1, 'objet'),
-(26, 4, 12, 'température', 'température', 'OFF', 10, NULL, 1, 1, 'simple'),
+(33, 4, 17, 'température', 'température', 'ON', 10, 15, 1, 1, 'objet'),
+(26, 4, 12, 'température', 'température', 'OFF', 10, NULL, 0, 1, 'simple'),
 (25, 3, 13, 'température', 'température', 'OFF', 10, NULL, 0, 0, 'simple'),
 (44, 4, 5, 'reference', 'description', 'OFF', 2, NULL, 1, 5, 'simple'),
-(38, 4, 5, 'reference', 'description', 'OFF', 10, NULL, 0, 4, 'objet'),
-(34, 4, 20, 'reference', 'description', 'OFF', 10, NULL, 0, 3, 'objet');
+(38, 4, 5, 'reference', 'description', 'OFF', 10, NULL, 1, 4, 'objet'),
+(34, 4, 20, 'reference', 'description', 'OFF', 10, NULL, 1, 3, 'objet');
 
 -- --------------------------------------------------------
 
@@ -375,7 +375,7 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `date_inscription` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `categorie_utilisateur` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `utilisateurs`
@@ -393,7 +393,7 @@ INSERT INTO `utilisateurs` (`id`, `nom`, `prenom`, `adresse`, `mail`, `mot_de_pa
 (9, 'MARIER', 'Martin', '86, rue des six frères Ruellan\r\n44230 SAINT-SÉBASTIEN-SUR-LOIRE', 'martin.marier@gmail.com', 'she8ahLee3', '2017-12-21 09:45:40', 'customer'),
 (10, 'LAMONTAGNE', 'Christine', '26, quai Saint-Nicolas\r\n59200 TOURCOING', 'christine.lamontagne@gmail.com', 'UQueen5JieY', '2017-12-21 09:45:40', 'customer'),
 (11, 'BELLEMARE', 'Gilles', '14, boulevard Amiral Courbet\r\n94310 ORLY', 'gilles.bellemar@gmail.com', 'reWith0aeg', '2017-12-21 09:45:40', 'customer'),
-(12, 'TESTO', 'Stérone', '42, rue du Test\r\n42000 TEST', 'test@gmail.com', '5a60603c4d54c', '2017-12-21 09:45:40', 'customer'),
+(12, 'TESTO', 'Stérone', '42, rue du Test\r\n42000 TEST', 'test@gmail.com', '5a610fb13efa9', '2017-12-21 09:45:40', 'customer'),
 (20, 'DUFOUR', 'Lewis', '78, Rue Hubert de Lisle\r\n33310 LORMONT', 'lewis.dufour@gmail.com', 'EDfg25d', '2018-01-08 17:30:32', 'customer');
 COMMIT;
 

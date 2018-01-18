@@ -1,4 +1,4 @@
-<?php $css = "../../design/customer/home_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/customer/home_view.css"; ?>
 <?php $title = "Conditions générales d'utilisation"; ?>
 
 <?php include("bloc_header_view.php")?>

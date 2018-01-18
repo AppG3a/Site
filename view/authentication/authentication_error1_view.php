@@ -1,14 +1,12 @@
-<?php $css = "design/authentication/authentication_view.css?<?php echo time(); ?"; ?>
+<?php $css = "design/authentication/authentication_view.css"; ?>
 <?php $title = "Harvey"; ?>
 
 <?php ob_start(); ?>
 
-<!-- <h1>Harvey</h1> -->
 <img src="design/picture/logo_harvey_2.png" alt="Logo d'Harvey" class="logo"/>
 <p><strong>MOT DE PASSE INCORRECT</strong></p>
 <form method="post" action="index.php?action=connexion">
 	<p class="champ">
-		<!-- <label for="pseudo">Pseudo</label><br/><input type="text" name="pseudo" id="pseudo"><br/> -->
 		<label for="mail">Email</label><br/><input type="email" name="mail" id="mail" required><br/>
     	<label for="mot_de_passe">Mot de passe</label><br/><input type="password" name="mot_de_passe" id="mot_de_passe" required><br/>
 	</p>

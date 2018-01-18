@@ -9,9 +9,7 @@
 -->
 
 <nav>
-	<!-- <h1>Menu</h1> -->
 	<div class="menu_items">
-    	<!-- <a href="roter.php">Vue générale</a> -->
     	<a href="roter.php?action=see_customer_profile_selection_bis">Voir une fiche client</a>
     	<a href="roter.php?action=see_breakdown_history">Historique des pannes</a>
     	<a href="roter.php?action=see_sensor_creation">Créer un capteur</a>    	

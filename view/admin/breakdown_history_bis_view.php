@@ -1,4 +1,4 @@
-<?php $css = "../../design/admin/customer_profile_selection_bis_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/admin/customer_profile_selection_bis_view.css"; ?>
 <?php $title = "Historique des pannes"; ?>
 
 <?php include("bloc_header_view.php")?>

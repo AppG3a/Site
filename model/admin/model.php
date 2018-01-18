@@ -21,8 +21,9 @@ function getProfile($id)
     $db = dbConnect();
     $req = $db -> prepare("SELECT nom, prenom, adresse, mail
                             FROM utilisateurs
-                            WHERE id = ?");
-    $req -> execute(array($id));
+                            WHERE id = :id");
+    $req -> bindParam("id", $id);
+    $req -> execute();
     $profile = $req -> fetch();
     $req -> closeCursor();
     
@@ -35,11 +36,11 @@ function profileUpdate($name, $first_name, $address)
     $req = $db -> prepare("UPDATE utilisateurs
                             SET nom = :nom, prenom = :prenom, adresse = :adresse
                             WHERE id = :id");
-    $req -> execute(array(
-        "nom" => $name,
-        "prenom" => $first_name,
-        "adresse" => $address,
-        "id" => $_SESSION["id"]));
+    $req -> bindParam("nom", $name);
+    $req -> bindParam("prenom", $first_name);
+    $req -> bindParam("adresse", $address);
+    $req -> bindParam("id", $_SESSION["id"]);
+    $req -> execute();
     $req -> closeCursor();
 }
 
@@ -49,8 +50,9 @@ function getPassword()
     $db = dbConnect();
     $req = $db -> prepare("SELECT mot_de_passe
                                 FROM utilisateurs
-                                WHERE id = ?");
-    $req -> execute(array($_SESSION["id"]));
+                                WHERE id = :id");
+    $req -> bindParam("id", $_SESSION["id"]);
+    $req -> execute();
     $db_password = $req -> fetch();
     $req -> closeCursor();
     
@@ -64,9 +66,9 @@ function passwordUpdate($new_password_1)
     $req = $db -> prepare("UPDATE utilisateurs
                             SET mot_de_passe = :mot_de_passe
                             WHERE id = :id");
-    $req -> execute(array(
-        "mot_de_passe" => $new_password_1,
-        "id" => $_SESSION["id"]));
+    $req -> bindParam("mot_de_passe", $new_password_1);
+    $req -> bindParam("id", $_SESSION["id"]);
+    $req -> execute();
     $req -> closeCursor();
 }
 
@@ -75,12 +77,12 @@ function profileCreation($nom, $prenom, $adresse, $mail, $mot_de_passe)
     $db = dbConnect();
     $req = $db -> prepare("INSERT INTO utilisateurs(nom, prenom, adresse, mail, mot_de_passe, categorie_utilisateur)
                             VALUES (:nom, :prenom, :adresse, :mail, :mot_de_passe, 'admin')");
-    $req -> execute(array(
-        "nom" => $nom,
-        "prenom" => $prenom,
-        "adresse" => $adresse,
-        "mail" => $mail,
-        "mot_de_passe" => $mot_de_passe));
+    $req -> bindParam("nom", $nom);
+    $req -> bindParam("prenom", $prenom);
+    $req -> bindParam("adresse", $adresse);
+    $req -> bindParam("mail", $mail);
+    $req -> bindParam("mot_de_passe", $mot_de_passe);
+    $req -> execute();
     
     $req -> closeCursor();
 }
@@ -99,8 +101,9 @@ function getContact($id_contact)
     $db = dbConnect();
     $req = $db -> prepare("SELECT numero
                             FROM numeros_domisep
-                            WHERE id = ?");
-    $req -> execute(array($id_contact));
+                            WHERE id = :id_contact");
+    $req -> bindParam("id_contact", $id_contact);
+    $req -> execute();
     $contact = $req -> fetch();
     $req -> closeCursor();
     
@@ -111,9 +114,10 @@ function updatePhoneNumber($phone_number)
 {
     $db = dbConnect();
     $req = $db -> prepare("UPDATE numeros_domisep
-                            SET numero = ?
+                            SET numero = :numero
                             WHERE id = 1");
-    $req -> execute(array($phone_number));
+    $req -> bindParam("numero", $phone_number);
+    $req -> execute();
     $req -> closeCursor();
 }
 
@@ -121,9 +125,10 @@ function updateEmail($email)
 {
     $db = dbConnect();
     $req = $db -> prepare("UPDATE numeros_domisep
-                            SET numero = ?
+                            SET numero = :numero
                             WHERE id = 2");
-    $req -> execute(array($email));
+    $req -> bindParam("numero", $email);
+    $req -> execute();
     $req -> closeCursor();
 }
 
@@ -142,8 +147,9 @@ function cguUpdate($cgu)
 {
     $db = dbConnect();
     $req = $db -> prepare("UPDATE cgu
-                            SET texte = ?");
-    $req -> execute(array($cgu));
+                            SET texte = :texte");
+    $req -> bindParam("texte", $cgu);
+    $req -> execute();
     $req -> closeCursor();    
 }
 
@@ -161,15 +167,15 @@ function insertSensor($type, $category, $picture_link, $unity, $default_value, $
     $db = dbConnect();
     $req = $db -> prepare("INSERT INTO types_capteurs(type, categorie, lien_image, unite, valeur_defaut, max, min, code_affichage)
                             VALUES (:type, :categorie, :lien_image, :unite, :valeur_defaut, :max, :min, :code_affichage)");
-    $req -> execute(array(
-        "type" => $type,
-        "categorie" => $category,
-        "lien_image" => $picture_link,
-        "unite" => $unity,
-        "valeur_defaut" => $default_value,
-        "max" => $max,
-        "min" => $min,
-        "code_affichage" => $display_code));
+    $req -> bindParam("type", $type);
+    $req -> bindParam("categorie", $category);
+    $req -> bindParam("lien_image", $picture_link);
+    $req -> bindParam("unite", $unity);
+    $req -> bindParam("valeur_defaut", $default_value);
+    $req -> bindParam("max", $max);
+    $req -> bindParam("min", $min);
+    $req -> bindParam("code_affichage", $display_code);
+    $req -> execute();
     
     $req -> closeCursor();
 }
@@ -188,9 +194,9 @@ function updatePicture($id_picture, $picture_link)
     $req = $db -> prepare("UPDATE images
                             SET lien = :lien
                             WHERE id = :id");
-    $req -> execute(array(
-        "lien" => $picture_link,
-        "id" => $id_picture));
+    $req -> bindParam("lien", $picture_link);
+    $req -> bindParam("id", $id_picture);
+    $req -> execute();
     $req -> closeCursor();  
 }
 
@@ -199,8 +205,9 @@ function countEmail($email)
     $db = dbConnect();
     $req = $db -> prepare("SELECT COUNT(mail) AS nb_email
                             FROM utilisateurs
-                            WHERE mail = ?");
-    $req -> execute(array($email));
+                            WHERE mail = :mail");
+    $req -> bindParam("mail", $email);
+    $req -> execute();
     $nb_email = $req -> fetch();
     $req -> closeCursor();
     

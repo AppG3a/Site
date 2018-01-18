@@ -1,4 +1,4 @@
-<?php $css = "../../design/admin/home_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/admin/home_view.css"; ?>
 <?php $title = "Fiche client"; ?>
 
 <?php include("bloc_header_view.php")?>

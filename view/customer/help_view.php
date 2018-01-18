@@ -1,4 +1,4 @@
-<?php $css = "../../design/customer/home_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/customer/home_view.css"; ?>
 <?php $title = "Aide"; ?>
 
 <?php include("bloc_header_view.php")?>
@@ -12,24 +12,19 @@
 
 		<div class="sub_content">
             
-            <p>Vous trouverez ci-dessous toutes les explications nécessaires concernant les fonctionnalités d'Harvey.</p>
+            <p>
+            	Vous trouverez ci-dessous toutes les explications nécessaires concernant les fonctionnalités d'Harvey. <br/>
+            	Pour plus de détails, référez-vous au manuel utilisateur.
+            </p>
             
             <h3>Contacter le support</h3>
             <img src="../../design/picture/contact_2.png" alt="Contact">
             <p>      
                 Vous pouvez contacter le support en cliquant sur l'icône ci-dessus (situé en haut à droite de la page). <br/>
-                Vous pourrez envoyer un message au support <!-- et y voir tous les messages que vous avez déjà envoyés. --> <br/>
+                Vous pourrez envoyer un message au support (le support vous répondra par mail dès que possible). <br/>
                 Un numéro vous est également fourni pour contacter Domisep.
             </p>
-            
-            <h3>Choisir la langue</h3>
-            <img src="../../design/picture/francais_2.png" alt="Francais">
-            <img src="../../design/picture/anglais_2.png" alt="Anglais">
-            <p>      
-                Vous pouvez passer du français à l'anglais en cliquant sur les icônes ci-dessus (situés en haut à droite de la page). <br/>
-                *Cette fonctionnalité n'est pas encore disponible*
-            </p>
-            
+                        
             <h3>Se déconnecter</h3>
             <img src="../../design/picture/deco_2.png" alt="Déconnexion">
             <p>      
@@ -64,18 +59,15 @@
                 Une fois un capteur installé, vous pourrez contrôler un objet de votre maison à distance. <br/>
             </p>
             
-            <!-- <h3>"Consommation énergétique"</h3>
+            <h3>"Rapport d'activité"</h3>
             <p>      
-                L'onglet "Consommation énergétique" vous permet d'avoir une vision d'ensemble de la consommation 
-                énergétique de vos objets connectés. <br/>
-                Une fois un capteur installé, vous pourrez contrôler un objet de votre maison à distance. <br/>
-                *Cette fonctionnalité n'est pas encore disponible*
-            </p> -->
+                L'onglet "Rapport d'activité" vous permet de visualiser l'évolution, dans le temps, des différents paramètres de votre maison. <br/>
+            </p>
             
             <h3>"Profil utilisateur"</h3>
             <p>      
                 L'onglet "Profil utilisateur" vous permet de voir votre profil. <br/>
-                Vous pourrez y modifier vos données, votre pseudo, ainsi que votre mot de passe. <br/>
+                Vous pourrez y modifier vos données ainsi que votre mot de passe. <br/>
             </p>
             
             <h3>Conditions générales d'utilisation</h3>
@@ -85,7 +77,6 @@
         </div>
         
         
-        <!-- <div class="back_button"> -->
         <div class="right_nav">
             <a href="roter.php">Revenir à la page d'accueil</a>
         </div>

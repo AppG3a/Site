@@ -1,4 +1,4 @@
-<?php $css = "design/admin/account_access_view.css?<?php echo time(); ?"; ?>
+<?php $css = "design/admin/account_access_view.css"; ?>
 <?php $title = "Harvey"; ?>
 
 

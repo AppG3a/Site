@@ -1,4 +1,4 @@
-<?php $css = "design/customer/home_view_bis.css?<?php echo time(); ?"; ?>
+<?php $css = "design/customer/home_view_bis.css"; ?>
 <?php $title = "Harvey"; ?>
 
 

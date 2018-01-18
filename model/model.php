@@ -20,8 +20,9 @@ function getPassword($mail)
     $db = dbConnect();
     $req = $db -> prepare("SELECT *
                             FROM utilisateurs
-                            WHERE mail = ?");
-    $req -> execute(array($mail));
+                            WHERE mail = :mail");
+    $req -> bindParam("mail", $mail);
+    $req -> execute();
     $db_content = $req -> fetch();
     $req -> closeCursor();
     
@@ -35,9 +36,9 @@ function updatePassword($id, $new_password)
     $req = $db -> prepare("UPDATE utilisateurs
                         SET mot_de_passe = :mot_de_passe
                         WHERE id = :id");
-    $req -> execute(array(
-        "mot_de_passe" => $new_password,
-        "id" => $id));
+    $req -> bindParam("mot_de_passe", $new_password);
+    $req -> bindParam("id", $id);
+    $req -> execute();
     $req -> closeCursor();
 }
 

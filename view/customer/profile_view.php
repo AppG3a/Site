@@ -1,4 +1,4 @@
-<?php $css = "../../design/customer/profile_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/customer/profile_view.css"; ?>
 <?php $title = "Mon profil"; ?>
 
 <?php include("bloc_header_view.php")?>

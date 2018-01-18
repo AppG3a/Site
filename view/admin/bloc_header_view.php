@@ -19,8 +19,6 @@
     
     <div class="bouton">
         <a href="roter.php?action=see_contact" title="Gérer les moyens de contact"><img src="../../design/picture/contact_2.png" alt="Enveloppe"></a>		
-        <!-- <a href="#" title="Traduire en français"><img src="../../design/picture/francais_2.png" alt="Drapeau français"></a>
-        <a href="#" title="Traduire en anglais"><img src="../../design/picture/anglais_2.png" alt="Drapeau anglais"></a> -->
         <a href="roter.php?action=deconnexion" title="Se déconnecter"><img src="../../design/picture/deco_2.png" alt="Bouton déconnexion"></a>
     </div>
 

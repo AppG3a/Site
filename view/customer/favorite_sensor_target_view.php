@@ -1,4 +1,4 @@
-<?php $css = "../../design/customer/sensors_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/customer/sensors_view.css"; ?>
 <?php $title = "Harvey"; ?>
 
 <?php include("bloc_header_view.php")?>

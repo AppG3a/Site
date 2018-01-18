@@ -1,4 +1,4 @@
-<?php $css = "../../design/admin/carousel_modification_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/admin/carousel_modification_view.css"; ?>
 <?php $title = "Gérer le carousel"; ?>
 
 <?php include("bloc_header_view.php")?>

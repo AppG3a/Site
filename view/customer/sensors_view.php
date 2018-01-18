@@ -1,6 +1,4 @@
-<?php //$css = "design/customer/sensors_view.css?<?php echo time(); ?";
-$css = "../../design/customer/sensors_view_3.css?<?php echo time(); ?";
-?>
+<?php $css = "../../design/customer/sensors_view_3.css"; ?>
 <?php $title = "Mes capteurs"; ?>
 
 <?php include("bloc_header_view.php")?>

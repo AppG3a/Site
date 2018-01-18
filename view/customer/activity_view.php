@@ -1,6 +1,4 @@
-<?php //$css = "design/customer/sensors_view.css?<?php echo time(); ?";
-$css = "../../design/customer/sensors_view_2.css?<?php echo time(); ?";
-?>
+<?php $css = "../../design/customer/sensors_view_2.css"; ?>
 <?php $title = "Rapport d'activité"; ?>
 
 <script type="text/javascript" src="../../libs/Chart.js"></script>

@@ -1,4 +1,4 @@
-<?php $css = "../../design/customer/home_view.css?<?php echo time(); ?"; ?>
+<?php $css = "../../design/customer/home_view.css"; ?>
 <?php $title = "Mes capteurs"; ?>
 
 <?php include("bloc_header_view.php")?>
@@ -22,13 +22,13 @@
                         if ($favorite["favori"] != 0)
                         {
                         ?>
-                    		<input type="checkbox" name="<?= $favorite['id'] ?>" checked="checked" id="favorite" /> <label for="favorite"><?= $favorite["type"] ?> - <?= $favorite["nom"] ?></label><br/>
+                    		<input type="checkbox" name="<?= $favorite['id'] ?>" checked="checked" id="<?= $favorite['id'] ?>" /> <label for="<?= $favorite['id'] ?>"><?= $favorite["type"] ?> - <?= $favorite["nom"] ?></label><br/>
                 		<?php 
                         }
                         else 
                         {
                 		?>
-                			<input type="checkbox" name="<?= $favorite['id'] ?>" id="favorite" /> <label for="favorite"><?= $favorite["type"] ?> - <?= $favorite["nom"] ?></label><br/>
+                			<input type="checkbox" name="<?= $favorite['id'] ?>" id="<?= $favorite['id'] ?>" /> <label for="<?= $favorite['id'] ?>"><?= $favorite["type"] ?> - <?= $favorite["nom"] ?></label><br/>
             		<?php 
                         }
                     }
