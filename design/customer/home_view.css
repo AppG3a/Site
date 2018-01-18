@@ -130,10 +130,11 @@ header
 				texte-align: center;
 			}
 				
-				fieldset
+				#rooms_fieldset
 				{
 					height: 150px;
 				}
+				
 				
 				legend
 				{

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 17 jan. 2018 à 19:08
+-- Généré le :  jeu. 18 jan. 2018 à 20:47
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `capteurs` (
   `id_type` int(11) NOT NULL,
   `categorie` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `capteurs`
@@ -96,11 +96,11 @@ CREATE TABLE IF NOT EXISTS `capteurs` (
 INSERT INTO `capteurs` (`id`, `id_utilisateur`, `id_emplacement`, `reference`, `description`, `on_off`, `valeur`, `valeur_cible`, `favori`, `id_type`, `categorie`) VALUES
 (1, 1, 1, 'température', 'capteur de température', 'ON', 20, 21, 1, 0, 'simple'),
 (33, 4, 17, 'température', 'température', 'OFF', 10, 15, 1, 1, 'objet'),
-(26, 4, 12, 'température', 'température', 'OFF', 10, NULL, 0, 1, 'simple'),
+(26, 4, 12, 'température', 'température', 'OFF', 10, NULL, 1, 1, 'simple'),
 (25, 3, 13, 'température', 'température', 'OFF', 10, NULL, 0, 0, 'simple'),
-(44, 4, 5, 'reference', 'description', 'OFF', 2, NULL, 0, 5, 'simple'),
+(44, 4, 5, 'reference', 'description', 'OFF', 2, NULL, 1, 5, 'simple'),
 (38, 4, 5, 'reference', 'description', 'OFF', 10, NULL, 0, 4, 'objet'),
-(34, 4, 20, 'reference', 'description', 'OFF', 10, NULL, 1, 3, 'objet');
+(34, 4, 20, 'reference', 'description', 'OFF', 10, NULL, 0, 3, 'objet');
 
 -- --------------------------------------------------------
 
@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `emplacements` (
   `id_maison` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `emplacements`
@@ -179,7 +179,8 @@ INSERT INTO `emplacements` (`id`, `id_maison`, `nom`) VALUES
 (13, 2, 'Salon'),
 (5, 1, 'Salle de bain'),
 (14, 1, 'Chambre'),
-(17, 1, 'Salon');
+(17, 1, 'Salon'),
+(24, 2, 'Cuisine');
 
 -- --------------------------------------------------------
 
@@ -247,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `message` text NOT NULL,
   `sending_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `messages`
@@ -276,7 +277,8 @@ INSERT INTO `messages` (`id`, `id_customer`, `subject`, `message`, `sending_date
 (32, 4, '', '', '2018-01-14 17:49:19'),
 (33, 4, 'tjyrf', 'dtj', '2018-01-14 17:50:31'),
 (34, 4, 'iètk', 'fit', '2018-01-14 17:50:41'),
-(35, 4, 'fj', 'fyj', '2018-01-16 08:45:30');
+(35, 4, 'fj', 'fyj', '2018-01-16 08:45:30'),
+(36, 4, 'test', 'bla', '2018-01-18 09:50:58');
 
 -- --------------------------------------------------------
 
@@ -296,7 +298,7 @@ CREATE TABLE IF NOT EXISTS `numeros_domisep` (
 --
 
 INSERT INTO `numeros_domisep` (`id`, `numero`) VALUES
-(1, '1234567800'),
+(1, '01.02.03.46.63'),
 (2, 'domisep@isep.fr');
 
 -- --------------------------------------------------------
@@ -369,31 +371,30 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `prenom` varchar(255) NOT NULL,
   `adresse` text NOT NULL,
   `mail` varchar(255) NOT NULL,
-  `pseudo` varchar(255) NOT NULL,
   `mot_de_passe` varchar(255) NOT NULL,
   `date_inscription` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `categorie_utilisateur` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `utilisateurs`
 --
 
-INSERT INTO `utilisateurs` (`id`, `nom`, `prenom`, `adresse`, `mail`, `pseudo`, `mot_de_passe`, `date_inscription`, `categorie_utilisateur`) VALUES
-(1, 'CHABOTTE', 'Jack', '38, Chemin Du Lavarin Sud\r\n94230 CACHAN', 'jack.chabotte@gmail.com', 'Porche1975', '123456', '2017-12-21 09:45:40', 'admin'),
-(2, 'MARGAND', 'Nanna', '96, place Stanislas\r\n54000 NANCY', 'nanna.margand@gmail.com', 'Colened', 'aVah8othie9', '2017-12-21 09:45:40', 'admin'),
-(3, 'MARCOUX', 'Sydney', '15, rue des six frères Ruellan\r\n57200 SARREGUEMINES', 'sydney.marcoux@gmail.com', 'Canualal', 'eipooC4c', '2017-12-21 09:45:40', 'customer'),
-(4, 'GUIBORD', 'Gabriel', '23, rue de Penthièvre\r\n07000 PRIVAS', 'gabriel.guibord@gmail.com', 'Offied', '123456', '2017-12-21 09:45:40', 'customer'),
-(5, 'QUENNEVILLE', 'Cosette', '55, Rue Hubert de Lisle\r\n33310 LORMONT', 'cosette.quenneville@gmail.com', 'Niatand', 'test', '2017-12-21 09:45:40', 'customer'),
-(6, 'VARIEUR', 'Aurélie', '17, place de Miremont\r\n92390 VILLENEUVE-LA-GARENNE', 'aurelie.varieur@gmail.com', 'Timentep', 'keeTh0caeG', '2017-12-21 09:45:40', 'customer'),
-(7, 'MOREAU', 'Alphonse', '19, avenue du Marechal Juin\r\n97436 SAINT-LEU', 'alphonse.moreau@gmail.com', 'Grearlacte1948', 'xoeL4quoar', '2017-12-21 09:45:40', 'customer'),
-(8, 'DUFOUR', 'Hamilton', '22, avenue de Provence\r\n26000 VALENCE', 'hamilton.dufour@gmail.com', 'Thestrand', 'eiPhee0hai', '2017-12-21 09:45:40', 'customer'),
-(9, 'MARIER', 'Martin', '86, rue des six frères Ruellan\r\n44230 SAINT-SÉBASTIEN-SUR-LOIRE', 'martin.marier@gmail.com', 'Siblen', 'she8ahLee3', '2017-12-21 09:45:40', 'customer'),
-(10, 'LAMONTAGNE', 'Christine', '26, quai Saint-Nicolas\r\n59200 TOURCOING', 'christine.lamontagne@gmail.com', 'Buttleace', 'UQueen5JieY', '2017-12-21 09:45:40', 'customer'),
-(11, 'BELLEMARE', 'Gilles', '14, boulevard Amiral Courbet\r\n94310 ORLY', 'gilles.bellemar@gmail.com', 'Hasuld', 'reWith0aeg', '2017-12-21 09:45:40', 'customer'),
-(12, 'TESTO', 'Stérone', '42, rue du Test\r\n42000 TEST', 'test@gmail.com', 'Testos', 'test', '2017-12-21 09:45:40', 'customer'),
-(20, 'DUFOUR', 'Lewis', '78, Rue Hubert de Lisle\r\n33310 LORMONT', 'lewis.dufour@gmail.com', 'Lewd', 'EDfg25d', '2018-01-08 17:30:32', 'customer');
+INSERT INTO `utilisateurs` (`id`, `nom`, `prenom`, `adresse`, `mail`, `mot_de_passe`, `date_inscription`, `categorie_utilisateur`) VALUES
+(1, 'CHABOTTE', 'Jack', '38, Chemin Du Lavarin Sud\r\n94230 CACHAN', 'jack.chabotte@gmail.com', '123456', '2017-12-21 09:45:40', 'admin'),
+(2, 'MARGAND', 'Nanna', '96, place Stanislas\r\n54000 NANCY', 'nanna.margand@gmail.com', 'aVah8othie9', '2017-12-21 09:45:40', 'admin'),
+(3, 'MARCOUX', 'Sydney', '15, rue des six frères Ruellan\r\n57200 SARREGUEMINES', 'sydney.marcoux@gmail.com', 'eipooC4c', '2017-12-21 09:45:40', 'customer'),
+(4, 'GUIBORD', 'Gabriel', '23, rue de Penthièvre\r\n07000 PRIVAS', 'gabriel.guibord@gmail.com', '123456', '2017-12-21 09:45:40', 'customer'),
+(5, 'QUENNEVILLE', 'Cosette', '55, Rue Hubert de Lisle\r\n33310 LORMONT', 'cosette.quenneville@gmail.com', 'test', '2017-12-21 09:45:40', 'customer'),
+(6, 'VARIEUR', 'Aurélie', '17, place de Miremont\r\n92390 VILLENEUVE-LA-GARENNE', 'aurelie.varieur@gmail.com', 'keeTh0caeG', '2017-12-21 09:45:40', 'customer'),
+(7, 'MOREAU', 'Alphonse', '19, avenue du Marechal Juin\r\n97436 SAINT-LEU', 'alphonse.moreau@gmail.com', 'xoeL4quoar', '2017-12-21 09:45:40', 'customer'),
+(8, 'DUFOUR', 'Hamilton', '22, avenue de Provence\r\n26000 VALENCE', 'hamilton.dufour@gmail.com', 'eiPhee0hai', '2017-12-21 09:45:40', 'customer'),
+(9, 'MARIER', 'Martin', '86, rue des six frères Ruellan\r\n44230 SAINT-SÉBASTIEN-SUR-LOIRE', 'martin.marier@gmail.com', 'she8ahLee3', '2017-12-21 09:45:40', 'customer'),
+(10, 'LAMONTAGNE', 'Christine', '26, quai Saint-Nicolas\r\n59200 TOURCOING', 'christine.lamontagne@gmail.com', 'UQueen5JieY', '2017-12-21 09:45:40', 'customer'),
+(11, 'BELLEMARE', 'Gilles', '14, boulevard Amiral Courbet\r\n94310 ORLY', 'gilles.bellemar@gmail.com', 'reWith0aeg', '2017-12-21 09:45:40', 'customer'),
+(12, 'TESTO', 'Stérone', '42, rue du Test\r\n42000 TEST', 'test@gmail.com', '5a60603c4d54c', '2017-12-21 09:45:40', 'customer'),
+(20, 'DUFOUR', 'Lewis', '78, Rue Hubert de Lisle\r\n33310 LORMONT', 'lewis.dufour@gmail.com', 'EDfg25d', '2018-01-08 17:30:32', 'customer');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

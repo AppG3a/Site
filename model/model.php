@@ -15,21 +15,6 @@ function dbConnect()
     }
 }
 
-/*
-function getPassword($pseudo)
-{
-    $db = dbConnect();
-    $req = $db -> prepare("SELECT *
-                            FROM utilisateurs
-                            WHERE pseudo = ?");
-    $req -> execute(array($pseudo));
-    $db_content = $req -> fetch();
-    $req -> closeCursor();
-    
-    return $db_content;
-}
-*/
-
 function getPassword($mail)
 {
     $db = dbConnect();

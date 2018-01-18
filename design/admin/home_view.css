@@ -116,6 +116,11 @@ header
 				texte-align: center;
 			}
 			
+				legend
+				{
+					font-weight: bold;
+				}
+			
 				#error_message
 				{
 					background-color: #F08080;

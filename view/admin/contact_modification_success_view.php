@@ -25,12 +25,11 @@
             <p><?= $phone_number; ?></p>
         </div>
             
-            <!-- <div class="back_button"> -->
-            <div class="right_nav">
-            	<a href="roter.php?action=see_email_modification">Modifier email</a>
-            	<a href="roter.php?action=see_phone_number_modification">Modifier le numéro</a>
-                <a href="roter.php">Revenir à la page d'accueil</a>
-            </div>
+        <div class="right_nav">
+        	<a href="roter.php?action=see_email_modification">Modifier email</a>
+        	<a href="roter.php?action=see_phone_number_modification">Modifier le numéro</a>
+            <a href="roter.php">Revenir à la page d'accueil</a>
+        </div>
     </div>    
     <?php $content = ob_get_clean(); ?>
 

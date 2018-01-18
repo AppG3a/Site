@@ -30,5 +30,5 @@
 
 <?php include("bloc_footer_view.php")?>
 
-<script src="../../js/ajax.js"></script>
-<script src="../../js/breakdown_history_bis_view.js"></script>
+<script src="../../model/ajax/ajax.js"></script>
+<script src="../../view/admin/js/breakdown_history_bis_view.js"></script>

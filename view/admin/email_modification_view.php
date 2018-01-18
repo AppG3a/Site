@@ -15,7 +15,7 @@
             
             <form method="post" action="roter.php?action=email_modification">
             	<p>
-            	<label for="email">Adresse email</label> : <input type="email" name="email" id="email" required>
+            		<label for="email">Adresse email</label> : <input type="email" name="email" id="email" required>
             	</p>
         		<p>
             		<input type="submit" value="Changer l'adresse mail">
@@ -23,7 +23,6 @@
             </form>
         </div>
         
-        <!-- <div class="back_button"> -->
         <div class="right_nav">
         	<a href="roter.php?action=see_contact">Retour</a>
         </div>

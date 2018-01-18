@@ -131,7 +131,7 @@ $css = "../../design/customer/sensors_view_3.css?<?php echo time(); ?";
 	var sensorModification = <?= $_SESSION["sensor_modification"]; ?>;
 //-->
 </script>
-<script src="../../js/customer/modification_sensor_success.js"></script>
+<script src="../../view/customer/js/modification_sensor_success.js"></script>
 
 <?php 
 $_SESSION["sensor_modification"] = 0;

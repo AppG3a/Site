@@ -28,7 +28,7 @@
             
             <div class="sub_content_2">
     			<form method="post" action="roter.php?action=add_room">
-    				<fieldset>
+    				<fieldset id="rooms_fieldset">
     					<legend>Ajouter une pièce</legend>
     					
         				<label for="name">Nom de la pièce</label> : <input type="text" name="name" id="name" required>
@@ -40,7 +40,7 @@
     			
                 
     			<form method="post" action="roter.php?action=remove_room">
-    				<fieldset>
+    				<fieldset id="rooms_fieldset">
         				<legend>Supprimer une pièce</legend>
         				<label for="room">Pièce à supprimer :</label><br/>
         				<select name="room" id="room">
@@ -61,7 +61,7 @@
     			</form>
     			
     			<form method="post" action="roter.php?action=modify_room">
-    				<fieldset>
+    				<fieldset id="rooms_fieldset">
         				<legend>Modifier une pièce</legend>
         				<label for="modify_room">Pièce à modifier :</label><br/>
         				<select name="room" id="modify_room">

@@ -171,7 +171,7 @@ require("../../view/customer/template.php");
 	var userFirstName = "<?= $_SESSION["first_name"]; ?>";
 //-->
 </script>
-<script src="../../js/home_view.js"></script>
+<script src="../../view/customer/js/home_view.js"></script>
 
 <?php 
 $_SESSION["welcome"] = 0;

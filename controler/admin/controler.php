@@ -23,56 +23,49 @@ function seeProfileModification()
 }
 
 function profileModification()
-//Fais les modifications du profil demandées puis affiche la page de profil de l'utilisateur qui a l'id donné
 {
-    profileUpdate();
+    $name = htmlspecialchars($_POST["nom"]);
+    $first_name = htmlspecialchars($_POST["prenom"]);
+    $address = htmlspecialchars($_POST["adresse"]);
+    
+    // Traitement des données
+    $name = strtoupper($name);
+    $first_name = ucfirst(strtolower($first_name));
+    
+    profileUpdate($name, $first_name, $address);
     seeProfile();
 }
 
 function passwordChange()
 /*Gère le changement de mot de passe de l'utilisateur qui a l'id donné
- * Si l'utilisateur effectue correctement le changement, le mot de passe est changé
- * Sinon l'utilisateur reçoit le message d'erreur approprié
+ * Si l'utilisateur effectue correctement le changement, le mot de passe est changé et un mail de confirmation est envoyé
  */
 {
     $former_password = htmlspecialchars($_POST["mot_de_passe"]);
     $new_password_1 = htmlspecialchars($_POST["new_password_1"]);
     $new_password_2 = htmlspecialchars($_POST["new_password_2"]);
     
-    if (!empty($former_password) && !empty($new_password_1) && !empty($new_password_2))
+    $db_password = getPassword();
+    
+    if ($former_password == $db_password["mot_de_passe"])
     {
-        if ($new_password_1 == $new_password_2)
-        {
-            $db_password = getPassword();
-            
-            if ($former_password == $db_password["mot_de_passe"])
-            {
-                passwordUpdate($new_password_1);
-                $profile = getProfile($_SESSION["id"]);
-                require("../../view/admin/success_password_change_view.php");
-            }
-            
-            else
-            {
-                $profile = getProfile($_SESSION["id"]);
-                require("../../view/admin/profile_modification_error_password1_view.php");
-            }
-        }
+        passwordUpdate($new_password_1);
+        $destinataire = $_SESSION["email"];
+        $subject = "Harvey - Votre mot de passe a été modifié";
+        $message = "Nous vous informons que votre mot de passe Harvey a été correctement modifié";
+        //mail($destinataire, $subject, $message);
         
-        else
-        {
-            $profile = getProfile($_SESSION["id"]);
-            require("../../view/admin/profile_modification_error_password2_view.php");
-        }
-        
+        $profile = getProfile($_SESSION["id"]);
+        require("../../view/admin/profile_modification_success_password_view.php");
     }
     
     else
     {
         $profile = getProfile($_SESSION["id"]);
-        require("../../view/admin/profile_modification_error_password3_view.php");
+        require("../../view/admin/profile_modification_error_password_view.php");
     }
 }
+
 
 function seeCustomerProfileSelection()
 //Affiche la page qui permet à l'administrateur de choisir une fiche client
@@ -103,29 +96,29 @@ function seeCustomerProfile()
     }
 }
 
-function seeCustomerProfileCreation()
+function seeAdminProfileCreation()
 {
-    require("../../view/admin/customer_profile_creation_view.php");
+    require("../../view/admin/admin_profile_creation_view.php");
 }
 
-function customerProfileCreation()
+function adminProfileCreation()
 {
     $nom = htmlspecialchars($_POST["nom"]);
     $prenom = htmlspecialchars($_POST["prenom"]);
     $adresse = htmlspecialchars($_POST["adresse"]);
-    $mail = htmlspecialchars($_POST["mail"]);
-    $pseudo = htmlspecialchars($_POST["pseudo"]);
-    $mot_de_passe = htmlspecialchars($_POST["mot_de_passe"]);
+    $email = htmlspecialchars($_POST["mail"]);
     
-    if (!empty($nom) && !empty($prenom) && !empty($adresse) && !empty($mail) && !empty($pseudo) && !empty($mot_de_passe))
+    $nb_email = countEmail($email);
+
+    if ($nb_email == 0)
     {
-        profileCreation($nom, $prenom, $adresse, $mail, $pseudo, $mot_de_passe);
-        require("../../view/admin/customer_profile_creation_success_view.php");
+        $mot_de_passe = uniqid();
+        profileCreation($nom, $prenom, $adresse, $email, $mot_de_passe);
+        require("../../view/admin/admin_profile_creation_success_view.php");
     }
-    
-    else 
+    else
     {
-        require("../../view/admin/customer_profile_creation_error_view.php");
+        require("../../view/admin/admin_profile_creation_error_view.php");
     }
 }
 
@@ -137,14 +130,6 @@ function seeBreakdownHistory()
 
 function seeContact()
 {
-    /*$contacts = getContacts();
-    while ($contact = $contacts -> fetch())
-    {
-        $contactsTab []= $contact["numero"];
-    }
-    $numero = $contactsTab[0];
-    $email = $contactsTab[1];
-    //$phone_number = getPhoneNumber();*/
     // 1 pour le numéro de téléphone, 2 pour l'adresse mail
     $phone_number = getContact(1);
     $email = getContact(2);
@@ -159,18 +144,11 @@ function seePhoneNumberModification()
 function phoneNumberModification()
 {
     $new_phone_number = htmlspecialchars($_POST["phone_number"]);
-    if (!empty($new_phone_number))
-    {
-        updatePhoneNumber($new_phone_number);
-        $phone_number = getContact(1);
-        $email = getContact(2);
-        require("../../view/admin/contact_modification_success_view.php");
-    }
-    
-    else
-    {
-        require("../../view/admin/phone_number_modification_fail_view.php");
-    }
+
+    updatePhoneNumber($new_phone_number);
+    $phone_number = getContact(1);
+    $email = getContact(2);
+    require("../../view/admin/contact_modification_success_view.php");
 }
 
 function seeEmailModification()
@@ -181,18 +159,11 @@ function seeEmailModification()
 function emailModification()
 {
     $new_email = htmlspecialchars($_POST["email"]);
-    if (!empty($new_email))
-    {
-        updateEmail($new_email);
-        $phone_number = getContact(1);
-        $email = getContact(2);
-        require("../../view/admin/contact_modification_success_view.php");
-    }
-    
-    else
-    {
-        require("../../view/admin/phone_number_modification_fail_view.php");
-    }
+
+    updateEmail($new_email);
+    $phone_number = getContact(1);
+    $email = getContact(2);
+    require("../../view/admin/contact_modification_success_view.php");
 }
 
 function seeSensorCreation()
@@ -264,7 +235,6 @@ function seeCguModification()
 
 function cguModification()
 {
-    //$cgu = htmlspecialchars($_POST["cgu"]); //Si on fait un htmlspecialchars ça annule les retours à la ligne.
     $cgu = $_POST["cgu"];
     cguUpdate($cgu);
     $cgu = getCgu();
@@ -274,7 +244,6 @@ function cguModification()
 function deconnexion()
 {
     session_destroy();
-    //require("../../view/authentication_view.php");
     header("Location: ../../index.php");
 }
 

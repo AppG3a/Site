@@ -24,77 +24,47 @@ function seeProfileModification()
 }
 
 function profileModification()
-//Fais les modifications du profil demandées puis affiche la page de profil de l'utilisateur qui a l'id donné
-//A REFAIRE : cette fonction est à refaire, elle est trop longue et peut facilement être améliorée
 {
-    $test = profileUpdate();
-    if ($test == 1)
-    {
-        seeProfile();
-    }
+    $name = htmlspecialchars($_POST["nom"]);
+    $first_name = htmlspecialchars($_POST["prenom"]);
+    $address = htmlspecialchars($_POST["adresse"]);
     
-    else
-    {
-        $profile = getProfile();
-        require("../../view/customer/profile_modification_error_pseudo_view.php");
-    }
+    // Traitement des données
+    $name = strtoupper($name);
+    $first_name = ucfirst(strtolower($first_name));
+    
+    profileUpdate($name, $first_name, $address);  
+    seeProfile();
 }
 
 function passwordChange()
 /*Gère le changement de mot de passe de l'utilisateur qui a l'id donné
- * Si l'utilisateur effectue correctement le changement, le mot de passe est changé
- * Sinon l'utilisateur reçoit le message d'erreur approprié
- * EDIT : maintenant une partie des vérifications est prise en charge par javascript
- * Cette fonction pourrait donc facilement être réduite
+ * Si l'utilisateur effectue correctement le changement, le mot de passe est changé et un mail de confirmation est envoyé
  */
 {
     $former_password = htmlspecialchars($_POST["mot_de_passe"]);
     $new_password_1 = htmlspecialchars($_POST["new_password_1"]);
     $new_password_2 = htmlspecialchars($_POST["new_password_2"]);
     
-    if (!empty($former_password) && !empty($new_password_1) && !empty($new_password_2))
+    $db_password = getPassword();
+    
+    if ($former_password == $db_password["mot_de_passe"])
     {
-        if ($new_password_1 == $new_password_2)
-        {
-            $db_password = getPassword();
-            
-            if ($former_password == $db_password["mot_de_passe"])
-            {
-                passwordUpdate($new_password_1);
-                $profile = getProfile();
-                $destinataire = $profile["mail"];
-                $subject = "Harvey - Votre mot de passe a été modifié";
-                $message = "Nous vous informons que votre mot de passe Harvey a été correctement modifié";
-                //mail($destinataire, $subject, $message);
-                require("../../view/customer/success_password_change_view.php");
-            }
-            
-            else
-            {
-                //echo "L'ancien mot de passe n'est pas correct<br/>";
-                //echo "<a href='index.php?action=see_profile_modification'>Retour</a>";
-                $profile = getProfile();
-                require("../../view/customer/profile_modification_error_password1_view.php");
-            }
-        }
+        passwordUpdate($new_password_1);
+        $destinataire = $_SESSION["email"];
+        $subject = "Harvey - Votre mot de passe a été modifié";
+        $message = "Nous vous informons que votre mot de passe Harvey a été correctement modifié";
+        //mail($destinataire, $subject, $message);
         
-        else
-        {
-            //echo "La confirmation du nouveau mot de passe n'est pas correcte<br/>";
-            //echo "<a href='index.php?action=see_profile_modification'>Retour</a>";
-            $profile = getProfile();
-            require("../../view/customer/profile_modification_error_password2_view.php");
-        }
-        
+        $profile = getProfile();
+        require("../../view/customer/profile_modification_success_password_view.php");
     }
     
-    else 
+    else
     {
-        //echo "Un des champs de modification du mot de passe n'a pas été rempli<br/>";
-        //echo "<a href='index.php?action=see_profile_modification'>Retour</a>";
         $profile = getProfile();
-        require("../../view/customer/profile_modification_error_password3_view.php");
-    }
+        require("../../view/customer/profile_modification_error_password_view.php");
+    }    
 }
 
 function seeHomePage()
@@ -111,16 +81,7 @@ function seeContact()
 }
 
 function sendMessage()
-{
-    /*$subject = htmlspecialchars($_POST["subject"]);
-    $message = htmlspecialchars($_POST["message"]);
-    
-    messagingUpdate($subject, $message);
-    
-    $messages = getMessages();
-    $phone_number = getPhoneNumber();
-    require("../../view/customer/message_send_view.php");*/
-    
+{    
     $subject = htmlspecialchars($_POST["subject"]);
     $message = htmlspecialchars($_POST["message"]);
     $mailclient = $_SESSION["email"];
@@ -229,7 +190,6 @@ function removeFavoriteSensorTarget()
 function deconnexion()
 {
     session_destroy();
-    //require("../../view/authentication_view.php");
     header("Location: ../../index.php");
 }
 
@@ -319,17 +279,10 @@ function seeRemoveSensor()
 function removeSensor()
 {
     $id_sensor = htmlspecialchars($_POST["sensor"]);
-    echo $id_sensor;
     deleteSensor($id_sensor);
     $_SESSION["sensor_modification"] = 1;
     seeSensors();
 }
-
-/*function seeAddFavoriteSensors()
-{
-    $sensors = getSensors();
-    require("view/customer/favorite_sensors_view.php");
-}*/
 
 function seeAddFavoriteSensors()
 {

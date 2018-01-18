@@ -15,11 +15,10 @@
             	<fieldset>
             		<legend>Informations personnelles</legend>
             			<p class="left_justify">
-            				<label for="nom">Nom</label> : <input type="text" name="nom" id="nom" value="<?= $profile["nom"] ?>"><br/>
-                        	<label for="prenom">Prénom</label> : <input type="text" name="prenom" id="prenom" value="<?= $profile["prenom"] ?>"><br/>
-                        	<label for="adresse">Adresse</label> :<br/><textarea name="adresse" id="adresse"><?= $profile["adresse"] ?></textarea><br/>
-                        	<label for="mail">Mail</label> : <input type="text" name="mail" id="mail" value="<?= $profile["mail"] ?>"><br/>
-                        	<label for="pseudo">Pseudo</label> : <input type="text" name="pseudo" id="pseudo" value="<?= $profile["pseudo"] ?>"><br/>
+            				<label for="nom">Nom</label> : <input type="text" name="nom" id="nom" value="<?= $profile["nom"] ?>" required><br/>
+                        	<label for="prenom">Prénom</label> : <input type="text" name="prenom" id="prenom" value="<?= $profile["prenom"] ?>" required><br/>
+                        	<label for="adresse">Adresse</label> :<br/><textarea name="adresse" id="adresse" required><?= $profile["adresse"] ?></textarea><br/>
+                        	Mail : <?= $profile["mail"] ?><br/>
             			</p>
             	</fieldset>
             	<p>
@@ -28,7 +27,6 @@
             </form>
             
         	<form method="post" action="roter.php?action=password_change" id="password_form">
-        	<!-- <form method="post" action="#" id="password_form"> -->
             	<fieldset>
             		<legend>Mot de passe</legend>
             			<p class="left_justify">
@@ -58,7 +56,7 @@
 
 <?php include("bloc_footer_view.php")?>
 
-<script src="../../js/profile_modification_view.js"></script>
+<script src="../../view/admin/js/profile_modification_view.js"></script>
 
 
 

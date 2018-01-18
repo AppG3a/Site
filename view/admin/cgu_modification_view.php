@@ -12,7 +12,7 @@
     <div class="content">
 
 		<div class="sub_content">
-			<script src="../../view/admin/editor.js" type="text/javascript"></script>
+			<script src="../../view/admin/js/editor.js" type="text/javascript"></script>
 			<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 			
             <form method="post" action="roter.php?action=cgu_modification">

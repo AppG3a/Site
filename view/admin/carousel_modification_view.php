@@ -46,7 +46,7 @@
 
 <?php include("bloc_footer_view.php")?>
 
-<script src="../../js/carousel_modification_view.js"></script>
+<script src="../../view/admin/js/carousel_modification_view.js"></script>
 
 
 

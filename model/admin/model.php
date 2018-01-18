@@ -19,7 +19,7 @@ function getProfile($id)
 //Récupère nom, prénom, adresse, mail et pseudo de l'utilisateur qui a l'id donné
 {
     $db = dbConnect();
-    $req = $db -> prepare("SELECT nom, prenom, adresse, mail, pseudo
+    $req = $db -> prepare("SELECT nom, prenom, adresse, mail
                             FROM utilisateurs
                             WHERE id = ?");
     $req -> execute(array($id));
@@ -29,25 +29,18 @@ function getProfile($id)
     return $profile;
 }
 
-function profileUpdate()
-/*Met à jour les données de profil de l'utilisateur qui a l'id donné
- * On utilise pour cela les valeurs ($_POST) récupérées grâce à un formulaire
- */
+function profileUpdate($name, $first_name, $address)
 {
     $db = dbConnect();
-    foreach ($_POST as $key => $value)
-    {
-        if (!empty($value))
-        {
-            $req = $db -> prepare("UPDATE utilisateurs
-                                SET $key = :value
-                                WHERE id = :id");
-            $req -> execute(array(
-                "value" => htmlspecialchars($value),
-                "id" => $_SESSION["id"]));
-            $req -> closeCursor();
-        }
-    }
+    $req = $db -> prepare("UPDATE utilisateurs
+                            SET nom = :nom, prenom = :prenom, adresse = :adresse
+                            WHERE id = :id");
+    $req -> execute(array(
+        "nom" => $name,
+        "prenom" => $first_name,
+        "adresse" => $address,
+        "id" => $_SESSION["id"]));
+    $req -> closeCursor();
 }
 
 function getPassword()
@@ -77,17 +70,16 @@ function passwordUpdate($new_password_1)
     $req -> closeCursor();
 }
 
-function profileCreation($nom, $prenom, $adresse, $mail, $pseudo, $mot_de_passe)
+function profileCreation($nom, $prenom, $adresse, $mail, $mot_de_passe)
 {
     $db = dbConnect();
-    $req = $db -> prepare("INSERT INTO utilisateurs(nom, prenom, adresse, mail, pseudo, mot_de_passe, categorie_utilisateur)
-                            VALUES (:nom, :prenom, :adresse, :mail, :pseudo, :mot_de_passe, 'admin')");
+    $req = $db -> prepare("INSERT INTO utilisateurs(nom, prenom, adresse, mail, mot_de_passe, categorie_utilisateur)
+                            VALUES (:nom, :prenom, :adresse, :mail, :mot_de_passe, 'admin')");
     $req -> execute(array(
         "nom" => $nom,
         "prenom" => $prenom,
         "adresse" => $adresse,
         "mail" => $mail,
-        "pseudo" => $pseudo,
         "mot_de_passe" => $mot_de_passe));
     
     $req -> closeCursor();
@@ -200,6 +192,19 @@ function updatePicture($id_picture, $picture_link)
         "lien" => $picture_link,
         "id" => $id_picture));
     $req -> closeCursor();  
+}
+
+function countEmail($email)
+{
+    $db = dbConnect();
+    $req = $db -> prepare("SELECT COUNT(mail) AS nb_email
+                            FROM utilisateurs
+                            WHERE mail = ?");
+    $req -> execute(array($email));
+    $nb_email = $req -> fetch();
+    $req -> closeCursor();
+    
+    return $nb_email["nb_email"];
 }
 
 

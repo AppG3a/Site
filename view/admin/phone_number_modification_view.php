@@ -15,7 +15,7 @@
             
             <form method="post" action="roter.php?action=phone_number_modification">
             	<p>
-            	<label for="phone_number">Numéro</label> : <input type="text" name="phone_number" id="phone_number" required>
+            		<label for="phone_number">Numéro</label> : <input type="text" name="phone_number" id="phone_number" required>
             	</p>
         		<p>
             		<input type="submit" value="Changer le numéro">
@@ -23,7 +23,6 @@
             </form>
         </div>
         
-        <!-- <div class="back_button"> -->
         <div class="right_nav">
         	<a href="roter.php?action=see_contact">Retour</a>
         </div>
