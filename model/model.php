@@ -43,6 +43,19 @@ function getPassword($mail)
     return $db_content;
 }
 
+function updatePassword($id, $new_password)
+//Change le mot de passe de l'utilisateur qui a l'id donné par le nouveau mot de passe donné
+{
+    $db = dbConnect();
+    $req = $db -> prepare("UPDATE utilisateurs
+                        SET mot_de_passe = :mot_de_passe
+                        WHERE id = :id");
+    $req -> execute(array(
+        "mot_de_passe" => $new_password,
+        "id" => $id));
+    $req -> closeCursor();
+}
+
 function getCgu()
 {
     $db = dbConnect();

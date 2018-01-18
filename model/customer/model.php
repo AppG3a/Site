@@ -384,6 +384,18 @@ function getActivity($id_sensor)
     return $req;
 }
 
+function getDomisepEmail()
+{
+    $db = dbConnect();
+    $req = $db -> query("SELECT numero
+                            FROM numeros_domisep
+                            WHERE id = 2");
+    $email = $req -> fetch();
+    $req -> closeCursor();
+    
+    return $email["numero"];
+}
+
 
 
 

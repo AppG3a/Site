@@ -9,8 +9,7 @@
 
 <p>
 	<strong>
-        Veuillez renseigner votre adresse électronique<br/>
-        Un nouveau mot de passe sera envoyé à cette adresse
+        Le nouveau mot de passe a été envoyé, vous le recevrez d'ici quelques instants
 	</strong>
 </p>
 

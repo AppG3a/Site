@@ -58,6 +58,27 @@ function seeForgottenPassword()
     require("view/forgotten_password_view.php");
 }
 
+function sendNewPassword()
+{
+    $email = htmlspecialchars($_POST["mail"]);
+    $db_content = getPassword($email);
+    if (isset($db_content["id"]))
+    {
+        $new_password = uniqid();
+        updatePassword($db_content["id"], $new_password);
+        // Envoyer mail
+        $destinataire = $email;
+        $subject = "Harvey - Votre mot de passe a été réinitialisé";
+        $message = "Vous avez demandé à recevoir un nouveau mot de passe. Voici votre nouveau mot de passe : " . $new_password;
+        //mail($destinataire, $subject, $message);
+        require("view/new_password_send_view.php");
+    }
+    else
+    {
+        require("view/new_password_fail_view.php");
+    }
+}
+
 function openAdmin()
 {
     //require("view/admin/account_access_view.php");

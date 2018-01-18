@@ -62,6 +62,10 @@ function passwordChange()
             {
                 passwordUpdate($new_password_1);
                 $profile = getProfile();
+                $destinataire = $profile["mail"];
+                $subject = "Harvey - Votre mot de passe a été modifié";
+                $message = "Nous vous informons que votre mot de passe Harvey a été correctement modifié";
+                //mail($destinataire, $subject, $message);
                 require("../../view/customer/success_password_change_view.php");
             }
             
@@ -120,7 +124,7 @@ function sendMessage()
     $subject = htmlspecialchars($_POST["subject"]);
     $message = htmlspecialchars($_POST["message"]);
     $mailclient = $_SESSION["email"];
-    $destinataire = 'hugo.alayrangues@gmail.com';
+    $destinataire = getDomisepEmail();
     
     //mail($destinataire, $subject, $message, $mailclient);
     

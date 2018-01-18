@@ -54,6 +54,10 @@ if (isset($_GET["action"]))
             seeForgottenPassword();
             break;
             
+        case "send_new_password":
+            sendNewPassword();
+            break;
+            
         default:
             seeAuthenticationPage();
             break;
