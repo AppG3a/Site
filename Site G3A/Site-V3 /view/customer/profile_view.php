@@ -1,12 +1,13 @@
 <?php $css = "../../design/customer/profile_view.css?<?php echo time(); ?"; ?>
 <?php $title = "Mon profil"; ?>
 
-<?php include("bloc_header_view.php")?>
+
+    
+	<?php ob_start(); ?>
+	<?php include("bloc_header_view.php")?>
 
 <div class="center">
     <?php include("bloc_nav_view.php")?>
-    
-	<?php ob_start(); ?>
 
 	<div class="content">
 
@@ -27,9 +28,9 @@
         </div>
 
     </div>    
+    </div>
+
+<?php include("bloc_footer_view.php")?>
     <?php $content = ob_get_clean(); ?>
 
 <?php require("../../view/customer/template.php"); ?>
-</div>
-
-<?php include("bloc_footer_view.php")?>

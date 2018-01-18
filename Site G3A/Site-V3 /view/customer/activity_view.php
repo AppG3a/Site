@@ -3,14 +3,17 @@ $css = "../../design/customer/sensors_view_2.css?<?php echo time(); ?";
 ?>
 <?php $title = "Rapport d'activité"; ?>
 
-<script type="text/javascript" src="../../libs/Chart.js"></script>
+
+    
+	<?php ob_start(); ?>
+	
+	<script type="text/javascript" src="../../libs/Chart.js"></script>
 
 <?php include("bloc_header_view.php")?>
 
 <div class="center">
     <?php include("bloc_nav_view.php")?>
-    
-	<?php ob_start(); ?>
+	
 
 	<div class="content">
 		
@@ -69,15 +72,16 @@ $css = "../../design/customer/sensors_view_2.css?<?php echo time(); ?";
 			
         </div>
 
-    </div>    
+    </div>   
+    </div>
+
+<?php include("bloc_footer_view.php")?>
+     
     <?php $content = ob_get_clean(); ?>
 
 <?php
 require("../../view/customer/template.php"); 
 ?>
-</div>
-
-<?php include("bloc_footer_view.php")?>
 
 
 

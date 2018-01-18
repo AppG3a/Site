@@ -151,17 +151,19 @@ header
 			
 
 
+
 footer
 {
 	color: white;
 	text-align: center;
-	margin: auto;
-	margin-bottom: 0px;
 	border: 1px rgb(0, 0, 129) solid;
 	border-radius: 20px 20px 0px 0px;
 	background-color: rgb(0, 0, 129);
 	padding-right: 15px;
 	padding-left: 15px;
+	position: fixed;
+     bottom :0px;
+     right: 2%;
 }
 
 	footer a

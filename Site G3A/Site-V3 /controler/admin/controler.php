@@ -25,6 +25,7 @@ function seeProfileModification()
 function profileModification()
 //Fais les modifications du profil demandées puis affiche la page de profil de l'utilisateur qui a l'id donné
 {
+    $_POST["nom"]=strtoupper($_POST["nom"]);
     profileUpdate();
     seeProfile();
 }

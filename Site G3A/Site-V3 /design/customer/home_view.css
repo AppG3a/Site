@@ -2,7 +2,7 @@ html
 {
 	/*background: url("../picture/fond_2.jpg") fixed no-repeat;*/
 	background-image:radial-gradient(white, rgb(186,186,186));
-	border: 5px solid pink;
+	
 	min-height: 100%;
 	
 }
@@ -13,16 +13,16 @@ body
 	flex-direction: column;
 	margin: 0px;
 	height:100%;
-	border: 5px solid red;
 	
-}
+	
+} 
 
 
-/*header
+header
 {
 	display: flex;
 	justify-content: space-between;	
-	border: 5px solid yellow;
+	
 }
 
 	h2
@@ -138,6 +138,7 @@ body
 			flex-direction: column;
 			justify-content: center;
 			align-items: flex-end;
+			
 		}
 		
 			.right_nav a
@@ -151,13 +152,13 @@ body
 				background-color: rgb(0, 0, 129);
 				padding: 10px;
 				margin-bottom: 10px;
-				width: 70%;		
+				width: 200px;		
 			}
 			
 			.right_nav a:hover
 			{
 				padding-right: 30px;
-				width: 75%;
+				width: 200px;
 			}
 			
 			
@@ -172,13 +173,9 @@ footer
 	background-color: rgb(0, 0, 129);
 	padding-right: 15px;
 	padding-left: 15px;
-	position: relative;
-     bottom:0;
-     right: 0;
-     left: 0;
-     margin: 0 auto;
-     width:400px;
-
+	position: fixed;
+     bottom :0px;
+     right: 2%;
 }
 
 

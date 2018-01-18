@@ -1,12 +1,13 @@
 <?php $css = "../../design/admin/home_view.css?<?php echo time(); ?"; ?>
 <?php $title = "Modifier mon profil"; ?>
 
+
+    
+<?php ob_start(); ?>
 <?php include("bloc_header_view.php")?>
 
 <div class="center">
     <?php include("bloc_nav_view.php")?>
-    
-<?php ob_start(); ?>
 
 	<div class="content">
 
@@ -52,13 +53,14 @@
 
     </div>    
     <?php $content = ob_get_clean(); ?>
-
-<?php require("../../view/admin/template.php"); ?>
-</div>
+    </div>
 
 <?php include("bloc_footer_view.php")?>
 
 <script src="../../js/profile_modification_view.js"></script>
+
+<?php require("../../view/admin/template.php"); ?>
+
 
 
 
