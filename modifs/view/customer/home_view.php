@@ -31,13 +31,13 @@
                 		if ($sensor["favori"] == 1)
                 		{
                 		?>
-                			<img src="http://localhost/appx/design/picture/favori_on_2.png" alt="Favori" title="Favori" />
+                			<img src="../../design/picture/favori_on_2.png" alt="Favori" title="Favori" />
             			<?php 
                 		}
                 		else 
                 		{
             			?>
-            				<img src="http://localhost/appx/design/picture/favori_off_2.png" alt="Non favori" title="Non favori" />
+            				<img src="../../design/picture/favori_off_2.png" alt="Non favori" title="Non favori" />
         				<?php 
                 		}
         				?>
@@ -88,13 +88,13 @@
                 		if ($sensor["favori"] == 1)
                 		{
                 		?>
-                			<img src="http://localhost/appx/design/picture/favori_on_2.png" alt="Favori" title="Favori" />
+                			<img src="../../design/picture/favori_on_2.png" alt="Favori" title="Favori" />
             			<?php 
                 		}
                 		else 
                 		{
             			?>
-            				<img src="http://localhost/appx/design/picture/favori_off_2.png" alt="Non favori" title="Non favori" />
+            				<img src="../../design/picture/favori_off_2.png" alt="Non favori" title="Non favori" />
         				<?php 
                 		}
         				?>
