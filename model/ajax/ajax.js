@@ -1,3 +1,10 @@
+/**
+ * Requête AJAX, les données sont récupérées dans le fichier indiqué par l'url puis utilisées dans la fonction "callback"
+ * 
+ * @param url
+ * @param callback
+ * @returns
+ */
 function ajaxGet(url, callback) 
 {
     var req = new XMLHttpRequest();

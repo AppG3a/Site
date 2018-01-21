@@ -1,12 +1,12 @@
+<?php ob_start(); ?>
 <?php $css = "../../design/admin/home_view.css"; ?>
 <?php $title = "Créer un compte Admin"; ?>
 
 <?php include("bloc_header_view.php")?>
 
 <div class="center">
-    <?php include("bloc_nav_view.php")?>
-    
-    <?php ob_start(); ?>
+
+    <?php include("bloc_nav_view.php")?>    
     
     <div class="content">
 
@@ -26,16 +26,20 @@
             		<input type="submit" value="Créer le compte">
             	</p>
             </form>
+            
         </div>
 
         <div class="right_nav">
+        
         	<a href="roter.php">Revenir à la page d'accueil</a>
+        	
     	</div>
 
     </div>    
-    <?php $content = ob_get_clean(); ?>
-
-<?php require("../../view/admin/template.php"); ?>
+    
 </div>
 
-<?php include("bloc_footer_view.php")?>
+<?php $content = ob_get_clean(); ?>
+
+<?php require("../../view/admin/template.php"); ?>
+

@@ -1,16 +1,17 @@
+<?php ob_start(); ?>
 <?php $css = "../../design/admin/home_view.css"; ?>
 <?php $title = "Modifier mon profil"; ?>
 
 <?php include("bloc_header_view.php")?>
 
 <div class="center">
+
     <?php include("bloc_nav_view.php")?>
     
-<?php ob_start(); ?>
-
 	<div class="content">
 
 		<div class="sub_content">
+		
             <form method="post" action="roter.php?action=profile_modification">
             	<fieldset>
             		<legend>Informations personnelles</legend>
@@ -42,21 +43,24 @@
             		<input type="submit" value="Changer le mot de passe">
             	</p>
             </form>
+            
         </div>
         
     	<div class="right_nav">
+    	
         	<a href="roter.php?action=see_profile">Retour</a>
+        	
     	</div>
 
     </div>    
-    <?php $content = ob_get_clean(); ?>
-
-<?php require("../../view/admin/template.php"); ?>
+    
 </div>
 
-<?php include("bloc_footer_view.php")?>
-
 <script src="../../view/admin/js/profile_modification_view.js"></script>
+    
+<?php $content = ob_get_clean(); ?>
+
+<?php require("../../view/admin/template.php"); ?>
 
 
 

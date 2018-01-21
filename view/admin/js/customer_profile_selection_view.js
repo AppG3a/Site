@@ -291,7 +291,7 @@ function dataProcessing(reponse)
 	divButtonsElt.appendChild(buttonIdElt);
 	divButtonsElt.appendChild(buttonNameElt);	
 	
-	// Affichage des utilisateurs 5 par 5
+	// Affichage des utilisateurs 10 par 10
 	
 	var customersSubList = [];
 	function pagination(customersList)
@@ -302,7 +302,7 @@ function dataProcessing(reponse)
 		var k = 0; // k est un compteur
 		customersList.forEach(function(customer)
 		{
-			if (k < 7)
+			if (k < 10)
 			{
 				customersSubSubList.push(customer);
 				k++;
@@ -356,14 +356,11 @@ function dataProcessing(reponse)
 		
 		divPageElt.innerHTML = "";
 		divPageElt.appendChild(buttonPageElt);
-		
-		
+			
 	}
 
 	pagination(customers);
 	initTable(customersSubList[0]);
-	
-	
 	
 }
 

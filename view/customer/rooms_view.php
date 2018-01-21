@@ -1,12 +1,12 @@
+<?php ob_start(); ?>
 <?php $css = "../../design/customer/home_view.css"; ?>
 <?php $title = "Mes pièces"; ?>
 
 <?php include("bloc_header_view.php")?>
 
 <div class="center">
-    <?php include("bloc_nav_view.php")?>
-    
-	<?php ob_start(); ?>
+
+    <?php include("bloc_nav_view.php")?>    
 
 	<div class="content">
 
@@ -27,6 +27,7 @@
         	</ul>
             
             <div class="sub_content_2">
+            
     			<form method="post" action="roter.php?action=add_room">
     				<fieldset id="rooms_fieldset">
     					<legend>Ajouter une pièce</legend>
@@ -82,18 +83,22 @@
         				</p>
     				</fieldset>
     			</form>
+    			
             </div>
+            
         </div>
         
         <div class="right_nav">
-            <!-- <a href="roter.php?action=see_add_room">Ajouter / Supprimer une pièce</a> -->
+        
             <a href="roter.php">Revenir à la page d'accueil</a>
+            
         </div>
 
     </div>    
-    <?php $content = ob_get_clean(); ?>
-
-<?php require("../../view/customer/template.php"); ?>
+    
 </div>
 
-<?php include("bloc_footer_view.php")?>
+<?php $content = ob_get_clean(); ?>
+
+<?php require("../../view/customer/template.php"); ?>
+

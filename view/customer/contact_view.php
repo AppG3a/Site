@@ -1,16 +1,17 @@
+<?php ob_start(); ?>
 <?php $css = "../../design/customer/home_view.css"; ?>
 <?php $title = "Support"; ?>
 
 <?php include("bloc_header_view.php")?>
 
 <div class="center">
-    <?php include("bloc_nav_view.php")?>
-    
-<?php ob_start(); ?>
+
+    <?php include("bloc_nav_view.php")?>    
 
 	<div class="content">
 
 		<div class="sub_content">
+		
             <h1>Contacter le support</h1>
             
             <form method="post" action="roter.php?action=send_message">
@@ -27,37 +28,25 @@
             	</p>
             </form>
             
-            <!-- <h1>Messagerie</h1>
-            <?php 
-            while ($message = $messages -> fetch())
-            {
-            ?>
-            	<strong><?= htmlspecialchars($message["subject"]) ?></strong>
-            	<p>
-            		<em>Envoyé le <?= htmlspecialchars($message["sending_date"]) ?></em><br/>
-            		<?= htmlspecialchars($message["message"]) ?>
-            	</p>
-            	
-            <?php 
-            }
-            $messages -> closeCursor();
-            ?> -->
-            
             <h1>Appeler le support</h1>
             
-            <p><?= $phone_number ?></p>
+            <p><?= $phone_number ?></p><br/>       
             
-            <br/>
         </div>
         
         <div class="right_nav">
+        
         	<a href="roter.php">Revenir à la page d'accueil</a>
+        	
         </div>
 
-    </div>    
-    <?php $content = ob_get_clean(); ?>
+	</div>   
+     
+</div>
+ 
+<?php $content = ob_get_clean(); ?>
 
 <?php require("../../view/customer/template.php"); ?>
-</div>
 
-<?php include("bloc_footer_view.php")?>
+
+

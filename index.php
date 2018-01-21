@@ -1,8 +1,9 @@
 <?php
 /* Quand on accède au site, on va automatiquement sur cette page
- * Cette index gère tout ce qui concerne l'authentification
+ * Cet index gère tout ce qui concerne l'authentification
  */
 
+// Appelle le contrôleur authentification
 require("controler/controler.php");
 
 if (isset($_GET["action"]))

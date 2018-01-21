@@ -1,13 +1,13 @@
+<?php ob_start(); ?>
 <?php $css = "../../design/admin/carousel_modification_view.css"; ?>
 <?php $title = "Gérer le carousel"; ?>
 
 <?php include("bloc_header_view.php")?>
 
 <div class="center">
+
     <?php include("bloc_nav_view.php")?>
-    
-    <?php ob_start(); ?>
-    
+        
     <div class="content">
 
 		<div class="sub_content">
@@ -32,21 +32,25 @@
             		<input type="submit" value="Modifier le carousel"> <span id="error"></span>
             	</p>
             </form>
+            
         </div>
 
         <div class="right_nav">
+        
         	<a href="roter.php">Revenir à la page d'accueil</a>
+        	
     	</div>
 
     </div>    
-    <?php $content = ob_get_clean(); ?>
-
-<?php require("../../view/admin/template.php"); ?>
+    
 </div>
 
-<?php include("bloc_footer_view.php")?>
-
 <script src="../../view/admin/js/carousel_modification_view.js"></script>
+
+<?php $content = ob_get_clean(); ?>
+
+<?php require("../../view/admin/template.php"); ?>
+
 
 
 

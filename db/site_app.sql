@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 18 jan. 2018 à 22:32
+-- Généré le :  Dim 21 jan. 2018 à 15:01
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `capteurs` (
   `id_type` int(11) NOT NULL,
   `categorie` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `capteurs`
@@ -101,22 +101,6 @@ INSERT INTO `capteurs` (`id`, `id_utilisateur`, `id_emplacement`, `reference`, `
 (44, 4, 5, 'reference', 'description', 'OFF', 2, NULL, 1, 5, 'simple'),
 (38, 4, 5, 'reference', 'description', 'OFF', 10, NULL, 1, 4, 'objet'),
 (34, 4, 20, 'reference', 'description', 'OFF', 10, NULL, 1, 3, 'objet');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `catalogue`
---
-
-DROP TABLE IF EXISTS `catalogue`;
-CREATE TABLE IF NOT EXISTS `catalogue` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `prix` float NOT NULL,
-  `vignette` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -137,23 +121,6 @@ CREATE TABLE IF NOT EXISTS `cgu` (
 
 INSERT INTO `cgu` (`id`, `texte`) VALUES
 (1, '<div style=\"text-align: center;\"><b><font size=\"5\">Conditions Générales d\'Utilisation</font></b></div><div style=\"text-align: left;\"><b><br></b></div><div style=\"text-align: justify;\">Il n\'existe pas d\'obligation légale quant à la rédaction de conditions générales d\'utilisation (CGU). Toutefois, il est fortement recommandé de les inclure au site internet. En effet, le contrat de CGU encadre juridiquement les rapports et les conflits pouvant naître entre l\'éditeur du site et le visiteur. En revanche et conformément à la loi pour la confiance dans l\'économie numérique en date du 21 juin 2004, les mentions légales doivent obligatoirement figurer sur le site internet. Les CGU peuvent les reproduire ou indiquer un lien direct permettant d\'y accéder.</div><div style=\"text-align: left;\"><br></div><div style=\"text-align: left;\">Tout visiteur du site internet accepte les CGU pour l\'accès et l\'utilisation aux services proposés par le site.</div><div style=\"text-align: left;\">Les CGU informent les visiteurs sur différentes informations comme :</div><blockquote style=\"margin: 0 0 0 40px; border: none; padding: 0px;\"><div style=\"text-align: left;\">- les mentions légales relatives à la société, à son siège social ;</div></blockquote><blockquote style=\"margin: 0 0 0 40px; border: none; padding: 0px;\"><div style=\"text-align: left;\">- les conditions d\'accès au site ;</div><div style=\"text-align: left;\">- les différents services et les produits qu\'offre le site ;</div><div style=\"text-align: left;\">- les modalités relatives à la création d\'un compte visiteur, client ;</div><div style=\"text-align: left;\">- la propriété intellectuelle ;</div><div style=\"text-align: left;\">- la protection des données personnelles ;</div><div style=\"text-align: left;\">- la responsabilité de l\'éditeur et ses limites ;</div><div style=\"text-align: left;\">- la responsabilité du visiteur ;</div><div><div style=\"text-align: left;\">- les liens hypertextes ;</div></div><div><div><div style=\"text-align: left;\">- la durée du contrat ;</div></div></div><div><div><div style=\"text-align: left;\">- l\'évolution du contrat ;</div></div></div><div><div style=\"text-align: left;\">- la juridiction compétente et le droit applicable en cas de litige.</div></div></blockquote><div><div style=\"text-align: left;\"><br></div></div>');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `consignes`
---
-
-DROP TABLE IF EXISTS `consignes`;
-CREATE TABLE IF NOT EXISTS `consignes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_capteur` int(11) NOT NULL,
-  `date_debut` datetime NOT NULL,
-  `date_fin` datetime NOT NULL,
-  `directive` varchar(255) NOT NULL,
-  `valeur` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -200,11 +167,11 @@ CREATE TABLE IF NOT EXISTS `images` (
 --
 
 INSERT INTO `images` (`id`, `lien`) VALUES
-(1, 'http://localhost/site_app/Site/design/picture/montre_2.jpg'),
-(2, 'http://localhost/site_app/Site/design/picture/camera_2.jpg'),
+(1, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg'),
+(2, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg'),
 (3, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg'),
-(4, 'http://localhost/site_app/Site/design/picture/montre_2.jpg'),
-(5, 'http://localhost/site_app/Site/design/picture/camera_2.jpg'),
+(4, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg'),
+(5, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg'),
 (6, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg'),
 (7, 'http://localhost/site_app/Site/design/picture/montre_2.jpg'),
 (8, 'http://localhost/site_app/Site/design/picture/camera_2.jpg'),
@@ -233,52 +200,6 @@ CREATE TABLE IF NOT EXISTS `maisons` (
 INSERT INTO `maisons` (`id`, `id_utilisateur`, `adresse`, `superficie`, `nb_occupants`) VALUES
 (1, 4, '23, rue de Penthièvre\r\n07000 PRIVAS', 120, 3),
 (2, 3, '15, rue des six frères Ruellan\r\n57200 SARREGUEMINES', 90, 4);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `messages`
---
-
-DROP TABLE IF EXISTS `messages`;
-CREATE TABLE IF NOT EXISTS `messages` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_customer` int(11) NOT NULL,
-  `subject` varchar(255) NOT NULL,
-  `message` text NOT NULL,
-  `sending_date` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `messages`
---
-
-INSERT INTO `messages` (`id`, `id_customer`, `subject`, `message`, `sending_date`) VALUES
-(24, 4, 'g', 'efsgrhdt', '2018-01-12 16:25:57'),
-(2, 1, 'Problème technique', 'Bonjour, j\'ai un problème sur un de mes capteurs', '2017-11-25 23:14:04'),
-(3, 2, 'Pas content', 'Il n\'y a rien qui marche', '2017-11-25 23:15:42'),
-(23, 4, 'essdg', 'qsrdf', '2018-01-12 16:21:03'),
-(22, 4, 'eqstd', 's', '2018-01-12 16:20:50'),
-(6, 4, 'Problème technique', 'Mon capteur d\'humidité a pris l\'eau', '2017-12-10 22:45:09'),
-(21, 4, 'eqstd', 's', '2018-01-12 16:20:34'),
-(20, 4, 'eqstd', 's', '2018-01-12 16:20:15'),
-(19, 4, 'thg', 'rjyhtgr', '2017-12-21 19:10:51'),
-(18, 4, 'test', '', '2017-12-15 15:01:44'),
-(17, 4, 'test', '', '2017-12-15 14:12:03'),
-(16, 4, 'Problème capteur', 'J\'ai un problème', '2017-12-15 13:52:24'),
-(25, 4, '', '', '2018-01-14 17:38:25'),
-(26, 4, '', '', '2018-01-14 17:43:51'),
-(27, 4, '', '', '2018-01-14 17:47:01'),
-(28, 4, '', '', '2018-01-14 17:47:27'),
-(29, 4, '', '', '2018-01-14 17:47:49'),
-(30, 4, '', '', '2018-01-14 17:49:01'),
-(31, 4, '', '', '2018-01-14 17:49:16'),
-(32, 4, '', '', '2018-01-14 17:49:19'),
-(33, 4, 'tjyrf', 'dtj', '2018-01-14 17:50:31'),
-(34, 4, 'iètk', 'fit', '2018-01-14 17:50:41'),
-(35, 4, 'fj', 'fyj', '2018-01-16 08:45:30'),
-(36, 4, 'test', 'bla', '2018-01-18 09:50:58');
 
 -- --------------------------------------------------------
 
@@ -316,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `pannes` (
   `date_solution` datetime NOT NULL,
   `id_client` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `pannes`
@@ -325,7 +246,16 @@ CREATE TABLE IF NOT EXISTS `pannes` (
 INSERT INTO `pannes` (`id`, `description`, `date_panne`, `solution`, `date_solution`, `id_client`) VALUES
 (1, 'Le capteur de température ne marche plus', '2017-11-01 09:12:09', 'Intervention - Changement du capteur', '2017-11-05 16:37:44', 5),
 (2, 'Plus aucun capteur ne marche', '2017-11-07 14:06:34', 'Rebrancher la passerelle', '2017-11-09 18:35:13', 6),
-(3, 'Le volet est bloqué', '2017-11-17 13:09:32', 'Intervention - Réparation du capteur', '2017-11-29 19:19:06', 6);
+(3, 'Le volet est bloqué', '2017-11-17 13:09:32', 'Intervention - Réparation du capteur', '2017-11-29 19:19:06', 6),
+(4, 'Le capteur d\'humidité semble bloqué', '2018-01-03 10:06:32', 'Changer le capteur', '2018-01-04 14:11:18', 8),
+(5, 'Les objets ne réagissent plus aux instructions', '2018-01-05 07:09:39', 'Rebrancher les CeMACs', '2018-01-09 19:12:45', 4),
+(6, 'La lampe du salon reste allumée quand j\'essaye de l\'éteindre', '2018-01-08 11:06:38', 'Eteindre et rallumer le CeMAC', '2018-01-10 11:08:23', 8),
+(7, 'Le CeMAC ne fonctionne plus', '2018-01-09 12:11:29', 'Changement du CeMAC', '2018-01-17 10:33:13', 7),
+(8, 'Plus rien ne fonctionne', '2018-01-15 14:18:42', 'Intervention technicien', '2018-01-17 11:41:27', 20),
+(9, 'Les capteurs du salon ne marchent plus', '2018-01-17 16:14:29', 'Rebrancher le CeMAC en charge des capteurs du salon', '2018-01-18 08:32:30', 11),
+(10, 'Je n\'arrive pas à faire marcher les capteurs du garage', '2018-01-15 15:12:36', 'Rajouter un CeMAC qui couvre la garage', '2018-01-17 12:13:34', 5),
+(11, 'L\'ampoule de la cuisine ne s\'allume plus', '2018-01-16 15:14:28', 'Changer l\'ampoule', '2018-01-16 18:33:15', 9),
+(12, 'Le capteur de luminosité du garage de marche pas', '2018-01-16 09:37:06', 'Il n\'y a pas de lumière dans le garage', '2018-01-22 17:31:18', 10);
 
 -- --------------------------------------------------------
 
@@ -352,11 +282,11 @@ CREATE TABLE IF NOT EXISTS `types_capteurs` (
 --
 
 INSERT INTO `types_capteurs` (`id_type`, `type`, `categorie`, `lien_image`, `unite`, `valeur_defaut`, `max`, `min`, `code_affichage`) VALUES
-(1, 'Température', 'simple', 'http://localhost/site_app/Site/design/picture/thermo_2.png', '°C', 10, 0, 0, 1),
-(2, 'Luminosité', 'simple', 'http://localhost/site_app/Site/design/picture/soleil_2.png', 'lux', 100, 0, 0, 1),
-(3, 'Radiateur', 'objet', 'http://localhost/site_app/Site/design/picture/radiateur_2.png', '°C', 15, 35, 0, 2),
-(4, 'Lampe', 'objet', 'http://localhost/site_app/Site/design/picture/ampoule_2.png', '', NULL, 0, 0, 1),
-(5, 'Humidité', 'simple', 'http://localhost/site_app/Site/design/picture/goutte_2.png', '%', 2, NULL, NULL, 1);
+(1, 'Température', 'simple', '../../design/picture/thermo_2.png', '°C', 10, 0, 0, 1),
+(2, 'Luminosité', 'simple', '../../design/picture/soleil_2.png', 'lux', 100, 0, 0, 1),
+(3, 'Radiateur', 'objet', '../../design/picture/radiateur_2.png', '°C', 15, 35, 0, 2),
+(4, 'Lampe', 'objet', '../../design/picture/ampoule_2.png', '', NULL, 0, 0, 1),
+(5, 'Humidité', 'simple', '../../design/picture/goutte_2.png', '%', 2, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 

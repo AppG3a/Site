@@ -1,7 +1,11 @@
 <?php
 
+/**
+ * Connexion à la base de données "site_app"
+ * 
+ * @return PDO
+ */
 function dbConnect()
-//Permet de se connecter à la base de données
 {
     try
     {
@@ -15,6 +19,12 @@ function dbConnect()
     }
 }
 
+/**
+ * Récupère tous les champs de la table "utilisateurs" où l'email correspond à l'email donné ($mail)
+ * 
+ * @param string $mail
+ * @return mixed
+ */
 function getPassword($mail)
 {
     $db = dbConnect();
@@ -29,8 +39,14 @@ function getPassword($mail)
     return $db_content;
 }
 
+/**
+ * Change le mot de passe de l'utilisateur qui a l'id donné ($id)
+ * La valeur du nouveau mot de passe est donnée par $new_password
+ * 
+ * @param string $id
+ * @param string $new_password
+ */
 function updatePassword($id, $new_password)
-//Change le mot de passe de l'utilisateur qui a l'id donné par le nouveau mot de passe donné
 {
     $db = dbConnect();
     $req = $db -> prepare("UPDATE utilisateurs
@@ -42,6 +58,11 @@ function updatePassword($id, $new_password)
     $req -> closeCursor();
 }
 
+/**
+ * Récupère les conditions générales d'utilisation
+ * 
+ * @return mixed
+ */
 function getCgu()
 {
     $db = dbConnect();
@@ -53,6 +74,11 @@ function getCgu()
     return $cgu;
 }
 
+/**
+ * Récupère tous les champs de la table "images" (et notamment les liens des images)
+ * 
+ * @return PDOStatement
+ */
 function getPictures()
 {
     $db = dbConnect();

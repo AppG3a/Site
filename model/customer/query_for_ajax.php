@@ -1,6 +1,11 @@
 <?php
+/*
+ * Ce fichier récupère toutes les données concernant les types de capteurs
+ * Ces données sont converties au format JSON
+ * Elles seront récupérées par une requête AJAX puis traitées et utilisées avec JavaScript
+ */
 
-//On appelle le model
+// Appelle le model
 require("model.php");
 
 $sensor_types = getSensorTypes();

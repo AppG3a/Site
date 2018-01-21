@@ -101,7 +101,7 @@ header
 		
 		.sub_content
 		{
-			width: 80%;
+			width: 88%;
 			display: flex;
 			flex-direction: row;
 			flex-wrap : wrap;
@@ -113,9 +113,14 @@ header
 				border-radius: 10px;
 				background-color: rgb(215,215,215);
 				width: 225px;
-				height: 200px;
+				height: 230px;
 				margin: 10px;
 				padding: 10px;
+			}
+			.imgcentre
+			{
+				display: block;
+                margin: 0 auto;
 			}
 	
 		.right_nav

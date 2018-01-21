@@ -1,13 +1,13 @@
+<?php ob_start(); ?>
 <?php $css = "../../design/admin/home_view.css"; ?>
 <?php $title = "Créer un capteur"; ?>
 
 <?php include("bloc_header_view.php")?>
 
 <div class="center">
+
     <?php include("bloc_nav_view.php")?>
-    
-    <?php ob_start(); ?>
-    
+        
     <div class="content">
 
 		<div class="sub_content">
@@ -27,22 +27,27 @@
                 	<label for="min">minimale </label><input type="number" name="min" id="min"> - 
                 	<label for="max">maximale </label><input type="number" name="max" id="max"><br/><br/>
 
-					<label for="picture_link">URL de l'image (environ 70x70 px) : </label><br/><textarea name="picture_link" id="picture_link" rows="2" cols="70" required></textarea><br/>
+					<label for="picture_link">URL de l'image (environ 70x70 px) : </label><br/><textarea name="picture_link" id="picture_link" rows="2" cols="70" required>../../design/picture/</textarea><br/>
                 </p>
             	<p>
             		<input type="submit" value="Créer le capteur">
             	</p>
             </form>
+            
         </div>
 
         <div class="right_nav">
+        
         	<a href="roter.php">Revenir à la page d'accueil</a>
+        	
     	</div>
 
-    </div>    
-    <?php $content = ob_get_clean(); ?>
+    </div>   
+    
+</div>
+ 
+<?php $content = ob_get_clean(); ?>
 
 <?php require("../../view/admin/template.php"); ?>
-</div>
 
-<?php include("bloc_footer_view.php")?>
+

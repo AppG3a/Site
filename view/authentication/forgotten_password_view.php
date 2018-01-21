@@ -1,7 +1,6 @@
+<?php ob_start(); ?>
 <?php $css = "design/authentication/authentication_view.css"; ?>
 <?php $title = "Harvey"; ?>
-
-<?php ob_start(); ?>
 
 <img src="design/picture/logo_harvey_2.png" alt="Logo d'Harvey" class="logo"/>
 

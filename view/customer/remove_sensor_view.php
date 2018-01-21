@@ -1,12 +1,12 @@
+<?php ob_start(); ?>
 <?php $css = "../../design/customer/home_view.css"; ?>
 <?php $title = "Mes capteurs"; ?>
 
 <?php include("bloc_header_view.php")?>
 
 <div class="center">
-    <?php include("bloc_nav_view.php")?>
-    
-	<?php ob_start(); ?>
+
+    <?php include("bloc_nav_view.php")?>    
 
 	<div class="content">
 
@@ -35,13 +35,16 @@
         </div>
         
         <div class="right_nav">
+        
             <a href="roter.php?action=see_sensors">Retour</a>
+            
         </div>
 
     </div>    
-    <?php $content = ob_get_clean(); ?>
-
-<?php require("../../view/customer/template.php"); ?>
+    
 </div>
 
-<?php include("bloc_footer_view.php")?>
+<?php $content = ob_get_clean(); ?>
+
+<?php require("../../view/customer/template.php"); ?>
+

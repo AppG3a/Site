@@ -3,14 +3,25 @@
  * Toutes ces fonctions sont donc liées à l'authentification
  */
 
+// Appelle le modèle authentification
 require("model/model.php");
 
+/**
+ * Affiche la page d'authentification
+ */
 function seeAuthenticationPage()
 {
     $pictures = getPictures();
     require("view/authentication/authentication_view.php");
 }
 
+/**
+ * Vérifie que l'email et le mot de passe donnés par l'utilisateur sont bons
+ * Si c'est la cas, la fonction renvoie certaines données de l'utilisateur en question
+ * Ces données serviront à définir des variables de session
+ * 
+ * @return mixed
+ */
 function checkAuthentication()
 {
     $mail = htmlspecialchars($_POST["mail"]);
@@ -40,11 +51,21 @@ function checkAuthentication()
     }
 }
 
+/**
+ * Affiche la page qui permet de récupérer un nouveau mot de passe en cas d'oubli
+ */
 function seeForgottenPassword()
 {
     require("view/authentication/forgotten_password_view.php");
 }
 
+/**
+ * Envoie un nouveau mot de passe à l'utilisateur qui a oublié le sien
+ * Le nouveau mot de passe est envoyé par email, après vérification de l'existence d'un compte lié à cet email
+ * 
+ * Le nouveau mot de passe est généré aléatoirement avec la fonction PHP uniquid()
+ * 
+ */
 function sendNewPassword()
 {
     $email = htmlspecialchars($_POST["mail"]);
@@ -53,11 +74,13 @@ function sendNewPassword()
     {
         $new_password = uniqid();
         updatePassword($db_content["id"], $new_password);
-        // Envoyer mail
+        
+        // Envoi d'un mail
         $destinataire = $email;
         $subject = "Harvey - Votre mot de passe a été réinitialisé";
         $message = "Vous avez demandé à recevoir un nouveau mot de passe. Voici votre nouveau mot de passe : " . $new_password;
         //mail($destinataire, $subject, $message);
+        
         require("view/authentication/new_password_send_view.php");
     }
     else
@@ -66,17 +89,26 @@ function sendNewPassword()
     }
 }
 
+/**
+ * Affiche la page qui permet de voir les conditions générales d'utilisation
+ */
 function seeCgu()
 {
     $cgu = getCgu();
     require("view/authentication/cgu_view.php");
 }
 
+/**
+ * Redirection vers un index secondaire qui gère les comptes administrateurs
+ */
 function openAdmin()
 {
     header("Location: roter/admin/roter.php");
 }
 
+/**
+ * Redirection vers un index secondaire qui gère les comptes clients
+ */
 function openCustomer()
 {
     header("Location: roter/customer/roter.php");

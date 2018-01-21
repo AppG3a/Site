@@ -198,29 +198,25 @@ function dataProcessing(reponse)
 			table.appendChild(trElt);
 		});		
 	}
-	
-	//initTable(breakdowns);	
-	
+		
 	
 	// Initialisation d'un formulaire (le formulaire sera défini dans les events des différents boutons)
 	var formElt = document.createElement("form");
 	document.getElementsByClassName("sub_content")[0].insertBefore(formElt, breakdownElt);
 	
 	// Création de boutons pour sélectionner un critère de recherche
-	// Bouton qui permet de restaurer la liste des pannes (seul bouton qui ne fait pas partie de <div id="buttons"></div>
+	// Bouton qui permet de restaurer la liste des pannes
 	var restoreElt = document.getElementById("restore");
 	
 	var buttonRestoreElt = document.createElement("button");
 		buttonRestoreElt.textContent = "Restaurer la liste complète des pannes";
 		buttonRestoreElt.addEventListener("click", function(event)
 		{
-			//initTable(breakdowns);
 			pagination(breakdowns);
 			initTable(breakdownsSubList[0]);
 			restoreElt.innerHTML = "";
 		});
 		
-	// Tous les boutons suivant font partie de <div id="buttons"></div>
 	var divButtonsElt = document.getElementById("buttons");
 	
 	// Bouton de recherche par id
@@ -295,7 +291,6 @@ function dataProcessing(reponse)
 					{
 						restoreElt.appendChild(buttonRestoreElt);
 
-						//initTable(breakdownCustomerIdList);
 						pagination(breakdownCustomerIdList);
 						initTable(breakdownsSubList[0]);
 					}
@@ -315,18 +310,18 @@ function dataProcessing(reponse)
 	divButtonsElt.appendChild(buttonIdElt);
 	divButtonsElt.appendChild(buttonCustomerIdElt);
 	
-	// Affichage des utilisateurs 5 par 5
+	// Affichage des pannes 10 par 10
 	
 	var breakdownsSubList = [];
 	function pagination(breakdownsList)
 	{
-		// Découpage de la liste des utilisateurs
+		// Découpage de la liste des pannes
 		breakdownsSubList = [];
 		var breakdownsSubSubList = [];
 		var k = 0; // k est un compteur
 		breakdownsList.forEach(function(customer)
 		{
-			if (k < 2)
+			if (k < 10)
 			{
 				breakdownsSubSubList.push(customer);
 				k++;
@@ -380,8 +375,7 @@ function dataProcessing(reponse)
 		
 		divPageElt.innerHTML = "";
 		divPageElt.appendChild(buttonPageElt);
-		
-		
+				
 	}
 
 	pagination(breakdowns);

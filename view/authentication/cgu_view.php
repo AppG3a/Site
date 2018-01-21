@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8"/>
-	<title>Harvey - CGU</title>
-</head>
 
-<body>
+    <head>
+    	<meta charset="utf-8"/>
+    	<title>Harvey - CGU</title>
+    </head>
 
-    <p>
-    	<?= $cgu["texte"] ?>
-    </p>
+    <body>
+    
+        <p>
+        	<?= $cgu["texte"] ?>
+        </p>
+    
+    </body>
 
-</body>
 </html>

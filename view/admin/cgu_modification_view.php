@@ -1,17 +1,17 @@
+<?php ob_start(); ?>
 <?php $css = "../../design/admin/home_view.css"; ?>
 <?php $title = "Conditions générales d'utilisation"; ?>
 
 <?php include("bloc_header_view.php")?>
 
 <div class="center">
-    <?php include("bloc_nav_view.php")?>
-    
-    <?php ob_start(); ?>
 
+    <?php include("bloc_nav_view.php")?>
     
     <div class="content">
 
 		<div class="sub_content">
+		
 			<script src="../../view/admin/js/editor.js" type="text/javascript"></script>
 			<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 			
@@ -30,13 +30,16 @@
         </div>
 
 		<div class="right_nav">
+		
 			<a href="roter.php?action=see_cgu">Retour</a>
+			
 		</div>
 
-    </div>    
-    <?php $content = ob_get_clean(); ?>
+    </div>   
+    
+</div>
+ 
+<?php $content = ob_get_clean(); ?>
 
 <?php require("../../view/admin/template.php"); ?>
-</div>
 
-<?php include("bloc_footer_view.php")?>

@@ -1,10 +1,15 @@
+<?php ob_start(); ?>
 <?php $css = "design/authentication/authentication_view.css"; ?>
 <?php $title = "Harvey"; ?>
 
-<?php ob_start(); ?>
-
 <img src="design/picture/logo_harvey_2.png" alt="Logo d'Harvey" class="logo"/>
-<p><strong>MOT DE PASSE INCORRECT</strong></p>
+
+<p>
+	<strong>
+		MOT DE PASSE INCORRECT
+	</strong>
+</p>
+
 <form method="post" action="index.php?action=connexion">
 	<p class="champ">
 		<label for="mail">Email</label><br/><input type="email" name="mail" id="mail" required><br/>
@@ -14,9 +19,9 @@
 		<input type="submit" value="Connexion" class="submit_button">
 	</p>
 </form>
+
 <a href="index.php?action=see_cgu" target="_blank">Conditions générales d'utilisation</a>
-<a href="index.php?action=see_forgotten_password">Mot de passe oublié ?</a>
-<br/>
+<a href="index.php?action=see_forgotten_password">Mot de passe oublié ?</a><br/>
 
 <h2>Produits Domisep</h2>
 
@@ -44,10 +49,12 @@
     <a href="javascript:void(0);" class="arrow" id="prev">&lt;</a>
     <a href="javascript:void(0);" class="arrow" id="next">&gt;</a>
 </div>
+
 <script type="text/javascript" src="view/authentication/js/carousel.js"></script>
     
 <!-- Fin du carousel en JS -->
 
+<br/>
 <a href="#" title="Boutique Domisep">Consulter l'offre de produits Domisep</a>
 
 <?php $content = ob_get_clean(); ?>

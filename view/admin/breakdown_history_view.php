@@ -1,40 +1,38 @@
-<?php $css = "../../design/admin/home_view.css"; ?>
+<?php ob_start(); ?>	
+<?php $css = "../../design/admin/customer_profile_selection_bis_view.css"; ?>
 <?php $title = "Historique des pannes"; ?>
 
 <?php include("bloc_header_view.php")?>
 
 <div class="center">
-    <?php include("bloc_nav_view.php")?>
-    
-    <?php ob_start(); ?>
+
+    <?php include("bloc_nav_view.php")?>    
     
     <div class="content">
 
-		<div class="sub_content">
-        <?php 
-        while ($breakdown = $breakdowns -> fetch())
-        {
-        ?>
-        	<p class="left_justify_2">
-        		<strong>Problème :</strong> <?= htmlspecialchars($breakdown["description"]) ?> (problème relevé le : <?= htmlspecialchars($breakdown["date_panne"]) ?>)<br/>
-        		Solution : <?= htmlspecialchars($breakdown["solution"]) ?> (problème résolu le : <?= htmlspecialchars($breakdown["date_solution"]) ?>)<br/>
-        		Client concerné : <?= htmlspecialchars($breakdown["id_client"]) ?><br/>
-        	</p>
+        <div class="sub_content">
         
-        <?php 
-        }
-        $breakdowns -> closeCursor();
-        ?>
+        	<div id="buttons"></div>
+        	<div id="breakdown"></div>
+        	<div id="restore"></div> 
+            <table></table>    
+            <div id="page"></div>    
+              
         </div>
         
         <div class="right_nav">
+        
         	<a href="roter.php">Revenir à la page d'accueil</a>
-		</div>
-		
-    </div>    
-    <?php $content = ob_get_clean(); ?>
+        	
+        </div>
 
-<?php require("../../view/admin/template.php"); ?>
+    </div>    
+    
 </div>
 
-<?php include("bloc_footer_view.php")?>
+<script src="../../model/ajax/ajax.js"></script>
+<script src="../../view/admin/js/breakdown_history_view.js"></script>
+
+<?php $content = ob_get_clean(); ?>
+
+<?php require("../../view/admin/template.php"); ?>

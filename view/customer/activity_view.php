@@ -1,22 +1,22 @@
-<?php $css = "../../design/customer/sensors_view_2.css"; ?>
+<?php ob_start(); ?>
+<?php $css = "../../design/customer/sensors_view_3.css"; ?>
 <?php $title = "Rapport d'activité"; ?>
-
-<script type="text/javascript" src="../../libs/Chart.js"></script>
 
 <?php include("bloc_header_view.php")?>
 
 <div class="center">
+
     <?php include("bloc_nav_view.php")?>
-    
-	<?php ob_start(); ?>
 
 	<div class="content">
 		
 		<div class="sub_content">		
 		
 			<div>
+			
 				<h3>Température de la pièce Salon</h3>
 				<canvas id="activity_line" width="800" height="450"></canvas>
+				
 			</div>
 			
 			<script type="text/javascript">
@@ -25,6 +25,8 @@
             	var y_data = <?= $y_data; ?>;
             //-->
             </script>
+            
+			<script type="text/javascript" src="../../libs/Chart.js"></script>
 			
 			<script>
                 var canvas = document.getElementById("activity_line");
@@ -66,16 +68,25 @@
             </script>
 			
         </div>
-
+        
+        <div class="right_nav">
+        
+			<a href="roter.php">Revenir à la page d'accueil</a>
+			
+		</div>
+        
     </div>    
-    <?php $content = ob_get_clean(); ?>
+    
+</div>
+
+<?php $content = ob_get_clean(); ?>
 
 <?php
 require("../../view/customer/template.php"); 
 ?>
-</div>
 
-<?php include("bloc_footer_view.php")?>
+
+
 
 
 

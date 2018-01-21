@@ -90,7 +90,6 @@ function dataProcessing(reponse)
 	formElt.appendChild(radioDivElt);
 	formElt.appendChild(document.createElement("br"));
 	
-	
 }
 
 ajaxGet("http://localhost/site_app/Site/model/customer/query_for_ajax.php", dataProcessing);
