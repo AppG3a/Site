@@ -233,7 +233,7 @@ function insertRoom($room, $id_house)
     $req = $db -> prepare("INSERT INTO emplacements(id_maison, nom)
                             VALUES (:id_maison, :nom)");
     $req -> bindParam("id_maison", $id_house);
-    $req -> bindParam("room", $room);
+    $req -> bindParam("nom", $room);
     $req -> execute();
     $req -> closeCursor();
 }

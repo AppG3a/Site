@@ -27,7 +27,7 @@
             	</p>
             	<p>
                 	<strong>
-                		LE COMPTE ADMINISTRATEUR A ETE CREE
+                		Le compte administrateur a été créé
                 	</strong>
             	</p>
             </form>

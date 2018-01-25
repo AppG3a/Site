@@ -163,6 +163,12 @@ function seeAdminProfileCreation()
  * le mot de passe est envoyé par mail au nouvel administrateur
  * 
  * Le mot de passe est généré aléatoirement avec la fonction PHP uniquid()
+ * 
+ * Certaines données sont traitées avant d'être enregistrées dans la base de données :
+ * - le nom ($name) est mis en majuscules avec la fonction PHP strtoupper($string)
+ * - le prénom ($first_name) est mis en minuscule avec la fonction PHP strtolower($string) 
+ * et la première lettre est mise en majuscule avec la fonction PHP ucfirst($string)
+ * - le mot de passe : sha1($string) est une fonction PHP de hachage
  */
 function adminProfileCreation()
 {
@@ -176,7 +182,7 @@ function adminProfileCreation()
     if ($nb_email == 0)
     {
         $mot_de_passe = uniqid();
-        profileCreation($nom, $prenom, $adresse, $email, $mot_de_passe);
+        profileCreation(strtoupper($nom), ucfirst(strtolower($prenom)), $adresse, $email, sha1($mot_de_passe));
         
         $destinataire = $email;
         $subject = "Harvey - Votre compte administrateur a été créé";
@@ -268,6 +274,8 @@ function profileModification()
 /**
  * Modifie le mot de passe de l'utilisateur connecté (celui dont l'id est $_SESSION["id"])
  * Si l'utilisateur remplit correctement le formulaire, le mot de passe est changé et un mail de confirmation est envoyé
+ * 
+ * sha1($string) est une fonction PHP de hachage
  */
 function passwordChange()
 {
@@ -277,9 +285,9 @@ function passwordChange()
     
     $db_password = getPassword();
     
-    if ($former_password == $db_password["mot_de_passe"])
+    if (sha1($former_password) == $db_password["mot_de_passe"])
     {
-        passwordUpdate($new_password_1);
+        passwordUpdate(sha1($new_password_1));
         $destinataire = $_SESSION["email"];
         $subject = "Harvey - Votre mot de passe a été modifié";
         $message = "Nous vous informons que votre mot de passe Harvey a été correctement modifié";

@@ -20,6 +20,8 @@ function seeAuthenticationPage()
  * Si c'est la cas, la fonction renvoie certaines données de l'utilisateur en question
  * Ces données serviront à définir des variables de session
  * 
+ * sha1($string) est une fonction PHP de hachage
+ * 
  * @return mixed
  */
 function checkAuthentication()
@@ -33,7 +35,7 @@ function checkAuthentication()
     // Si on récupère effectivement un mot de passe, on vérifie qu'il correspond au mot de passe donné
     if (isset($db_content["mot_de_passe"]))
     {
-        if ($db_content["mot_de_passe"] == $password)
+        if ($db_content["mot_de_passe"] == sha1($password))
         {
             return $db_content;
         }
@@ -64,6 +66,7 @@ function seeForgottenPassword()
  * Le nouveau mot de passe est envoyé par email, après vérification de l'existence d'un compte lié à cet email
  * 
  * Le nouveau mot de passe est généré aléatoirement avec la fonction PHP uniquid()
+ * sha1($string) est une fonction PHP de hachage
  * 
  */
 function sendNewPassword()
@@ -73,7 +76,7 @@ function sendNewPassword()
     if (isset($db_content["id"]))
     {
         $new_password = uniqid();
-        updatePassword($db_content["id"], $new_password);
+        updatePassword($db_content["id"], sha1($new_password));
         
         // Envoi d'un mail
         $destinataire = $email;

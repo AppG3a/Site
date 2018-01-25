@@ -3,6 +3,22 @@
 // Appelle le modèle client
 require("../../model/customer/model.php");
 
+// -------------------- //
+// ----- Sécurité ----- //
+// -------------------- //
+
+function fieldSecurity($field)
+{
+    if (!empty($field))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 
 // -------------------- //
 // ----- Capteurs ----- //
@@ -342,6 +358,8 @@ function profileModification()
 /**
  * Modifie le mot de passe de l'utilisateur connecté (celui dont l'id est $_SESSION["id"])
  * Si l'utilisateur remplit correctement le formulaire, le mot de passe est changé et un mail de confirmation est envoyé
+ * 
+ * sha1($string) est une fonction PHP de hachage
  */
 function passwordChange()
 {
@@ -351,9 +369,9 @@ function passwordChange()
     
     $db_password = getPassword();
     
-    if ($former_password == $db_password["mot_de_passe"])
+    if (sha1($former_password) == $db_password["mot_de_passe"])
     {
-        passwordUpdate($new_password_1);
+        passwordUpdate(sha1($new_password_1));
         $destinataire = $_SESSION["email"];
         $subject = "Harvey - Votre mot de passe a été modifié";
         $message = "Nous vous informons que votre mot de passe Harvey a été correctement modifié";
