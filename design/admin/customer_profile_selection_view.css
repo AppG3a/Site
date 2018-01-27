@@ -1,6 +1,5 @@
 html
 {
-	/*background: url("../picture/fond_2.jpg") fixed no-repeat;*/
 	background-image:radial-gradient(white, rgb(186,186,186));
 }
 
@@ -36,14 +35,14 @@ header
 	.logo
 	{
 		order: 1;
-		width: 14%;
+		width: 12%;
 		text-align: center;
 	}
 	
 	.bouton
 	{
 		order: 3;
-		width: 14%;
+		width: 12%;
 		display: flex;
 		justify-content: space-around;	
 	}
@@ -51,6 +50,7 @@ header
 .center
 {
 	display: flex;
+	margin-bottom: 20px;
 }
 
 	nav
@@ -79,18 +79,13 @@ header
 			background-color: rgb(0, 0, 129);
 			padding: 10px;
 			margin-bottom: 10px;
-			width: 52%;
+			width: 50%;
 		}
 		
 		.menu_items a:hover
 		{
 			padding-left: 10%;
-			width: 57%;
-		}
-		
-		.menu_items a:active
-		{
-
+			width: 55%;
 		}
 	
 	.content
@@ -101,33 +96,24 @@ header
 		
 		.sub_content
 		{
-			width: 81%;
-			display: flex;
-			flex-direction: column;
-			margin-bottom: 40px;
-			border: 1px blue solid;
+			width: 80%;
 		}
-		
-			.sub_content2
+			
+			table
 			{
-				border: 2px green solid;
-				display: flex;
-				flex-wrap : wrap;
+				border: 1px black solid;
+				border-collapse: collapse; 		
 			}
-	
-				.sensor
+						
+			form
+			{
+				texte-align: center;
+			}
+			
+				.editor
 				{
-					border: 1px red solid;
-					width: 225px;
-					height: 200px;
-					margin: 10px;
-					padding: 10px;
+					background-color: white;
 				}
-				
-			.submit_button
-			{
-				margin: auto;
-			}
 	
 		.right_nav
 		{
@@ -159,23 +145,3 @@ header
 				width: 75%;
 			}
 			
-			
-
-
-footer
-{
-	color: white;
-	text-align: center;
-	margin: auto;
-	margin-bottom: 0px;
-	border: 1px rgb(0, 0, 129) solid;
-	border-radius: 20px 20px 0px 0px;
-	background-color: rgb(0, 0, 129);
-	padding-right: 15px;
-	padding-left: 15px;
-}
-
-	footer a
-	{
-		color: white;
-	}

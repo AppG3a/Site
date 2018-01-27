@@ -18,7 +18,7 @@ if ( (isset($_SESSION["user_type"])) && ($_SESSION["user_type"] == "admin") )
             
             // Page qui permet de créer un capteur
             case "see_sensor_creation":
-                seeSensorCreation();
+                seeSensorCreation(0);
                 break;
             
             // Création d'un capteur
@@ -86,7 +86,7 @@ if ( (isset($_SESSION["user_type"])) && ($_SESSION["user_type"] == "admin") )
             
             // Page qui permet de modifier le carousel
             case "see_carousel_modification":
-                seeCarouselModification();
+                seeCarouselModification(0);
                 break;
            
             // Modification du carousel
@@ -104,7 +104,7 @@ if ( (isset($_SESSION["user_type"])) && ($_SESSION["user_type"] == "admin") )
                 
             // Page qui permet de modifier le profil
             case "see_profile_modification":
-                seeProfileModification();
+                seeProfileModification(0);
                 break;
                 
             // Modification du profil

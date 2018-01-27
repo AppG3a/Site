@@ -12,7 +12,7 @@
 
 		<div class="sub_content">
 		
-			<p id="success_message">Le compte administrateur a été créé avec succès</p>
+			<p id="error_message">Un des champs du formulaire n'a pas été rempli correctement (s'assurer que l'adresse mail est valide)</p>
             
             <form method="post" action="roter.php?action=admin_profile_creation">
             	<fieldset>
@@ -37,10 +37,10 @@
         	
     	</div>
 
-    </div>   
+    </div>    
     
- </div>
-     
+</div>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require("../../view/admin/template.php"); ?>

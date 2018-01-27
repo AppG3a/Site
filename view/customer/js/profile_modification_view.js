@@ -63,12 +63,12 @@ newPassword1Elt.addEventListener("focus", function(event)
 		// Correspondance avec la confirmation du mot de passe (newPassword2)
 		if (newPassword1 == newPassword2)
 		{
-			infoNewPassword2Elt.textContent = "Ok";
+			infoNewPassword2Elt.textContent = "Correct";
 			infoNewPassword2Elt.style.color = "green";
 		}
 		else
 		{
-			infoNewPassword2Elt.textContent = "Pas ok";
+			infoNewPassword2Elt.textContent = "Incorrect";
 			infoNewPassword2Elt.style.color = "red";
 		}		
 	});
@@ -77,12 +77,12 @@ newPassword1Elt.addEventListener("focus", function(event)
 	{		
 		if ((couleurItem1 == "green") && (couleurItem2 == "green"))
 		{
-			infoNewPassword1Elt.textContent = "Ok";
+			infoNewPassword1Elt.textContent = "Correct";
 			infoNewPassword1Elt.style.color = "green";
 		}
 		else
 		{
-			infoNewPassword1Elt.textContent = "Pas ok";
+			infoNewPassword1Elt.textContent = "Incorrect";
 			infoNewPassword1Elt.style.color = "red";
 		}
 	});
@@ -95,12 +95,12 @@ newPassword2Elt.addEventListener("input", function(event)
 	
 	if (newPassword2 == newPassword1)
 	{
-		infoNewPassword2Elt.textContent = "Ok";
+		infoNewPassword2Elt.textContent = "Correct";
 		infoNewPassword2Elt.style.color = "green";
 	}
 	else
 	{
-		infoNewPassword2Elt.textContent = "Pas ok";
+		infoNewPassword2Elt.textContent = "Incorrect";
 		infoNewPassword2Elt.style.color = "red";
 	}
 });
@@ -125,7 +125,7 @@ function showErrorMessage(message)
 // Event d'envoi du formulaire
 document.getElementById("password_form").addEventListener("submit", function(event)
 {
-	if ((infoNewPassword1Elt.textContent != "Ok") || (infoNewPassword2Elt.textContent != "Ok"))
+	if ((infoNewPassword1Elt.textContent != "Correct") || (infoNewPassword2Elt.textContent != "Correct"))
 	{
 		showErrorMessage("Une des conditions n'est pas respectée");
 		event.preventDefault();

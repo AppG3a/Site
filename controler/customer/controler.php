@@ -3,21 +3,8 @@
 // Appelle le modèle client
 require("../../model/customer/model.php");
 
-// -------------------- //
-// ----- Sécurité ----- //
-// -------------------- //
-
-function fieldSecurity($field)
-{
-    if (!empty($field))
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
+// Appelle le fichier qui gère les vérifications des formulaires
+require("../../controler/security.php");
 
 
 // -------------------- //
@@ -161,6 +148,13 @@ function defineSensorTarget()
 {
     $id_sensor = htmlspecialchars($_GET["id_sensor"]);
     $new_target = htmlspecialchars($_POST["target"]);
+    if (!fieldSecurity($new_target, "number"))
+    {
+        $sensors = getSensors();
+        $id_sensor = htmlspecialchars($_GET["id_sensor"]);
+        require("../../view/customer/sensor_target_error_view.php");
+        return;
+    }
     updateSensorTarget($id_sensor, $new_target);
     
     seeSensors();
@@ -174,9 +168,15 @@ function defineFavoriteSensorTarget()
 {
     $id_sensor = htmlspecialchars($_GET["id_sensor"]);
     $new_target = htmlspecialchars($_POST["target"]);
+    if (!fieldSecurity($new_target, "number"))
+    {
+        $sensors = getSensors();
+        $id_sensor = htmlspecialchars($_GET["id_sensor"]);
+        require("../../view/customer/favorite_sensor_target_error_view.php");
+        return;
+    }
     updateSensorTarget($id_sensor, $new_target);
-    
-    
+       
     seeHomePage();
 }
 
@@ -232,15 +232,25 @@ function removeSensor()
 
 /**
  * Affiche la page qui permet de voir les pièces d'une maison
+ * Si $error est vraie, il y a eu une erreur dans la saisie d'un formulaire et une page d'erreur est affichée
+ * 
+ * @param boolean $error
  */
-function seeRooms()
+function seeRooms($error)
 {
     $id_house = getHouse();
     $rooms = getRooms($id_house);
     $delete_rooms = getRooms($id_house);
     $modify_rooms = getRooms($id_house);
     
-    require("../../view/customer/rooms_view.php");
+    if ($error)
+    {
+        require("../../view/customer/rooms_error_view.php");
+    }
+    else 
+    {
+        require("../../view/customer/rooms_view.php");
+    }
 }
 
 /**
@@ -249,11 +259,16 @@ function seeRooms()
 function addRoom()
 {
     $room = htmlspecialchars($_POST["name"]);
+    if (!fieldSecurity($room, "text"))
+    {
+        seeRooms(true);
+        return;
+    }
     $id_house = getHouse();
     
     insertRoom($room, $id_house);
     
-    seeRooms();
+    seeRooms(false);
 }
 
 /**
@@ -265,7 +280,7 @@ function removeRoom()
     
     deleteRoom($id_room);
     
-    seeRooms();
+    seeRooms(false);
 }
 
 /**
@@ -275,10 +290,15 @@ function modifyRoom()
 {
     $id_room = htmlspecialchars($_POST["room"]);
     $new_name = htmlspecialchars($_POST["new_name"]);
+    if (!fieldSecurity($new_name, "text"))
+    {
+        seeRooms(true);
+        return;
+    }
     
     updateRoom($id_room, $new_name);
     
-    seeRooms();
+    seeRooms(false);
 }
 
 
@@ -326,11 +346,30 @@ function seeProfile()
 
 /**
  * Affiche la page de modification de profil de l'utilisateur connecté (celui dont l'id est $_SESSION["id"])
+ * 
+ * Si $case vaut 1 -> modification effectuée
+ * Si $case vaut 2 -> erreur formulaire
+ * Sinon -> page de modification de profil classique
+ * 
+ * @param integer $case
  */
-function seeProfileModification()
+function seeProfileModification($case)
 {
     $profile = getProfile();
-    require("../../view/customer/profile_modification_view.php");
+    
+    switch($case)
+    {
+        case 1:
+            require("../../view/customer/profile_modification_success_view.php");
+            break;
+            
+        case 2:
+            require("../../view/customer/profile_modification_error_view.php");
+            break;
+            
+        default:
+            require("../../view/customer/profile_modification_view.php");
+    }
 }
 
 /**
@@ -346,13 +385,18 @@ function profileModification()
     $name = htmlspecialchars($_POST["nom"]);
     $first_name = htmlspecialchars($_POST["prenom"]);
     $address = htmlspecialchars($_POST["adresse"]);
+    if ((!fieldSecurity($name, "text")) || (!fieldSecurity($first_name, "text")) || (!fieldSecurity($address, "textarea")))
+    {
+        seeProfileModification(2);
+        return;
+    }
     
     // Traitement des données
     $name = strtoupper($name);
     $first_name = ucfirst(strtolower($first_name));
     
     profileUpdate($name, $first_name, $address);
-    seeProfile();
+    seeProfileModification(1);
 }
 
 /**
@@ -366,6 +410,11 @@ function passwordChange()
     $former_password = htmlspecialchars($_POST["mot_de_passe"]);
     $new_password_1 = htmlspecialchars($_POST["new_password_1"]);
     $new_password_2 = htmlspecialchars($_POST["new_password_2"]);
+    if ((!fieldSecurity($former_password, "password")) || (!fieldSecurity($new_password_1, "password")) || (!fieldSecurity($new_password_2, "password")) || ($new_password_1 != $new_password_2) || !(preg_match("#^(?=.*[0-9]).{6,}$#", $new_password_1)))
+    {
+        seeProfileModification(2);
+        return;
+    }
     
     $db_password = getPassword();
     
@@ -395,11 +444,30 @@ function passwordChange()
 
 /**
  * Affiche la page qui montre les moyens de contacter Domisep
+ * 
+ * Si $case vaut 1 -> message envoyé
+ * Si $case vaut 2 -> erreur formulaire
+ * Sinon -> page contact classique
+ * 
+ * @param integer $case
  */
-function seeContact()
+function seeContact($case)
 {
     $phone_number = getPhoneNumber();
-    require("../../view/customer/contact_view.php");
+    
+    switch($case)
+    {
+        case 1:
+            require("../../view/customer/contact_success_view.php");
+            break;
+            
+        case 2:
+            require("../../view/customer/contact_error_view.php");
+            break;
+            
+        default:
+            require("../../view/customer/contact_view.php");
+    }
 }
 
 /**
@@ -409,13 +477,17 @@ function sendMessage()
 {
     $subject = htmlspecialchars($_POST["subject"]);
     $message = htmlspecialchars($_POST["message"]);
+    if ((!fieldSecurity($subject, "text")) || (!fieldSecurity($message, "textarea")))
+    {
+        seeContact(2);
+        return;
+    }
     $mailclient = $_SESSION["email"];
     $destinataire = getDomisepEmail();
     
     //mail($destinataire, $subject, $message, $mailclient);
     
-    $phone_number = getPhoneNumber();
-    require("../../view/customer/message_send_view.php");
+    seeContact(1);
 }
 
 

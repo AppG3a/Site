@@ -214,7 +214,7 @@ function getRooms($id_house)
     $db = dbConnect();
     $req = $db -> prepare("SELECT *
                             FROM emplacements
-                            WHERE id_maison = id_maison");
+                            WHERE id_maison = :id_maison");
     $req -> bindParam("id_maison", $id_house);
     $req -> execute();
     

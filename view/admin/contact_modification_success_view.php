@@ -12,11 +12,7 @@
 
 		<div class="sub_content">
 		
-			<p>
-				<strong>
-					Les modifications ont été correctement effectuées
-				</strong>
-			</p>
+			<p id="success_message">Les modifications ont été effectuées avec succès</p>
 			
             <h1>Adresse mail Domisep</h1>
             

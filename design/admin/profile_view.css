@@ -1,6 +1,5 @@
 html
 {
-	/*background: url("../picture/fond_2.jpg") fixed no-repeat;*/
 	background-image:radial-gradient(white, rgb(186,186,186));
 }
 
@@ -87,12 +86,7 @@ header
 			padding-left: 10%;
 			width: 55%;
 		}
-		
-		.menu_items a:active
-		{
 
-		}
-	
 	.content
 	{
 		flex: 1;
@@ -156,23 +150,3 @@ header
 				width: 75%;
 			}
 			
-			
-
-
-footer
-{
-	color: white;
-	text-align: center;
-	margin: auto;
-	margin-bottom: 0px;
-	border: 1px rgb(0, 0, 129) solid;
-	border-radius: 20px 20px 0px 0px;
-	background-color: rgb(0, 0, 129);
-	padding-right: 15px;
-	padding-left: 15px;
-}
-
-	footer a
-	{
-		color: white;
-	}

@@ -96,7 +96,7 @@ if ( (isset($_SESSION["user_type"])) && ($_SESSION["user_type"] == "customer") )
                 
             // Page qui permet de voir les pièces d'une maison
             case "see_rooms":
-                seeRooms();
+                seeRooms(false);
                 break;
             
             // Ajout d'une pièce
@@ -131,7 +131,7 @@ if ( (isset($_SESSION["user_type"])) && ($_SESSION["user_type"] == "customer") )
                 
             // Page qui permet de modifier le profil
             case "see_profile_modification":
-                seeProfileModification();
+                seeProfileModification(0);
                 break;
                 
             // Modification du profil
@@ -148,7 +148,11 @@ if ( (isset($_SESSION["user_type"])) && ($_SESSION["user_type"] == "customer") )
             // ----- Contact Domisep ----- //
                 
             case "see_contact":
-                seeContact();
+                seeContact(0);
+                break;
+                
+            case "send_message":
+                sendMessage();
                 break;
                            
                 

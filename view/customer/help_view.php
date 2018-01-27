@@ -14,7 +14,7 @@
             
             <p>
             	Vous trouverez ci-dessous toutes les explications nécessaires concernant les fonctionnalités d'Harvey. <br/>
-            	Pour plus de détails, référez-vous au manuel utilisateur.
+            	Pour plus de détails, vous pouvez vous référer au manuel utilisateur.
             </p>
             
             <h3>Contacter le support</h3>
@@ -23,6 +23,12 @@
                 Vous pouvez contacter le support en cliquant sur l'icône ci-dessus (situé en haut à droite de la page). <br/>
                 Vous pourrez envoyer un message au support (le support vous répondra par mail dès que possible). <br/>
                 Un numéro vous est également fourni pour contacter Domisep.
+            </p>
+            
+            <h3>Conditions générales d'utilisation</h3>
+            <img src="../../design/picture/cgu.png" alt="Contact">
+            <p>      
+				Vous pouvez lire les conditions générales d'utilisation en cliquant sur l'icône ci-dessus (situé en haut à droite de la page). <br/>
             </p>
                         
             <h3>Se déconnecter</h3>
@@ -34,7 +40,7 @@
             <h3>Menu de navigation</h3>
             <p>      
                 Le menu de navigation se situe sur la gauche de votre écran. <br/>
-                Il vous permet d'accéder à toutes les fonctionnalités que vous propose Domisep pour gérer vos objets connectés. <br/>
+                Il vous permet d'accéder à toutes les fonctionnalités que vous propose Harvey pour gérer vos objets connectés. <br/>
                 Pour chaque fonctionnalité, un menu contextuel apparaît sur la droite de votre écran. <br/>
                 Ce menu vous permettra d'effectuer des actions spécifiques à la fonctionnalité que vous êtes en train d'utiliser.
             </p>
@@ -69,11 +75,7 @@
                 L'onglet "Profil utilisateur" vous permet de voir votre profil. <br/>
                 Vous pourrez y modifier vos données ainsi que votre mot de passe. <br/>
             </p>
-            
-            <h3>Conditions générales d'utilisation</h3>
-            <p>      
-                Vous pouvez lire les conditions générales d'utilisation en cliquant sur le lien disponible en bas de la page.<br/>
-            </p>
+
         </div>
         
         <div class="right_nav">

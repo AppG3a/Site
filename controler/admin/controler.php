@@ -3,6 +3,9 @@
 // Appelle le modèle administrateur
 require("../../model/admin/model.php");
 
+// Appelle le fichier qui gère les vérifications des formulaires
+require("../../controler/security.php");
+
 
 // -------------------- //
 // ----- Capteurs ----- //
@@ -10,10 +13,28 @@ require("../../model/admin/model.php");
 
 /**
  * Affiche la page qui permet de créer un nouveau capteur
+ *
+ * Si $case vaut 1 -> modification effectuée
+ * Si $case vaut 2 -> erreur formulaire
+ * Sinon -> page de création classique
+ *
+ * @param integer $case
  */
-function seeSensorCreation()
-{
-    require("../../view/admin/sensor_creation_view.php");
+function seeSensorCreation($case)
+{    
+    switch($case)
+    {
+        case 1:
+            require("../../view/admin/sensor_creation_success_view.php");
+            break;
+            
+        case 2:
+            require("../../view/admin/sensor_creation_error_view.php");
+            break;
+            
+        default:
+            require("../../view/admin/sensor_creation_view.php");
+    }
 }
 
 /**
@@ -27,20 +48,31 @@ function sensorCreation()
     $type = htmlspecialchars($_POST["type"]);
     $display_code = htmlspecialchars($_POST["display_code"]);
     $picture_link = htmlspecialchars($_POST["picture_link"]);
+    if ((!fieldSecurity($type, "text")) || (!fieldSecurity($picture_link, "textarea")))
+    {
+        seeSensorCreation(2);
+        return;
+    }
     
     // Données facultatives (unité, valeurs défaut/min/max)
     /**
      * Permet de donner des valeurs par défaut ($value) à des champs optionnels du formulaire ($data_name)
+     * $type représente le type de champ concerné
      * 
      * @param string $data_name
+     * @param string $type
      * @param string|NULL $value
      * @return string|NULL
      */
-    function optionalData($data_name, $value)
+    function optionalData($data_name, $type, $value)
     {
         if (!empty($_POST[$data_name]))
         {
             $data = htmlspecialchars($_POST[$data_name]);
+            if (!fieldSecurity($data, $type))
+            {
+                $data = "error";
+            }
         }
         else
         {
@@ -50,14 +82,20 @@ function sensorCreation()
         return $data;
     }
     
-    $unity = optionalData("unity", "");
-    $default_value = optionalData("default_value", null);
-    $min = optionalData("min", null);
-    $max = optionalData("max", null);
+    $unity = optionalData("unity", "text", "");
+    $default_value = optionalData("default_value", "number", null);
+    $min = optionalData("min", "number", null);
+    $max = optionalData("max", "number", null);
+    
+    if (($unity == "error") || ($default_value == "error") || ($min == "error") || ($max == "error"))
+    {
+        require("../../view/admin/sensor_creation_error_view.php");
+        return;
+    }
     
     insertSensor($type, $category, $picture_link, $unity, $default_value, $max, $min, $display_code);
     
-    seeSensorCreation();
+    seeSensorCreation(1);
 }
 
 // ------------------------- //
@@ -114,6 +152,11 @@ function seePhoneNumberModification()
 function phoneNumberModification()
 {
     $new_phone_number = htmlspecialchars($_POST["phone_number"]);
+    if (!fieldSecurity($new_phone_number, "text"))
+    {
+        require("../../view/admin/phone_number_modification_error_view.php");
+        return;
+    }
     
     updatePhoneNumber($new_phone_number);
     $phone_number = getContact(1);
@@ -137,6 +180,11 @@ function seeEmailModification()
 function emailModification()
 {
     $new_email = htmlspecialchars($_POST["email"]);
+    if (!fieldSecurity($new_email, "email"))
+    {
+        require("../../view/admin/email_modification_error_view.php");
+        return;
+    }
     
     updateEmail($new_email);
     $phone_number = getContact(1);
@@ -176,6 +224,11 @@ function adminProfileCreation()
     $prenom = htmlspecialchars($_POST["prenom"]);
     $adresse = htmlspecialchars($_POST["adresse"]);
     $email = htmlspecialchars($_POST["mail"]);
+    if ((!fieldSecurity($nom, "text")) || (!fieldSecurity($prenom, "text")) || (!fieldSecurity($adresse, "textarea")) || (!fieldSecurity($email, "email")))
+    {
+        require("../../view/admin/admin_profile_creation_error2_view.php");
+        return;
+    }
     
     $nb_email = countEmail($email);
     
@@ -203,11 +256,30 @@ function adminProfileCreation()
 
 /**
  * Affiche la page qui permet à l'administrateur de gérer le carousel
+ *
+ * Si $case vaut 1 -> modification effectuée
+ * Si $case vaut 2 -> erreur formulaire
+ * Sinon -> page de modification classique
+ *
+ * @param integer $case
  */
-function seeCarouselModification()
+function seeCarouselModification($case)
 {
     $pictures = getPictures();
-    require("../../view/admin/carousel_modification_view.php");
+    
+    switch($case)
+    {
+        case 1:
+            require("../../view/admin/carousel_modification_success_view.php");
+            break;
+            
+        case 2:
+            require("../../view/admin/carousel_modification_error_view.php");
+            break;
+            
+        default:
+            require("../../view/admin/carousel_modification_view.php");
+    }
 }
 
 /**
@@ -216,6 +288,12 @@ function seeCarouselModification()
 function carouselModification()
 {
     $picture_link = htmlspecialchars($_POST["picture_link"]);
+    if (!fieldSecurity($picture_link, "textarea"))
+    {
+        seeCarouselModification(2);
+        return;
+    }
+    
     $id_pictures = $_POST["id_pictures"];
     
     foreach($id_pictures as $id_picture)
@@ -223,7 +301,7 @@ function carouselModification()
         updatePicture($id_picture, $picture_link);
     }
     
-    seeCarouselModification();
+    seeCarouselModification(1);
 }
 
 // ------------------ //
@@ -241,19 +319,38 @@ function seeProfile()
 
 /**
  * Affiche la page de modification de profil de l'utilisateur connecté (celui dont l'id est $_SESSION["id"])
+ *
+ * Si $case vaut 1 -> modification effectuée
+ * Si $case vaut 2 -> erreur formulaire
+ * Sinon -> page de modification de profil classique
+ *
+ * @param integer $case
  */
-function seeProfileModification()
+function seeProfileModification($case)
 {
     $profile = getProfile($_SESSION["id"]);
-    require("../../view/admin/profile_modification_view.php");
+    
+    switch($case)
+    {
+        case 1:
+            require("../../view/admin/profile_modification_success_view.php");
+            break;
+            
+        case 2:
+            require("../../view/admin/profile_modification_error_view.php");
+            break;
+            
+        default:
+            require("../../view/admin/profile_modification_view.php");
+    }
 }
 
 /**
  * Modifie le profil de l'utilisateur connecté (celui dont l'id est $_SESSION["id"]) à partir de données récupérées d'un formulaire
- * 
+ *
  * Certaines données sont traitées avant d'être enregistrées dans la base de données :
  * - le nom ($name) est mis en majuscules avec la fonction PHP strtoupper($string)
- * - le prénom ($first_name) est mis en minuscule avec la fonction PHP strtolower($string) 
+ * - le prénom ($first_name) est mis en minuscule avec la fonction PHP strtolower($string)
  * et la première lettre est mise en majuscule avec la fonction PHP ucfirst($string)
  */
 function profileModification()
@@ -261,20 +358,24 @@ function profileModification()
     $name = htmlspecialchars($_POST["nom"]);
     $first_name = htmlspecialchars($_POST["prenom"]);
     $address = htmlspecialchars($_POST["adresse"]);
-
+    if ((!fieldSecurity($name, "text")) || (!fieldSecurity($first_name, "text")) || (!fieldSecurity($address, "textarea")))
+    {
+        seeProfileModification(2);
+        return;
+    }
+    
     // Traitement des données
     $name = strtoupper($name);
     $first_name = ucfirst(strtolower($first_name));
     
     profileUpdate($name, $first_name, $address);
-    
-    seeProfile();
+    seeProfileModification(1);
 }
 
 /**
  * Modifie le mot de passe de l'utilisateur connecté (celui dont l'id est $_SESSION["id"])
  * Si l'utilisateur remplit correctement le formulaire, le mot de passe est changé et un mail de confirmation est envoyé
- * 
+ *
  * sha1($string) est une fonction PHP de hachage
  */
 function passwordChange()
@@ -282,6 +383,11 @@ function passwordChange()
     $former_password = htmlspecialchars($_POST["mot_de_passe"]);
     $new_password_1 = htmlspecialchars($_POST["new_password_1"]);
     $new_password_2 = htmlspecialchars($_POST["new_password_2"]);
+    if ((!fieldSecurity($former_password, "password")) || (!fieldSecurity($new_password_1, "password")) || (!fieldSecurity($new_password_2, "password")) || ($new_password_1 != $new_password_2))
+    {
+        seeProfileModification(2);
+        return;
+    }
     
     $db_password = getPassword();
     
@@ -303,6 +409,7 @@ function passwordChange()
         require("../../view/admin/profile_modification_error_password_view.php");
     }
 }
+
 
 // ------------------ //
 // ----- Autres ----- //

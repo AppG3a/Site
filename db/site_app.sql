@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 25 jan. 2018 à 13:21
+-- Généré le :  sam. 27 jan. 2018 à 17:18
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `capteurs` (
   `id_type` int(11) NOT NULL,
   `categorie` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `capteurs`
@@ -95,11 +95,14 @@ CREATE TABLE IF NOT EXISTS `capteurs` (
 
 INSERT INTO `capteurs` (`id`, `id_utilisateur`, `id_emplacement`, `reference`, `description`, `on_off`, `valeur`, `valeur_cible`, `favori`, `id_type`, `categorie`) VALUES
 (1, 1, 1, 'température', 'capteur de température', 'ON', 20, 21, 1, 0, 'simple'),
-(26, 4, 12, 'température', 'température', 'OFF', 10, NULL, 0, 1, 'simple'),
+(26, 4, 12, 'température', 'température', 'ON', 10, NULL, 0, 1, 'simple'),
 (25, 3, 13, 'température', 'température', 'OFF', 10, NULL, 0, 0, 'simple'),
-(44, 4, 5, 'reference', 'description', 'OFF', 2, NULL, 1, 5, 'simple'),
-(38, 4, 5, 'reference', 'description', 'OFF', 10, NULL, 1, 4, 'objet'),
-(34, 4, 20, 'reference', 'description', 'OFF', 10, NULL, 1, 3, 'objet');
+(44, 4, 5, 'reference', 'description', 'OFF', 2, NULL, 0, 5, 'simple'),
+(38, 4, 5, 'reference', 'description', 'OFF', 10, NULL, 0, 4, 'objet'),
+(53, 4, 30, 'reference', 'description', 'ON', 15, 30, 1, 3, 'objet'),
+(54, 4, 30, 'reference', 'description', 'OFF', 10, NULL, 1, 1, 'simple'),
+(55, 4, 5, 'reference', 'description', 'OFF', 5, NULL, 1, 7, 'simple'),
+(56, 4, 30, 'reference', 'description', 'OFF', 10, NULL, 0, 1, 'simple');
 
 -- --------------------------------------------------------
 
@@ -133,21 +136,19 @@ CREATE TABLE IF NOT EXISTS `emplacements` (
   `id_maison` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `emplacements`
 --
 
 INSERT INTO `emplacements` (`id`, `id_maison`, `nom`) VALUES
-(20, 1, 'Chambre enfant'),
+(30, 1, 'Chambre enfant'),
 (12, 1, 'Garage'),
 (13, 2, 'Salon'),
 (5, 1, 'Salle de bain'),
-(14, 1, 'Chambre'),
-(28, 1, 'test'),
-(24, 2, 'Cuisine'),
-(29, 1, '');
+(34, 4, 'Salon'),
+(24, 2, 'Cuisine');
 
 -- --------------------------------------------------------
 
@@ -167,15 +168,15 @@ CREATE TABLE IF NOT EXISTS `images` (
 --
 
 INSERT INTO `images` (`id`, `lien`) VALUES
-(1, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg'),
+(1, 'http://localhost/site_app/Site/design/picture/camera_2.jpg'),
 (2, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg'),
-(3, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg'),
-(4, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg'),
+(3, 'http://localhost/site_app/Site/design/picture/montre_2.jpg'),
+(4, 'http://localhost/site_app/Site/design/picture/camera_2.jpg'),
 (5, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg'),
-(6, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg'),
-(7, 'http://localhost/site_app/Site/design/picture/montre_2.jpg'),
-(8, 'http://localhost/site_app/Site/design/picture/camera_2.jpg'),
-(9, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg');
+(6, 'http://localhost/site_app/Site/design/picture/montre_2.jpg'),
+(7, 'http://localhost/site_app/Site/design/picture/camera_2.jpg'),
+(8, 'http://localhost/site_app/Site/design/picture/capteur_2.jpg'),
+(9, 'http://localhost/site_app/Site/design/picture/montre_2.jpg');
 
 -- --------------------------------------------------------
 
@@ -187,19 +188,27 @@ DROP TABLE IF EXISTS `maisons`;
 CREATE TABLE IF NOT EXISTS `maisons` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_utilisateur` int(11) NOT NULL,
-  `adresse` text NOT NULL,
   `superficie` int(11) NOT NULL,
   `nb_occupants` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `maisons`
 --
 
-INSERT INTO `maisons` (`id`, `id_utilisateur`, `adresse`, `superficie`, `nb_occupants`) VALUES
-(1, 4, '23, rue de Penthièvre\r\n07000 PRIVAS', 120, 3),
-(2, 3, '15, rue des six frères Ruellan\r\n57200 SARREGUEMINES', 90, 4);
+INSERT INTO `maisons` (`id`, `id_utilisateur`, `superficie`, `nb_occupants`) VALUES
+(1, 4, 120, 3),
+(2, 3, 90, 4),
+(3, 5, 100, 2),
+(4, 6, 100, 2),
+(5, 7, 100, 2),
+(6, 8, 100, 2),
+(7, 9, 100, 2),
+(8, 10, 100, 2),
+(9, 11, 100, 2),
+(10, 12, 100, 2),
+(11, 20, 100, 2);
 
 -- --------------------------------------------------------
 
@@ -275,7 +284,7 @@ CREATE TABLE IF NOT EXISTS `types_capteurs` (
   `min` int(11) DEFAULT NULL,
   `code_affichage` int(11) NOT NULL,
   PRIMARY KEY (`id_type`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `types_capteurs`
@@ -286,7 +295,7 @@ INSERT INTO `types_capteurs` (`id_type`, `type`, `categorie`, `lien_image`, `uni
 (2, 'Luminosité', 'simple', '../../design/picture/soleil_2.png', 'lux', 100, 0, 0, 1),
 (3, 'Radiateur', 'objet', '../../design/picture/radiateur_2.png', '°C', 15, 35, 0, 2),
 (4, 'Lampe', 'objet', '../../design/picture/ampoule_2.png', '', NULL, 0, 0, 1),
-(5, 'Humidité', 'simple', '../../design/picture/goutte_2.png', '%', 2, NULL, NULL, 1);
+(7, 'Humidité', 'simple', '../../design/picture/goutte_2.png', '%', 5, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -305,25 +314,25 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `date_inscription` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `categorie_utilisateur` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `utilisateurs`
 --
 
 INSERT INTO `utilisateurs` (`id`, `nom`, `prenom`, `adresse`, `mail`, `mot_de_passe`, `date_inscription`, `categorie_utilisateur`) VALUES
-(1, 'CHABOTTE', 'Jack', '38, Chemin Du Lavarin Sud\r\n94230 CACHAN', 'jack.chabotte@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2017-12-21 09:45:40', 'admin'),
-(2, 'MARGAND', 'Nanna', '96, place Stanislas\r\n54000 NANCY', 'nanna.margand@gmail.com', 'f32ae9f561808c6eca0c5ba245821a14b72129f4', '2017-12-21 09:45:40', 'admin'),
-(3, 'MARCOUX', 'Sydney', '15, rue des six frères Ruellan\r\n57200 SARREGUEMINES', 'sydney.marcoux@gmail.com', 'abebc3297d0c5c956a2b3ee5f3cd76223189e68d', '2017-12-21 09:45:40', 'customer'),
-(4, 'GUIBORD', 'Gabriel', '23, rue de Penthièvre\r\n07000 PRIVAS', 'gabriel.guibord@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2017-12-21 09:45:40', 'customer'),
-(5, 'QUENNEVILLE', 'Cosette', '55, Rue Hubert de Lisle\r\n33310 LORMONT', 'cosette.quenneville@gmail.com', '61269e64862de4f51f68733e3d8c6727de5f91c8', '2017-12-21 09:45:40', 'customer'),
-(6, 'VARIEUR', 'Aurélie', '17, place de Miremont\r\n92390 VILLENEUVE-LA-GARENNE', 'aurelie.varieur@gmail.com', '661b5fb56d7f6dbdfce631ad0071e03de9abed12', '2017-12-21 09:45:40', 'customer'),
-(7, 'MOREAU', 'Alphonse', '19, avenue du Marechal Juin\r\n97436 SAINT-LEU', 'alphonse.moreau@gmail.com', '5604dd55bd14f314b3ce02069fe7c60a49d442a1', '2017-12-21 09:45:40', 'customer'),
-(8, 'DUFOUR', 'Hamilton', '22, avenue de Provence\r\n26000 VALENCE', 'hamilton.dufour@gmail.com', '8af9adac02cdb4cd40010f1825cfdc8912bc3ffb', '2017-12-21 09:45:40', 'customer'),
-(9, 'MARIER', 'Martin', '86, rue des six frères Ruellan\r\n44230 SAINT-SÉBASTIEN-SUR-LOIRE', 'martin.marier@gmail.com', 'a3710370d4530286d700c8288710a415b71c8fe2', '2017-12-21 09:45:40', 'customer'),
-(10, 'LAMONTAGNE', 'Christine', '26, quai Saint-Nicolas\r\n59200 TOURCOING', 'christine.lamontagne@gmail.com', '3748d7b8d00a9b5604b477273e8f04f850778a3c', '2017-12-21 09:45:40', 'customer'),
-(11, 'BELLEMARE', 'Gilles', '14, boulevard Amiral Courbet\r\n94310 ORLY', 'gilles.bellemar@gmail.com', 'ce27733ea14aec25d52c5b467fd50ac8ce2130dd', '2017-12-21 09:45:40', 'customer'),
-(12, 'TESTO', 'Stérone', '42, rue du Test\r\n42000 TEST', 'testo.sterone@gmail.com', '6763500ac7e760efe19079d5452694951da17ab9', '2017-12-21 09:45:40', 'customer'),
+(1, 'CHABOTTE', 'Jack', '38, Chemin Du Lavarin Sud\r\n94230 CACHAN', 'jack.chabotte@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2017-12-13 19:45:42', 'admin'),
+(2, 'MARGAND', 'Nanna', '96, place Stanislas\r\n54000 NANCY', 'nanna.margand@gmail.com', 'f32ae9f561808c6eca0c5ba245821a14b72129f4', '2017-02-21 09:45:40', 'admin'),
+(3, 'MARCOUX', 'Sydney', '15, rue des six frères Ruellan\r\n57200 SARREGUEMINES', 'sydney.marcoux@gmail.com', 'abebc3297d0c5c956a2b3ee5f3cd76223189e68d', '2016-12-14 09:47:59', 'customer'),
+(4, 'GUIBORD', 'Gabriel', '23, rue de Penthièvre\r\n07000 PRIVAS', 'gabriel.guibord@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2017-10-03 14:31:30', 'customer'),
+(5, 'QUENNEVILLE', 'Cosette', '55, Rue Hubert de Lisle\r\n33310 LORMONT', 'cosette.quenneville@gmail.com', '61269e64862de4f51f68733e3d8c6727de5f91c8', '2016-05-01 18:45:32', 'customer'),
+(6, 'VARIEUR', 'Aurélie', '17, place de Miremont\r\n92390 VILLENEUVE-LA-GARENNE', 'aurelie.varieur@gmail.com', '661b5fb56d7f6dbdfce631ad0071e03de9abed12', '2017-06-11 10:55:11', 'customer'),
+(7, 'MOREAU', 'Alphonse', '19, avenue du Marechal Juin\r\n97436 SAINT-LEU', 'alphonse.moreau@gmail.com', '5604dd55bd14f314b3ce02069fe7c60a49d442a1', '2016-02-22 07:45:36', 'customer'),
+(8, 'DUFOUR', 'Hamilton', '22, avenue de Provence\r\n26000 VALENCE', 'hamilton.dufour@gmail.com', '8af9adac02cdb4cd40010f1825cfdc8912bc3ffb', '2017-08-15 12:15:43', 'customer'),
+(9, 'MARIER', 'Martin', '86, rue des six frères Ruellan\r\n44230 SAINT-SÉBASTIEN-SUR-LOIRE', 'martin.marier@gmail.com', 'a3710370d4530286d700c8288710a415b71c8fe2', '2017-11-12 09:45:40', 'customer'),
+(10, 'LAMONTAGNE', 'Christine', '26, quai Saint-Nicolas\r\n59200 TOURCOING', 'christine.lamontagne@gmail.com', '3748d7b8d00a9b5604b477273e8f04f850778a3c', '2017-03-04 17:14:43', 'customer'),
+(11, 'BELLEMARE', 'Gilles', '14, boulevard Amiral Courbet\r\n94310 ORLY', 'gilles.bellemar@gmail.com', 'ce27733ea14aec25d52c5b467fd50ac8ce2130dd', '2017-06-14 09:36:01', 'customer'),
+(12, 'TESTO', 'Stérone', '42, rue du Test\r\n42000 TEST', 'testo.sterone@gmail.com', '6763500ac7e760efe19079d5452694951da17ab9', '2018-01-25 14:17:19', 'customer'),
 (20, 'DUFOUR', 'Lewis', '78, Rue Hubert de Lisle\r\n33310 LORMONT', 'lewis.dufour@gmail.com', '43a169d3cbc04fdaae2e05a75683bcc62f92cfef', '2018-01-08 17:30:32', 'customer');
 COMMIT;
 

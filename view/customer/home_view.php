@@ -60,7 +60,7 @@
             		if (!empty($sensor["valeur_cible"]))
             		{
             		?>
-            			valeur cible : <?= $sensor["valeur_cible"] ?><br/>
+            			- Valeur cible : <?= $sensor["valeur_cible"] ?><br/>
         			<?php 
             		}
         			?>

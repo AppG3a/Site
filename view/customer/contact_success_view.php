@@ -12,13 +12,9 @@
 
 		<div class="sub_content">
 		
+            <p id="success_message">Le message a été envoyé au support. Vous recevrez une réponse par mail.</p>
+		
             <h1>Contacter le support</h1>
-            
-            <p>
-            	<strong>
-            		Le message a été envoyé au support. Vous recevrez une réponse par mail.
-            	</strong>
-            </p>
             
             <form method="post" action="roter.php?action=send_message">
             	<fieldset>

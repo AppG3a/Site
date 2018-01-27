@@ -12,6 +12,8 @@
 
 		<div class="sub_content">
 		
+			<p id="error_message">Un des champs du formulaire n'a pas été rempli correctement</p>
+		
             <?php 
             while ($sensor = $sensors -> fetch())
             {

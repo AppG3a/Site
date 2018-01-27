@@ -11,6 +11,8 @@
     <div class="content">
 
 		<div class="sub_content">
+		
+			<p id="error_message">L'adresse mail choisie est déjà utilisée</p>
             
             <form method="post" action="roter.php?action=admin_profile_creation">
             	<fieldset>
@@ -24,11 +26,6 @@
                 </fieldset>
             	<p>
             		<input type="submit" value="Créer le compte">
-            	</p>
-            	<p>
-                	<strong>
-                		L'ADRESSE MAIL CHOISIE EST DEJA UTILISEE
-                	</strong>
             	</p>
             </form>
             

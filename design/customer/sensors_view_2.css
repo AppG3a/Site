@@ -1,6 +1,5 @@
 html
 {
-	/*background: url("../picture/fond_2.jpg") fixed no-repeat;*/
 	background-image:radial-gradient(white, rgb(186,186,186));
 }
 
@@ -86,11 +85,6 @@ header
 			padding-left: 10%;
 			width: 57%;
 		}
-		
-		.menu_items a:active
-		{
-
-		}
 	
 	.content
 	{
@@ -113,7 +107,7 @@ header
 				border-radius: 10px;
 				background-color: rgb(215,215,215);
 				width: 225px;
-				height: 230px;
+				height: 265px;
 				margin: 10px;
 				padding: 10px;
 			}
@@ -121,6 +115,12 @@ header
 			{
 				display: block;
                 margin: 0 auto;
+			}
+			
+			#error_message
+			{
+				background-color: #F08080;
+				padding: 15px;
 			}
 	
 		.right_nav
@@ -153,23 +153,3 @@ header
 				width: 75%;
 			}
 			
-			
-
-
-footer
-{
-	color: white;
-	text-align: center;
-	margin: auto;
-	margin-bottom: 0px;
-	border: 1px rgb(0, 0, 129) solid;
-	border-radius: 20px 20px 0px 0px;
-	background-color: rgb(0, 0, 129);
-	padding-right: 15px;
-	padding-left: 15px;
-}
-
-	footer a
-	{
-		color: white;
-	}

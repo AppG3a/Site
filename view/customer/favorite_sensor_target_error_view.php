@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-<?php $css = "../../design/customer/sensors_view_3.css"; ?>
+<?php $css = "../../design/customer/sensors_view_2.css"; ?>
 <?php $title = "Harvey"; ?>
 
 <?php include("bloc_header_view.php")?>
@@ -11,6 +11,9 @@
 	<div class="content">
 
 		<div class="sub_content">
+		
+			<p id="error_message">Un des champs du formulaire n'a pas été rempli correctement</p>
+		
 			<?php 
             while ($sensor = $sensors -> fetch())
             {

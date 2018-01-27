@@ -1,5 +1,5 @@
 <?php ob_start(); ?>	
-<?php $css = "../../design/admin/customer_profile_selection_bis_view.css"; ?>
+<?php $css = "../../design/admin/customer_profile_selection_view.css"; ?>
 <?php $title = "Historique des pannes"; ?>
 
 <?php include("bloc_header_view.php")?>
