@@ -1,0 +1,181 @@
+html
+{
+	/*background: url("../picture/fond_2.jpg") fixed no-repeat;*/
+	background-image:radial-gradient(white, rgb(186,186,186));
+}
+
+body
+{
+	display: flex;
+	flex-direction: column;
+	margin: 0px;
+	min-height: 100%;
+}
+
+
+header
+{
+	display: flex;
+	justify-content: space-between;	
+}
+
+	h2
+	{
+		order: 2;
+		color: white;
+		font-size: 2em;
+		border: 1px rgb(0, 0, 129) solid;
+		border-radius: 0px 0px 20px 20px;
+		background-color: rgb(0, 0, 129);
+		margin: auto;
+		margin-top: 0px;
+		padding: 10px;
+		text-align: center;
+	}
+	
+	.logo
+	{
+		order: 1;
+		width: 14%;
+		text-align: center;
+	}
+	
+	.bouton
+	{
+		order: 3;
+		width: 14%;
+		display: flex;
+		justify-content: space-around;	
+	}
+
+.center
+{
+	display: flex;
+}
+
+	nav
+	{
+		width: 25%;
+		height: 50%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	
+		.menu_items
+		{
+			display: flex;
+			flex-direction: column;
+			
+		}
+		
+		.menu_items a
+		{
+			display: inline-block;
+			color: white;
+			text-decoration: none;
+			border: 1px rgb(0, 0, 129) solid;
+			border-radius: 0px 15px 15px 0px;
+			background-color: rgb(0, 0, 129);
+			padding: 10px;
+			margin-bottom: 10px;
+			width: 52%;
+		}
+		
+		.menu_items a:hover
+		{
+			padding-left: 10%;
+			width: 57%;
+		}
+		
+		.menu_items a:active
+		{
+
+		}
+	
+	.content
+	{
+		flex: 1;
+		display: flex;
+	}	
+		
+		.sub_content
+		{
+			width: 81%;
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 40px;
+			border: 1px blue solid;
+		}
+		
+			.sub_content2
+			{
+				border: 2px green solid;
+				display: flex;
+				flex-wrap : wrap;
+			}
+	
+				.sensor
+				{
+					border: 1px red solid;
+					width: 225px;
+					height: 200px;
+					margin: 10px;
+					padding: 10px;
+				}
+				
+			.submit_button
+			{
+				margin: auto;
+			}
+	
+		.right_nav
+		{
+			flex: 1;
+			height: 50%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-end;
+		}
+		
+			.right_nav a
+			{
+				display: inline-block;
+				color: white;
+				text-decoration: none;
+				text-align: center;
+				border: 1px rgb(0, 0, 129) solid;
+				border-radius: 15px 0px 0px 15px;
+				background-color: rgb(0, 0, 129);
+				padding: 10px;
+				margin-bottom: 10px;
+				width: 70%;		
+			}
+			
+			.right_nav a:hover
+			{
+				padding-right: 30px;
+				width: 75%;
+			}
+			
+			
+
+
+footer
+{
+	color: white;
+	text-align: center;
+	margin: auto;
+	margin-bottom: 0px;
+	border: 1px rgb(0, 0, 129) solid;
+	border-radius: 20px 20px 0px 0px;
+	background-color: rgb(0, 0, 129);
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+	footer a
+	{
+		color: white;
+	}
